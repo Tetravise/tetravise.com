@@ -1,0 +1,249 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tetravise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+  /* Layout: una colonna morbida su mobile, poi due colonne. L'identità è una griglia di quattro forme
+     (cerchio, quadrato, triangolo, quarto di cerchio), una per competenza: processi, software, dati, AI. */
+  :root {
+    --bg: #EDF0EE;
+    --ink: #1F2A3A;
+    --fg: #1F2A3A;
+    --fg-soft: #3F4B5B;
+    --muted: #586474;
+    --line: #D3D9D7;
+
+    --t1: #D6E0EC;  --t1s: #7F9BC0;   /* processi: azzurro polvere */
+    --t2: #DAE4D6;  --t2s: #8FAE8B;   /* software: salvia */
+    --t3: #EBDFC8;  --t3s: #D1B27A;   /* dati: sabbia */
+    --t4: #EBD5D0;  --t4s: #CF9A90;   /* AI: rosa argilla */
+
+    --dark-panel: #1F2A3A;
+    --on-dark: #EEF1F4;
+    --on-dark-soft: #B9C4D0;
+
+    --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+    --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --gutter: 1.25rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14191F; --ink: #E6EAEE; --fg: #E6EAEE; --fg-soft: #B5C0CB; --muted: #96A2AF; --line: #27313B;
+      --t1: #212D3C; --t2: #232F27; --t3: #33301F; --t4: #372A28;
+      --dark-panel: #1C2733; --on-dark: #EEF1F4; --on-dark-soft: #AAB7C4;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14191F; --ink: #E6EAEE; --fg: #E6EAEE; --fg-soft: #B5C0CB; --muted: #96A2AF; --line: #27313B;
+    --t1: #212D3C; --t2: #232F27; --t3: #33301F; --t4: #372A28;
+    --dark-panel: #1C2733; --on-dark: #EEF1F4; --on-dark-soft: #AAB7C4;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    padding-inline: var(--gutter);
+    padding-block: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 66rem; margin-inline: auto; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; line-height: 1.08; letter-spacing: -0.015em; text-wrap: balance; }
+  p { margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--t1s); outline-offset: 3px; border-radius: 6px; }
+  .icon { display: block; }
+  .icon polygon { stroke: var(--gap, var(--bg)); stroke-width: 5; stroke-linejoin: round; }
+  .p1 { fill: var(--t1s); } .p2 { fill: var(--t2s); } .p3 { fill: var(--t3s); } .p4 { fill: var(--t4s); }
+  .off { fill: var(--fg); fill-opacity: 0.1; }
+
+  /* Header */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; }
+  .brand { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; }
+  .brand span { font-family: var(--font-display); font-size: 1.55rem; letter-spacing: -0.01em; line-height: 1; }
+  .top nav a { font-size: 0.95rem; font-weight: 500; text-decoration: none; color: var(--muted); }
+  .top nav a:hover { color: var(--fg); }
+
+  /* Hero */
+  .hero { display: grid; gap: 2.5rem; padding-block: 2rem 3.5rem; align-items: center; }
+  .hero-copy { display: flex; flex-direction: column; gap: 1.5rem; }
+  .hero h1 { font-size: clamp(2.6rem, 10vw, 4.9rem); font-weight: 400; }
+  .lead { color: var(--fg-soft); font-size: 1.15rem; max-width: 32rem; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem 1.5rem; }
+  .btn {
+    display: inline-flex; align-items: center; min-height: 3.1rem; padding-inline: 1.5rem;
+    background: var(--ink); color: var(--bg); border-radius: 999px;
+    font-weight: 500; text-decoration: none;
+  }
+  .btn:hover { opacity: 0.9; }
+  .text-link { font-weight: 500; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 0.35em; text-decoration-thickness: 2px; }
+  .text-link:hover { text-decoration-color: var(--t1s); }
+  .hero-art { width: min(100%, 22rem); margin-inline: auto; }
+  .hero-art svg { width: 100%; height: auto; }
+
+  /* Sections */
+  section { padding-block: 3.5rem; display: flex; flex-direction: column; gap: 2rem; }
+  .kicker { font-size: 0.9rem; font-weight: 600; color: var(--muted); }
+  section > .head { display: flex; flex-direction: column; gap: 0.75rem; }
+  section h2 { font-size: clamp(1.9rem, 6.5vw, 3rem); max-width: 22ch; }
+  .sub { color: var(--fg-soft); max-width: 36rem; }
+
+  /* Quattro competenze */
+  .fields { display: grid; gap: 1rem; }
+  .field { border-radius: 1.4rem; padding: 1.6rem; display: flex; flex-direction: column; gap: 1.5rem; min-width: 0; }
+  .field .icon { width: 3.6rem; height: auto; }
+  .field h3 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+  .field p { color: var(--fg-soft); }
+  .f1 { background: var(--t1); --gap: var(--t1); } .f2 { background: var(--t2); --gap: var(--t2); }
+  .f3 { background: var(--t3); --gap: var(--t3); } .f4 { background: var(--t4); --gap: var(--t4); }
+
+  /* Metodo */
+  .method { list-style: none; margin: 0; padding: 0; }
+  .method li { display: grid; gap: 0.35rem; padding-block: 1.4rem; border-top: 1px solid var(--line); }
+  .method li:last-child { border-bottom: 1px solid var(--line); }
+  .method h3 { font-size: clamp(1.9rem, 7vw, 2.6rem); }
+  .method p { color: var(--fg-soft); max-width: 30rem; }
+
+  /* Team */
+  .team { display: grid; gap: 2rem; }
+  .team h3 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .team p { color: var(--fg-soft); }
+  .closing { font-family: var(--font-display); font-size: clamp(1.4rem, 5vw, 1.9rem); line-height: 1.25; max-width: 30ch; text-wrap: balance; }
+
+  /* Contatti */
+  .contact-panel {
+    background: var(--dark-panel); color: var(--on-dark); border-radius: 1.6rem;
+    padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 1rem;
+  }
+  .contact-panel { --gap: var(--dark-panel); }
+  .contact-panel .icon { width: 3rem; height: auto; }
+  .contact-panel h2 { font-size: clamp(1.9rem, 7vw, 3.1rem); max-width: 20ch; }
+  .contact-panel p { color: var(--on-dark-soft); max-width: 32rem; }
+  .mail { font-family: var(--font-display); font-size: clamp(1.4rem, 6vw, 2rem); overflow-wrap: anywhere; user-select: all; }
+
+  footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem; padding-block: 1.5rem 2.25rem; color: var(--muted); font-size: 0.875rem; }
+
+  @media (min-width: 40rem) {
+    :root { --gutter: 2rem; }
+    .fields { grid-template-columns: repeat(2, 1fr); }
+    .team { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+    .method li { grid-template-columns: 1fr 1fr; align-items: baseline; gap: 2rem; }
+    .contact-panel { padding: 3rem; }
+  }
+  @media (min-width: 56rem) {
+    .hero { padding-block: 4.5rem 5.5rem; }
+    .hero h1 { max-width: 14ch; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Tetravise">
+      <span>tetravise</span>
+    </a>
+    <nav><a href="#contatti">Contatti</a></nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div class="hero-copy">
+        <h1>Processi chiari. Dati che guidano le decisioni.</h1>
+        <p class="lead">Aiutiamo le piccole e medie imprese a lavorare in modo più efficiente e ad accelerare la digitalizzazione, unendo consulenza operativa, sviluppo software e Intelligenza Artificiale.</p>
+        <div class="actions">
+          <a class="btn" href="#contatti">Parliamo del tuo processo</a>
+          <a class="text-link" href="#metodo">Come lavoriamo</a>
+        </div>
+      </div>
+    </div>
+
+    <section id="competenze">
+      <div class="head">
+        <span class="kicker">Cosa facciamo</span>
+        <h2>Quattro competenze, un solo metodo.</h2>
+        <p class="sub">Partiamo da come materiali, informazioni e attività scorrono nella tua azienda, e arriviamo a strumenti che usi ogni giorno.</p>
+      </div>
+      <div class="fields">
+        <article class="field f1">
+          <div>
+            <h3>Analisi dei processi</h3>
+            <p>Individuiamo inefficienze, colli di bottiglia e sprechi. Definiamo con te interventi concreti e misurabili.</p>
+          </div>
+        </article>
+        <article class="field f2">
+          <div>
+            <h3>Software su misura</h3>
+            <p>Dashboard interattive, applicazioni web, sistemi di raccolta dati e integrazioni con i software che già usi.</p>
+          </div>
+        </article>
+        <article class="field f3">
+          <div>
+            <h3>Dati e KPI</h3>
+            <p>Indicatori su misura e dashboard direzionali. Riuniamo i dati economici e finanziari oggi sparsi tra fogli Excel, gestionali e documenti.</p>
+          </div>
+        </article>
+        <article class="field f4">
+          <div>
+            <h3>Intelligenza Artificiale</h3>
+            <p>Strumenti che automatizzano le attività ripetitive, rendono visibili i processi e supportano le decisioni aziendali.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="metodo">
+      <div class="head">
+        <span class="kicker">Il nostro approccio</span>
+        <h2>Come lavoriamo.</h2>
+        <p class="sub">Studiamo i processi, raccogliamo i dati, sviluppiamo gli strumenti e ti accompagniamo nell'uso di ogni giorno.</p>
+      </div>
+      <ul class="method">
+        <li><h3>Analizzare</h3><p>Studiamo i processi e come lavorate oggi.</p></li>
+        <li><h3>Misurare</h3><p>Raccogliamo i dati necessari e definiamo gli indicatori che contano.</p></li>
+        <li><h3>Semplificare</h3><p>Eliminiamo passaggi inutili e sprechi prima di automatizzare.</p></li>
+        <li><h3>Digitalizzare</h3><p>Sviluppiamo gli strumenti adatti al vostro modo di lavorare.</p></li>
+        <li><h3>Migliorare</h3><p>Vi affianchiamo nell'uso quotidiano e verifichiamo i risultati nel tempo.</p></li>
+      </ul>
+    </section>
+
+    <section id="team">
+      <div class="head">
+        <span class="kicker">Il team</span>
+        <h2>Chi conosce il processo e chi scrive il software.</h2>
+      </div>
+      <div class="team">
+        <div>
+          <h3>Operations</h3>
+          <p>Esperienza nello studio dei processi produttivi, logistici e organizzativi, nell'individuare gli sprechi e nel costruire percorsi di miglioramento continuo.</p>
+        </div>
+        <div>
+          <h3>Sviluppo software</h3>
+          <p>Competenze frontend e backend per creare interfacce intuitive, database, API e integrazioni con i sistemi esistenti, in soluzioni flessibili e scalabili.</p>
+        </div>
+      </div>
+      <p class="closing">Non consegniamo solo report o software. Costruiamo strumenti e metodi che migliorano le performance in modo misurabile.</p>
+    </section>
+
+    <section id="contatti" style="padding-block: 2rem 1rem;">
+      <div class="contact-panel">
+        <h2>Trasformiamo dati e processi in visibilità, controllo e crescita.</h2>
+        <p>Raccontaci dove la tua azienda perde tempo. Ci basta una prima conversazione per capire come possiamo aiutarti.</p>
+        <span class="mail">info@tetravise.com</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Tetravise</span>
+    <span>tetravise.com</span>
+  </footer>
+</div>
+
+</body></html>
