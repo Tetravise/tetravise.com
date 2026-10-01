@@ -49,6 +49,8 @@
       --button-ink: light-dark(#FFFFFF, #17251B);
       --button-hover: light-dark(#2C423C, #DDEBC6);
       --inverse-bg: light-dark(#141E1E, #0A1410);
+      --selection-bg: light-dark(#536F5F, #C9DD97);
+      --selection-ink: light-dark(#FFFFFF, #17251B);
       --font-display: "Space Grotesk", "Hanken Grotesk", sans-serif;
       --font-body: "Hanken Grotesk", sans-serif;
       --gutter: 1.25rem;
@@ -63,6 +65,8 @@
     h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; letter-spacing: 0; text-wrap: balance; }
     a { color: inherit; }
     img { max-width: 100%; }
+    ::selection { background: var(--selection-bg); color: var(--selection-ink); }
+    button, summary, .button, .nav a, .brand, .footer-brand, .text-link, .linkedin-link, .back-to-top { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
     :focus-visible { outline: 3px solid var(--focus); outline-offset: 5px; border-radius: 3px; }
     .container { width: calc(100% - var(--gutter) - var(--gutter)); max-width: 72rem; margin-inline: auto; }
     .icon-definitions { position: absolute; width: 0; height: 0; overflow: hidden; }
@@ -82,13 +86,11 @@
     .nav a { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .375rem; text-decoration: none; }
     .nav a:hover { color: var(--soft); }
     .nav .nav-contact { border-bottom: 1px solid currentColor; }
-    .theme-switcher { display: flex; grid-area: theme; gap: 0; margin: 0; padding: 3px; border: 1px solid var(--line); border-radius: 6px; }
-    .theme-option { display: block; position: relative; cursor: pointer; }
-    .theme-option span { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border-radius: 3px; color: var(--soft); }
-    .theme-option .icon { width: 1.125rem; height: 1.125rem; }
-    .theme-option input:checked + span { background: var(--ink); color: var(--bg); }
-    .theme-option input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 2px; }
-    .theme-option:hover span { box-shadow: inset 0 0 0 1px var(--muted); }
+    .theme-toggle { display: grid; grid-area: theme; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 4px; background: var(--surface); color: var(--ink); cursor: pointer; }
+    .theme-toggle:hover { border-color: var(--ink); }
+    .theme-toggle .theme-sun { display: none; }
+    :root[data-theme="dark"] .theme-toggle .theme-moon { display: none; }
+    :root[data-theme="dark"] .theme-toggle .theme-sun { display: block; }
 
     .hero { padding-top: 2.5rem; }
     .eyebrow { display: flex; align-items: center; gap: .5rem; color: var(--muted); font-size: .8125rem; }
@@ -166,9 +168,9 @@
     .back-to-top { display: grid; flex: none; width: 3rem; height: 3rem; place-items: center; border: 1px solid var(--muted); border-radius: 4px; text-decoration: none; transition: color .2s, border-color .2s; }
     .back-to-top .icon { transform: rotate(180deg); transition: transform .25s ease; }
     .back-to-top:hover { color: #DBEAB6; border-color: currentColor; }
-    .back-to-top.is-floating { position: fixed; z-index: 10; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); border-color: var(--button-bg); background: var(--button-bg); color: var(--button-ink); box-shadow: 0 6px 20px rgb(0 0 0 / .18); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px) scale(.9); transition: opacity .22s ease, transform .28s cubic-bezier(.2, .7, .2, 1), visibility 0s .28s, background .2s, border-color .2s; }
+    .back-to-top.is-floating { position: fixed; z-index: 10; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); border-color: var(--muted); background: var(--button-bg); color: var(--button-ink); box-shadow: 0 6px 20px rgb(0 0 0 / .18); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px) scale(.9); transition: opacity .22s ease, transform .28s cubic-bezier(.2, .7, .2, 1), visibility 0s .28s, background .2s, border-color .2s; }
     .back-to-top.is-floating.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1); transition-delay: 0s; }
-    .back-to-top.is-floating:hover { border-color: var(--button-hover); background: var(--button-hover); color: var(--button-ink); }
+    .back-to-top.is-floating:hover { border-color: var(--muted); background: var(--button-hover); color: var(--button-ink); }
 
     .button .icon, .mail .icon, .text-link .icon { transition: transform .25s; }
     .reveal-ready [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.22, 1, .36, 1); transition-delay: var(--reveal-delay, 0ms); }
@@ -192,21 +194,23 @@
       :root:not([data-theme]) .brand .logo-dark { display: block; }
     }
     @media (max-width: 39.99rem) {
+      .hero { padding-top: 3rem; }
+      .lead { margin-top: 1.5rem; }
+      .hero-actions { margin-top: 2rem; }
+      .hero-bottom { margin-top: 3rem; padding-block: 1.25rem; }
       .hero-note { display: none; }
     }
     @media (max-width: 23.5rem) {
       :root { --gutter: 1rem; }
       .brand img { width: 9.25rem; }
-      .hero { padding-top: 1.5rem; }
       .hero h1 { font-size: 2rem; }
       .lead { font-size: 1rem; }
-      .hero-bottom { margin-top: 1.5rem; }
     }
     @media (max-width: 39.99rem) and (max-height: 43.75rem) {
-      .hero { padding-top: 1.25rem; }
-      .hero h1, .lead { margin-top: .75rem; }
-      .hero-actions { margin-top: 1rem; }
-      .hero-bottom { margin-top: .75rem; padding-block: .5rem; }
+      .hero { padding-top: 2rem; }
+      .lead { margin-top: 1.25rem; }
+      .hero-actions { margin-top: 1.5rem; }
+      .hero-bottom { margin-top: 2.5rem; padding-block: 1rem; }
       .services { padding-top: 2rem; }
     }
     @media (min-width: 40rem) {
@@ -300,10 +304,6 @@
     <symbol id="icon-moon" viewBox="0 0 24 24">
       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
     </symbol>
-    <symbol id="icon-monitor" viewBox="0 0 24 24">
-      <rect width="20" height="14" x="2" y="3" rx="2"/>
-      <path d="M8 21h8M12 17v4"/>
-    </symbol>
   </svg>
 
   <header class="site-header">
@@ -318,21 +318,10 @@
         <a class="nav-secondary" href="#team">Chi siamo</a>
         <a class="nav-contact" href="#contatti">Contatti <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
       </nav>
-      <fieldset class="theme-switcher">
-        <legend class="sr-only">Aspetto del sito</legend>
-        <label class="theme-option" title="Tema chiaro">
-          <input class="sr-only" type="radio" name="theme" value="light" aria-label="Tema chiaro">
-          <span><svg class="icon" aria-hidden="true"><use href="#icon-sun"/></svg></span>
-        </label>
-        <label class="theme-option" title="Tema scuro">
-          <input class="sr-only" type="radio" name="theme" value="dark" aria-label="Tema scuro">
-          <span><svg class="icon" aria-hidden="true"><use href="#icon-moon"/></svg></span>
-        </label>
-        <label class="theme-option" title="Tema di sistema">
-          <input class="sr-only" type="radio" name="theme" value="system" aria-label="Tema di sistema" checked>
-          <span><svg class="icon" aria-hidden="true"><use href="#icon-monitor"/></svg></span>
-        </label>
-      </fieldset>
+      <button class="theme-toggle" type="button" aria-label="Cambia tema" title="Cambia tema">
+        <svg class="icon theme-sun" aria-hidden="true"><use href="#icon-sun"/></svg>
+        <svg class="icon theme-moon" aria-hidden="true"><use href="#icon-moon"/></svg>
+      </button>
     </div>
   </header>
 
@@ -521,7 +510,7 @@
       const root = document.documentElement;
       const systemTheme = matchMedia('(prefers-color-scheme: dark)');
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-      const themeInputs = [...document.querySelectorAll('input[name="theme"]')];
+      const themeToggle = document.querySelector('.theme-toggle');
       const contactEmail = document.querySelector('.mail');
       const backToTop = document.querySelector('.back-to-top');
       let scrollUpdatePending = false;
@@ -536,16 +525,17 @@
         const theme = preference === 'system' ? systemColor : preference;
         root.dataset.theme = theme;
         root.dataset.themePreference = preference;
-        themeInputs.forEach(input => { input.checked = input.value === preference; });
+        const themeLabel = theme === 'dark' ? 'Attiva tema chiaro' : 'Attiva tema scuro';
+        themeToggle.setAttribute('aria-label', themeLabel);
+        themeToggle.title = themeLabel;
         document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#111B18' : '#F5F6F2';
       }
 
       applyTheme(root.dataset.themePreference || 'system');
-      themeInputs.forEach(input => {
-        input.addEventListener('change', () => {
-          applyTheme(input.value);
-          try { localStorage.setItem('tetravise-theme', input.value); } catch {}
-        });
+      themeToggle.addEventListener('click', () => {
+        const preference = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        applyTheme(preference);
+        try { localStorage.setItem('tetravise-theme', preference); } catch {}
       });
       systemTheme.addEventListener('change', () => {
         if (root.dataset.themePreference === 'system') applyTheme('system');
