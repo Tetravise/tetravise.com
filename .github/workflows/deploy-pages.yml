@@ -27,12 +27,21 @@ jobs:
           persist-credentials: false
 
       - name: Configure Pages
+        id: pages
         uses: actions/configure-pages@v5
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Test site preparation
+        run: node --test scripts/build-pages.test.mjs
+
       - name: Prepare site
-        run: |
-          mkdir _site
-          cp index.html _site/
+        env:
+          SITE_URL: https://tetravise.com/
+        run: node scripts/build-pages.mjs
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
