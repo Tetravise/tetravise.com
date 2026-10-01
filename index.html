@@ -85,7 +85,6 @@
     .nav { display: flex; grid-area: nav; align-items: center; justify-content: space-between; gap: .75rem; font-size: .8125rem; font-weight: 500; }
     .nav a { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .375rem; text-decoration: none; }
     .nav a:hover { color: var(--soft); }
-    .nav .nav-contact { border-bottom: 1px solid currentColor; }
     .theme-toggle { display: grid; grid-area: theme; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 4px; background: var(--surface); color: var(--ink); cursor: pointer; }
     .theme-toggle:hover { border-color: var(--ink); }
     .theme-toggle .theme-sun { display: none; }
@@ -155,11 +154,11 @@
 
     .contact-layout { display: flex; flex-direction: column; gap: 2rem; }
     .contact .section-head { margin-bottom: 0; }
-    .mail { display: inline-flex; max-width: 100%; align-items: center; align-self: flex-start; gap: 1rem; padding-bottom: .625rem; border-bottom: 1px solid var(--line); font-family: var(--font-display); font-size: 1.375rem; line-height: 1.3; text-decoration: none; }
+    .mail { display: inline-flex; max-width: 100%; align-items: center; align-self: flex-start; gap: 1rem; padding: .625rem .75rem; border-bottom: 1px solid var(--line); font-family: var(--font-display); font-size: 1.375rem; line-height: 1.3; text-decoration: none; }
     .mail span { min-width: 0; overflow-wrap: anywhere; }
     .mail .icon { width: 1.75rem; height: 1.75rem; }
     .mail:hover { color: #DBEAB6; border-color: currentColor; }
-    .mail.contact-highlight { color: #DBEAB6; border-color: currentColor; outline: 2px solid var(--focus); outline-offset: .5rem; border-radius: 3px; }
+    .mail.contact-highlight { color: #DBEAB6; border-color: currentColor; outline: 2px solid var(--focus); outline-offset: .25rem; border-radius: 3px; }
     .site-footer { padding-bottom: env(safe-area-inset-bottom, 0px); border-top: 1px solid var(--line); }
     .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding-block: 1.25rem; }
     .footer-brand { display: inline-flex; }
@@ -316,7 +315,7 @@
         <a class="nav-secondary" href="#competenze">Servizi</a>
         <a class="nav-secondary" href="#metodo">Approccio</a>
         <a class="nav-secondary" href="#team">Chi siamo</a>
-        <a class="nav-contact" href="#contatti">Contatti <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
+        <a class="nav-secondary" href="#contatti">Contatti</a>
       </nav>
       <button class="theme-toggle" type="button" aria-label="Cambia tema" title="Cambia tema">
         <svg class="icon theme-sun" aria-hidden="true"><use href="#icon-sun"/></svg>
