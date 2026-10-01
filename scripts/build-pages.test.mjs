@@ -64,13 +64,18 @@ test('The Pages artifact contains the complete site and valid social image', asy
   assert.ok(html.includes('<h3>Alex Mengoli</h3>'));
   assert.ok(html.includes('<p class="role">Front-End / Cloud Developer</p>'));
   assert.ok(html.includes('href="https://www.linkedin.com/in/alex-mengoli" target="_blank" rel="noopener noreferrer"'));
+  assert.ok(html.includes('<h3>Giovanni Cioli Puviani</h3>'));
+  assert.ok(html.includes('<p class="role">Head of Sales</p>'));
+  assert.ok(html.includes("<p class=\"bio\">Guido lo sviluppo commerciale della startup unendo una formazione in Finanza Quantitativa all'esperienza nell'analisi dei mercati energetici e commodity per realt\u00e0 multinazionali. Trasformo dati e dinamiche di mercato complesse in dashboard e soluzioni digitali su misura, affiancando le PMI in un percorso continuo di ottimizzazione e crescita.</p>"));
+  assert.ok(html.includes('src="assets/images/giovanni-cioli-puviani.webp" alt="Giovanni Cioli Puviani"'));
+  assert.ok(html.includes('href="https://www.linkedin.com/in/giovanniciolipuviani/" target="_blank" rel="noopener noreferrer"'));
   assert.equal(html.split('class="linkedin-link"').length - 1, 4);
-  assert.equal(html.split('class="linkedin-link" type="button" disabled').length - 1, 3);
+  assert.equal(html.split('class="linkedin-link" type="button" disabled').length - 1, 2);
   assert.ok(html.includes('<a class="back-to-top" href="#top"'));
   assert.deepEqual((await readdir(outputDirectory)).sort(), ['assets', 'index.html', 'robots.txt', 'sitemap.xml']);
   assert.equal(await readFile(join(outputDirectory, 'robots.txt'), 'utf8'), result.robots);
   assert.equal(await readFile(join(outputDirectory, 'sitemap.xml'), 'utf8'), result.sitemap);
-  for (const asset of ['tetravise-light-h.svg', 'tetravise-dark-h.svg', 'favicon.svg', 'social-preview.png', 'alex-mengoli.webp']) {
+  for (const asset of ['tetravise-light-h.svg', 'tetravise-dark-h.svg', 'favicon.svg', 'social-preview.png', 'alex-mengoli.webp', 'giovanni-cioli-puviani.webp']) {
     assert.ok((await stat(join(outputDirectory, 'assets', 'images', asset))).size > 0);
   }
   const preview = await readFile(join(outputDirectory, 'assets', 'images', 'social-preview.png'));
