@@ -43,7 +43,7 @@ e lascia incompleti i metadati SEO. Va sostituito con il workflow incluso qui.
 | CNAME | www | tetravise.github.io |
 
 4. Attendere la verifica DNS e il certificato, quindi abilitare **Enforce HTTPS**.
-5. Rieseguire il deploy e controllare `https://tetravise.com/assets/images/alex-mengoli.jpg`
+5. Rieseguire il deploy e controllare `https://tetravise.com/assets/images/alex-mengoli.webp`
   e `https://tetravise.com/assets/images/social-preview.png`.
 
 Il CNAME DNS di `www` non deve contenere `https://` o `/tetravise.com/`.

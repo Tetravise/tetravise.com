@@ -70,7 +70,7 @@ test('The Pages artifact contains the complete site and valid social image', asy
   assert.deepEqual((await readdir(outputDirectory)).sort(), ['assets', 'index.html', 'robots.txt', 'sitemap.xml']);
   assert.equal(await readFile(join(outputDirectory, 'robots.txt'), 'utf8'), result.robots);
   assert.equal(await readFile(join(outputDirectory, 'sitemap.xml'), 'utf8'), result.sitemap);
-  for (const asset of ['tetravise-light-h.svg', 'tetravise-dark-h.svg', 'favicon.svg', 'social-preview.png', 'alex-mengoli.jpg']) {
+  for (const asset of ['tetravise-light-h.svg', 'tetravise-dark-h.svg', 'favicon.svg', 'social-preview.png', 'alex-mengoli.webp']) {
     assert.ok((await stat(join(outputDirectory, 'assets', 'images', asset))).size > 0);
   }
   const preview = await readFile(join(outputDirectory, 'assets', 'images', 'social-preview.png'));
