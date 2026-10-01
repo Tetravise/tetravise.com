@@ -91,7 +91,7 @@ export function createSeo(siteUrl) {
   return { canonical, metadata, structuredData, sitemap, robots };
 }
 
-export async function buildPages({ siteUrl = process.env.SITE_URL, outputDirectory = join(projectDirectory, '_site') } = {}) {
+export async function buildPages({ siteUrl = process.env.SITE_URL ?? 'https://tetravise.com/', outputDirectory = join(projectDirectory, '_site') } = {}) {
   const seo = createSeo(siteUrl);
   const source = await readFile(join(projectDirectory, 'index.html'), 'utf8');
   if (!source.includes(metadataSlot) || source.indexOf(metadataSlot) !== source.lastIndexOf(metadataSlot)) {

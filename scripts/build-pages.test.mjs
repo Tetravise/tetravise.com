@@ -6,11 +6,11 @@ import { test } from 'node:test';
 import { buildPages, createSeo } from './build-pages.mjs';
 
 for (const [input, expected] of [
-  ['https://example.github.io', 'https://example.github.io/'],
-  ['https://example.github.io/tetravise', 'https://example.github.io/tetravise/'],
-  ['https://www.example.com/', 'https://www.example.com/'],
+  ['https://tetravise.com', 'https://tetravise.com/'],
+  ['https://tetravise.github.io/tetravise.com', 'https://tetravise.github.io/tetravise.com/'],
+  ['https://tetravise.com/', 'https://tetravise.com/'],
 ]) {
-  test(`SEO uses the deployment base URL: ${input}`, () => {
+  test(`SEO uses the configured public URL: ${input}`, () => {
     const seo = createSeo(input);
     assert.equal(seo.canonical, expected);
     assert.ok(seo.metadata.includes(`rel="canonical" href="${expected}"`));
@@ -36,6 +36,22 @@ test('SEO escapes markup without changing structured URL values', () => {
   assert.ok(seo.metadata.includes('research&amp;development/'));
   assert.ok(seo.sitemap.includes('research&amp;development/'));
   assert.equal(seo.structuredData['@graph'][0].url, 'https://example.com/research&development/');
+});
+
+test('The default build uses the official Tetravise domain', async context => {
+  const previousSiteUrl = process.env.SITE_URL;
+  delete process.env.SITE_URL;
+  context.after(() => {
+    if (previousSiteUrl === undefined) delete process.env.SITE_URL;
+    else process.env.SITE_URL = previousSiteUrl;
+  });
+  const outputDirectory = await mkdtemp(join(tmpdir(), 'tetravise-domain-'));
+  context.after(() => rm(outputDirectory, { recursive: true, force: true }));
+  const result = await buildPages({ outputDirectory });
+  assert.equal(result.canonical, 'https://tetravise.com/');
+  assert.ok(result.metadata.includes('https://tetravise.com/assets/images/social-preview.png'));
+  assert.ok(result.sitemap.includes('<loc>https://tetravise.com/</loc>'));
+  assert.ok(result.robots.includes('Sitemap: https://tetravise.com/sitemap.xml'));
 });
 
 test('The Pages artifact contains the complete site and valid social image', async context => {
