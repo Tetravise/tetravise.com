@@ -174,7 +174,7 @@
     .back-to-top { display: grid; flex: none; width: 3rem; height: 3rem; place-items: center; border: 1px solid var(--muted); border-radius: 4px; text-decoration: none; transition: color .2s, border-color .2s; }
     .back-to-top .icon { transform: rotate(180deg); transition: transform .25s ease; }
     .back-to-top:hover { color: #DBEAB6; border-color: currentColor; }
-    .back-to-top.is-floating { position: fixed; z-index: 10; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); border-color: var(--muted); background: var(--button-bg); color: var(--button-ink); box-shadow: 0 6px 20px rgb(0 0 0 / .18); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px) scale(.9); transition: opacity .22s ease, transform .28s cubic-bezier(.2, .7, .2, 1), visibility 0s .28s, background .2s, border-color .2s; }
+    .back-to-top.is-floating { position: fixed; z-index: 10; right: max(1rem, env(safe-area-inset-right)); bottom: calc(max(1rem, env(safe-area-inset-bottom)) + var(--footer-offset, 0px)); border-color: var(--muted); background: var(--button-bg); color: var(--button-ink); box-shadow: 0 6px 20px rgb(0 0 0 / .18); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px) scale(.9); transition: opacity .22s ease, transform .28s cubic-bezier(.2, .7, .2, 1), visibility 0s .28s, background .2s, border-color .2s; }
     .back-to-top.is-floating.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1); transition-delay: 0s; }
     .back-to-top.is-floating:hover { border-color: var(--muted); background: var(--button-hover); color: var(--button-ink); }
 
@@ -540,150 +540,152 @@
   </footer>
   <script>
     (() => {
-      const team = document.querySelector('.team');
-      const members = [...team.children];
-      const randomValues = crypto.getRandomValues(new Uint32Array(members.length));
-      for (let memberIndex = members.length - 1; memberIndex > 0; memberIndex--) {
-        const randomIndex = Math.floor(randomValues[memberIndex] / 2 ** 32 * (memberIndex + 1));
-        [members[memberIndex], members[randomIndex]] = [members[randomIndex], members[memberIndex]];
-      }
-      team.append(...members);
-
-      const method = document.querySelector('.method');
       const root = document.documentElement;
-      const systemTheme = matchMedia('(prefers-color-scheme: dark)');
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-      const themeToggle = document.querySelector('.theme-toggle');
-      const contactEmail = document.querySelector('.mail');
-      const backToTop = document.querySelector('.back-to-top');
-      let scrollUpdatePending = false;
-      let contactArrivalObserver;
-      let contactArrivalTimer;
-      let contactHighlightTimer;
-      let contactPulse;
-      let measuredWidth = 0;
 
-      function applyTheme(preference) {
-        const systemColor = systemTheme.matches ? 'dark' : 'light';
-        const theme = preference === 'system' ? systemColor : preference;
-        root.dataset.theme = theme;
-        root.dataset.themePreference = preference;
-        const themeLabel = theme === 'dark' ? 'Attiva tema chiaro' : 'Attiva tema scuro';
-        themeToggle.setAttribute('aria-label', themeLabel);
-        themeToggle.title = themeLabel;
-        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#111B18' : '#F5F6F2';
+      function shuffleTeam() {
+        const team = document.querySelector('.team');
+        const members = [...team.children];
+        const randomValues = crypto.getRandomValues(new Uint32Array(members.length));
+        for (let memberIndex = members.length - 1; memberIndex > 0; memberIndex--) {
+          const randomIndex = Math.floor(randomValues[memberIndex] / 2 ** 32 * (memberIndex + 1));
+          [members[memberIndex], members[randomIndex]] = [members[randomIndex], members[memberIndex]];
+        }
+        team.append(...members);
       }
 
-      applyTheme(root.dataset.themePreference || 'system');
-      themeToggle.addEventListener('click', () => {
-        const preference = root.dataset.theme === 'dark' ? 'light' : 'dark';
-        applyTheme(preference);
-        try { localStorage.setItem('tetravise-theme', preference); } catch {}
-      });
-      systemTheme.addEventListener('change', () => {
-        if (root.dataset.themePreference === 'system') applyTheme('system');
-      });
+      function setupTheme() {
+        const systemTheme = matchMedia('(prefers-color-scheme: dark)');
+        const themeToggle = document.querySelector('.theme-toggle');
 
-      function updateBackToTop() {
-        const buttonBounds = backToTop.getBoundingClientRect();
-        const overlapsControl = [...document.querySelectorAll('a[href], button, summary, input, select, textarea, [tabindex]:not([tabindex="-1"])')].some(control => {
-          if (control === backToTop || control.closest('[inert]')) return false;
-          const style = getComputedStyle(control);
-          if (style.display === 'none' || style.visibility === 'hidden') return false;
-          const bounds = control.getBoundingClientRect();
-          return bounds.width > 0 && bounds.height > 0
-            && bounds.left < buttonBounds.right && bounds.right > buttonBounds.left
-            && bounds.top < buttonBounds.bottom && bounds.bottom > buttonBounds.top;
+        function applyTheme(preference) {
+          const systemColor = systemTheme.matches ? 'dark' : 'light';
+          const theme = preference === 'system' ? systemColor : preference;
+          root.dataset.theme = theme;
+          root.dataset.themePreference = preference;
+          const themeLabel = theme === 'dark' ? 'Attiva tema chiaro' : 'Attiva tema scuro';
+          themeToggle.setAttribute('aria-label', themeLabel);
+          themeToggle.title = themeLabel;
+          document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#111B18' : '#F5F6F2';
+        }
+
+        applyTheme(root.dataset.themePreference || 'system');
+        themeToggle.addEventListener('click', () => {
+          const preference = root.dataset.theme === 'dark' ? 'light' : 'dark';
+          applyTheme(preference);
+          try { localStorage.setItem('tetravise-theme', preference); } catch {}
         });
-        const visible = window.scrollY > 480 && !overlapsControl;
-        if (!visible && document.activeElement === backToTop) document.querySelector('.brand').focus({ preventScroll: true });
-        backToTop.classList.toggle('is-visible', visible);
-        backToTop.inert = !visible;
-        backToTop.setAttribute('aria-hidden', String(!visible));
-        scrollUpdatePending = false;
+        systemTheme.addEventListener('change', () => {
+          if (root.dataset.themePreference === 'system') applyTheme('system');
+        });
       }
 
-      backToTop.classList.add('is-floating');
-      updateBackToTop();
-      window.addEventListener('scroll', () => {
-        if (!scrollUpdatePending) {
-          scrollUpdatePending = true;
-          requestAnimationFrame(updateBackToTop);
-        }
-      }, { passive: true });
-      window.addEventListener('pageshow', updateBackToTop);
+      function setupBackToTop() {
+        const backToTop = document.querySelector('.back-to-top');
+        const footer = document.querySelector('.site-footer');
+        backToTop.classList.add('is-floating');
 
-      function highlightContactEmail() {
-        contactArrivalObserver?.disconnect();
-        clearTimeout(contactArrivalTimer);
-        clearTimeout(contactHighlightTimer);
-        contactPulse?.cancel();
-        contactEmail.classList.add('contact-highlight');
-        contactEmail.focus({ preventScroll: true });
-        if (!reducedMotion.matches) {
-          contactPulse = contactEmail.animate([
-            { boxShadow: '0 0 0 0 rgb(201 221 151 / .45)' },
-            { boxShadow: '0 0 0 16px rgb(201 221 151 / 0)' },
-          ], { duration: 900, iterations: 2, easing: 'ease-out' });
+        function updateBackToTop() {
+          const visible = window.scrollY > 480;
+          const footerOffset = Math.max(0, window.innerHeight - footer.getBoundingClientRect().top);
+          backToTop.style.setProperty('--footer-offset', `${footerOffset}px`);
+          if (!visible && document.activeElement === backToTop) document.querySelector('.brand').focus({ preventScroll: true });
+          backToTop.classList.toggle('is-visible', visible);
+          backToTop.inert = !visible;
+          backToTop.setAttribute('aria-hidden', String(!visible));
         }
-        contactHighlightTimer = setTimeout(() => contactEmail.classList.remove('contact-highlight'), 3200);
+
+        updateBackToTop();
+        window.addEventListener('scroll', updateBackToTop, { passive: true });
+        window.addEventListener('resize', updateBackToTop);
+        window.addEventListener('pageshow', updateBackToTop);
       }
 
-      document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener('click', event => {
-          if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-          contactArrivalObserver?.disconnect();
-          clearTimeout(contactArrivalTimer);
-          if (link.getAttribute('href') !== '#contatti') return;
+      function setupContactLinks() {
+        const contactEmail = document.querySelector('.mail');
+        let arrivalTimer;
+        let highlightTimer;
+        let pulse;
+        const arrivalObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+          if (entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= .98)) highlightContactEmail();
+        }, { threshold: .98 }) : null;
 
-          if (!('IntersectionObserver' in window)) {
+        function cancelArrival() {
+          arrivalObserver?.disconnect();
+          clearTimeout(arrivalTimer);
+        }
+
+        function highlightContactEmail() {
+          cancelArrival();
+          clearTimeout(highlightTimer);
+          pulse?.cancel();
+          contactEmail.classList.add('contact-highlight');
+          contactEmail.focus({ preventScroll: true });
+          if (!reducedMotion.matches) {
+            pulse = contactEmail.animate([
+              { boxShadow: '0 0 0 0 rgb(201 221 151 / .45)' },
+              { boxShadow: '0 0 0 16px rgb(201 221 151 / 0)' },
+            ], { duration: 900, iterations: 2, easing: 'ease-out' });
+          }
+          highlightTimer = setTimeout(() => contactEmail.classList.remove('contact-highlight'), 3200);
+        }
+
+        document.addEventListener('click', event => {
+          const link = event.target.closest('a[href^="#"]');
+          if (!link || event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          cancelArrival();
+          if (link.hash !== '#contatti') return;
+          if (!arrivalObserver) {
             requestAnimationFrame(highlightContactEmail);
             return;
           }
-          contactArrivalObserver = new IntersectionObserver(entries => {
-            if (entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= .98)) highlightContactEmail();
-          }, { threshold: .98 });
-          contactArrivalObserver.observe(contactEmail);
-          contactArrivalTimer = setTimeout(() => contactArrivalObserver.disconnect(), 4000);
+          arrivalObserver.observe(contactEmail);
+          arrivalTimer = setTimeout(cancelArrival, 4000);
         });
-      });
-      reducedMotion.addEventListener('change', () => {
-        if (reducedMotion.matches) contactPulse?.cancel();
-      });
-
-      function reserveMethodHeight() {
-        const width = method.getBoundingClientRect().width;
-        if (!width) return;
-
-        const measurement = method.cloneNode(true);
-        measurement.setAttribute('aria-hidden', 'true');
-        measurement.inert = true;
-        measurement.style.cssText = `position:absolute;visibility:hidden;pointer-events:none;width:${width}px;min-height:0;height:auto;`;
-        const panels = [...measurement.querySelectorAll('details')];
-        panels.forEach(panel => {
-          panel.removeAttribute('name');
-          panel.open = false;
+        reducedMotion.addEventListener('change', () => {
+          if (reducedMotion.matches) pulse?.cancel();
         });
-        method.parentElement.append(measurement);
-
-        let maximumHeight = 0;
-        panels.forEach(panel => {
-          panel.open = true;
-          maximumHeight = Math.max(maximumHeight, measurement.getBoundingClientRect().height);
-          panel.open = false;
-        });
-        measurement.remove();
-        method.style.minHeight = `${Math.ceil(maximumHeight)}px`;
-        measuredWidth = width;
       }
 
-      reserveMethodHeight();
-      document.fonts.ready.then(reserveMethodHeight);
-      new ResizeObserver(entries => {
-        if (Math.abs(entries[0].contentRect.width - measuredWidth) > .5) reserveMethodHeight();
-      }).observe(method);
+      function setupMethod() {
+        const method = document.querySelector('.method');
+        let measuredWidth = 0;
 
-      if (!reducedMotion.matches && 'IntersectionObserver' in window) {
+        function reserveMethodHeight() {
+          const width = method.getBoundingClientRect().width;
+          if (!width) return;
+
+          const measurement = method.cloneNode(true);
+          measurement.setAttribute('aria-hidden', 'true');
+          measurement.inert = true;
+          measurement.style.cssText = `position:absolute;visibility:hidden;pointer-events:none;width:${width}px;min-height:0;height:auto;`;
+          const panels = [...measurement.querySelectorAll('details')];
+          panels.forEach(panel => {
+            panel.removeAttribute('name');
+            panel.open = false;
+          });
+          method.parentElement.append(measurement);
+
+          let maximumHeight = 0;
+          panels.forEach(panel => {
+            panel.open = true;
+            maximumHeight = Math.max(maximumHeight, measurement.getBoundingClientRect().height);
+            panel.open = false;
+          });
+          measurement.remove();
+          method.style.minHeight = `${Math.ceil(maximumHeight)}px`;
+          measuredWidth = width;
+        }
+
+        reserveMethodHeight();
+        document.fonts.ready.then(reserveMethodHeight);
+        new ResizeObserver(entries => {
+          if (Math.abs(entries[0].contentRect.width - measuredWidth) > .5) reserveMethodHeight();
+        }).observe(method);
+      }
+
+      function setupReveals() {
+        if (reducedMotion.matches || !('IntersectionObserver' in window)) return;
         const revealObserver = new IntersectionObserver(entries => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -695,6 +697,13 @@
         document.querySelectorAll('[data-reveal]').forEach(element => revealObserver.observe(element));
         root.classList.add('reveal-ready');
       }
+
+      shuffleTeam();
+      setupTheme();
+      setupBackToTop();
+      setupContactLinks();
+      setupMethod();
+      setupReveals();
     })();
   </script>
 </body>
