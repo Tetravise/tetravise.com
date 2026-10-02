@@ -134,7 +134,14 @@
     .accordion-icon { transition: transform .2s; }
     .method details[open] .accordion-icon { transform: rotate(45deg); }
     .method details p { max-width: 48ch; padding: 0 2.5rem 1.5rem 2.75rem; color: var(--soft); font-size: .9375rem; }
+    .method details[open] summary { margin-bottom: .75rem; }
     .method details[open] p { animation: enter .3s ease both; }
+
+    .why { border-top: 1px solid var(--line); background: var(--surface); }
+    .reasons { display: grid; gap: 1rem; }
+    .reason { min-width: 0; padding: 1.5rem; border: 1px solid var(--line); border-radius: 4px; }
+    .reason h3 { margin-bottom: .75rem; font-size: 1.25rem; }
+    .reason p { color: var(--soft); font-size: .9375rem; }
 
     .team { display: grid; gap: 2rem; }
     .person { display: flex; min-width: 0; flex-direction: column; transform-origin: center; transition: transform .32s cubic-bezier(.2, .7, .2, 1); }
@@ -222,6 +229,7 @@
       .section { padding-block: 4.5rem; }
       .section h2 { font-size: 2.25rem; }
       .fields, .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .reasons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .field h3 { font-size: 1.375rem; }
       .mail { font-size: 1.75rem; }
       .footer-meta { text-align: right; }
@@ -313,7 +321,7 @@
       </a>
       <nav class="nav" aria-label="Navigazione principale">
         <a class="nav-secondary" href="#competenze">Servizi</a>
-        <a class="nav-secondary" href="#metodo">Approccio</a>
+        <a class="nav-secondary" href="#metodo">Il metodo</a>
         <a class="nav-secondary" href="#team">Chi siamo</a>
         <a class="nav-secondary" href="#contatti">Contatti</a>
       </nav>
@@ -383,23 +391,59 @@
     <section class="section inverse" id="metodo" aria-labelledby="method-title">
       <div class="container method-layout">
         <div class="section-head" data-reveal>
-          <span class="kicker">Il nostro approccio</span>
-          <h2 id="method-title">Prima capire.<br>Poi costruire.</h2>
-          <p class="sub">Partiamo dal lavoro di ogni giorno, non da una soluzione già pronta.</p>
+          <span class="kicker">Il metodo</span>
+          <h2 id="method-title">Dall'analisi al risultato.</h2>
+          <p class="sub">Ogni progetto parte dalla comprensione del problema. Analizziamo i processi, individuiamo le opportunità e costruiamo soluzioni concrete, misurandone il risultato.</p>
         </div>
         <div class="method">
-          <details name="approccio" open>
-            <summary><span class="step-index">01</span><span>Capire e misurare</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
-            <p>Ascoltiamo chi lavora sul campo, osserviamo i processi e scegliamo insieme i dati che contano.</p>
+          <details name="metodo" open>
+            <summary><span class="step-index">01</span><span>Analizziamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Partiamo da come funziona realmente la tua azienda. Ascoltiamo le persone coinvolte, osserviamo i processi e analizziamo strumenti, dati e attività quotidiane.</p>
           </details>
-          <details name="approccio">
-            <summary><span class="step-index">02</span><span>Semplificare e costruire</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
-            <p>Eliminiamo i passaggi inutili e sviluppiamo gli strumenti adatti alla tua organizzazione.</p>
+          <details name="metodo">
+            <summary><span class="step-index">02</span><span>Individuiamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Identifichiamo attività manuali, inefficienze, duplicazioni e colli di bottiglia. Diamo priorità alle opportunità che possono generare il maggior beneficio.</p>
           </details>
-          <details name="approccio">
-            <summary><span class="step-index">03</span><span>Affiancare e migliorare</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
-            <p>Ti accompagniamo nell'uso quotidiano e verifichiamo i risultati, per continuare a migliorare.</p>
+          <details name="metodo">
+            <summary><span class="step-index">03</span><span>Progettiamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Definiamo la soluzione più adatta al problema, scegliendo tecnologie e strumenti in funzione delle esigenze dell'azienda, non viceversa.</p>
           </details>
+          <details name="metodo">
+            <summary><span class="step-index">04</span><span>Implementiamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Trasformiamo il progetto in una soluzione concreta: automazioni, integrazioni, dashboard o software sviluppati e integrati nei processi esistenti.</p>
+          </details>
+          <details name="metodo">
+            <summary><span class="step-index">05</span><span>Misuriamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Verifichiamo l'impatto della soluzione attraverso risultati concreti: tempo risparmiato, riduzione degli errori, maggiore controllo dei dati e semplificazione delle attività.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why" id="perche-tetravise" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="kicker">Perché Tetravise</span>
+          <h2 id="why-title">Tecnologia al servizio del business.</h2>
+          <p class="sub">Non partiamo dalla tecnologia. Partiamo da ciò che serve davvero alla tua azienda e costruiamo la soluzione più efficace per ottenerlo.</p>
+        </div>
+        <div class="reasons">
+          <article class="reason" data-reveal>
+            <h3>Business first</h3>
+            <p>Partiamo dal problema aziendale e dagli obiettivi da raggiungere, non dalla tecnologia da utilizzare.</p>
+          </article>
+          <article class="reason" data-reveal>
+            <h3>Su misura</h3>
+            <p>Ogni azienda ha processi diversi. Costruiamo soluzioni proporzionate alle esigenze reali, evitando complessità inutili.</p>
+          </article>
+          <article class="reason" data-reveal>
+            <h3>Al tuo fianco</h3>
+            <p>Seguiamo ogni progetto dall'analisi all'implementazione e restiamo al tuo fianco nel tempo, supportando l'evoluzione della soluzione e le nuove esigenze.</p>
+          </article>
+          <article class="reason" data-reveal>
+            <h3>Risultati concreti</h3>
+            <p>Non ci limitiamo a implementare strumenti. Puntiamo a generare un beneficio misurabile in termini di tempo, efficienza e controllo.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -432,7 +476,7 @@
             <figcaption>
               <p class="role">Front-End / Cloud Developer</p>
               <h3>Alex Mengoli</h3>
-              <p class="bio">Dal design dell'interfaccia allo sviluppo cloud, creo applicazioni web ottimizzate e intuitive pensate per risolvere problemi concreti e far crescere il tuo progetto.</p>
+              <p class="bio">Progetto e creo interfacce intuitive, applicazioni web e app mobili su misura, veloci e facili da usare. Dal design dell'esperienza utente all'architettura cloud, fino alla trasformazione di dati complessi in informazioni chiare e utili.</p>
               <a class="linkedin-link" href="https://www.linkedin.com/in/alex-mengoli" target="_blank" rel="noopener noreferrer" aria-label="Alex Mengoli su LinkedIn (nuova scheda)" title="Alex Mengoli su LinkedIn">
                 <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"/></svg>LinkedIn
               </a>
@@ -541,7 +585,17 @@
       });
 
       function updateBackToTop() {
-        const visible = window.scrollY > 480;
+        const buttonBounds = backToTop.getBoundingClientRect();
+        const overlapsControl = [...document.querySelectorAll('a[href], button, summary, input, select, textarea, [tabindex]:not([tabindex="-1"])')].some(control => {
+          if (control === backToTop || control.closest('[inert]')) return false;
+          const style = getComputedStyle(control);
+          if (style.display === 'none' || style.visibility === 'hidden') return false;
+          const bounds = control.getBoundingClientRect();
+          return bounds.width > 0 && bounds.height > 0
+            && bounds.left < buttonBounds.right && bounds.right > buttonBounds.left
+            && bounds.top < buttonBounds.bottom && bounds.bottom > buttonBounds.top;
+        });
+        const visible = window.scrollY > 480 && !overlapsControl;
         if (!visible && document.activeElement === backToTop) document.querySelector('.brand').focus({ preventScroll: true });
         backToTop.classList.toggle('is-visible', visible);
         backToTop.inert = !visible;
