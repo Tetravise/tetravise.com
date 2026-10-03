@@ -72,10 +72,11 @@ Il template SEO in `index.html` viene completato prima del deploy, non nel brows
 
 ## Contenuti da completare
 
-- Sostituire i tre segnaposto rimanenti con foto, nomi e ruoli reali. Il profilo
-  di Alex Mengoli e gia inserito; le altre descrizioni restano provvisorie.
-- Aggiungere gli URL LinkedIn degli altri tre membri: i relativi pulsanti
-  restano disabilitati finche non viene inserito un collegamento reale.
+- Sostituire il segnaposto rimanente con foto, nome e ruolo reali. I profili di
+  Alex Mengoli, Giovanni Cioli Puviani e Riccardo Siena sono gia inseriti; la
+  descrizione restante resta provvisoria.
+- Aggiungere l'URL LinkedIn del membro rimanente (AI e automazione): il relativo
+  pulsante resta disabilitato finche non viene inserito un collegamento reale.
 - I quattro profili sono presenti nell'HTML anche senza JavaScript, che ne
   mescola soltanto l'ordine a ogni caricamento.
 - Inserire solo dati aziendali, recapiti e indirizzi verificati.

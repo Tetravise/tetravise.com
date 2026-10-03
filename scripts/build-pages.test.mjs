@@ -69,13 +69,18 @@ test('The Pages artifact contains the complete site and valid social image', asy
   assert.ok(html.includes("<p class=\"bio\">Guido lo sviluppo commerciale della startup unendo una formazione in Finanza Quantitativa all'esperienza nell'analisi dei mercati energetici e commodity per realt\u00e0 multinazionali. Trasformo dati e dinamiche di mercato complesse in dashboard e soluzioni digitali su misura, affiancando le PMI in un percorso continuo di ottimizzazione e crescita.</p>"));
   assert.ok(html.includes('src="assets/images/giovanni-cioli-puviani.webp" alt="Giovanni Cioli Puviani"'));
   assert.ok(html.includes('href="https://www.linkedin.com/in/giovanniciolipuviani/" target="_blank" rel="noopener noreferrer"'));
+  assert.ok(html.includes('<h3>Riccardo Siena</h3>'));
+  assert.ok(html.includes('<p class="role">Operations &amp; Performance Consultant</p>'));
+  assert.ok(html.includes("Analizzo processi, performance e dati aziendali per individuare ciò che rallenta la crescita. Connetto operations e tecnologia per trasformare informazioni in processi e decisioni migliori."));
+  assert.ok(html.includes('src="assets/images/riccardo-siena.webp" alt="Riccardo Siena"'));
+  assert.ok(html.includes('href="https://www.linkedin.com/in/riccardo-siena-59439b2a1/" target="_blank" rel="noopener noreferrer"'));
   assert.equal(html.split('class="linkedin-link"').length - 1, 4);
-  assert.equal(html.split('class="linkedin-link" type="button" disabled').length - 1, 2);
+  assert.equal(html.split('class="linkedin-link" type="button" disabled').length - 1, 1);
   assert.ok(html.includes('<a class="back-to-top" href="#top"'));
   assert.deepEqual((await readdir(outputDirectory)).sort(), ['assets', 'index.html', 'robots.txt', 'sitemap.xml']);
   assert.equal(await readFile(join(outputDirectory, 'robots.txt'), 'utf8'), result.robots);
   assert.equal(await readFile(join(outputDirectory, 'sitemap.xml'), 'utf8'), result.sitemap);
-  for (const asset of ['tetravise-light-h.svg', 'tetravise-dark-h.svg', 'favicon.svg', 'social-preview.png', 'alex-mengoli.webp', 'giovanni-cioli-puviani.webp']) {
+  for (const asset of ['tetravise-light-h.svg', 'tetravise-dark-h.svg', 'favicon.svg', 'social-preview.png', 'alex-mengoli.webp', 'giovanni-cioli-puviani.webp', 'riccardo-siena.webp']) {
     assert.ok((await stat(join(outputDirectory, 'assets', 'images', asset))).size > 0);
   }
   const preview = await readFile(join(outputDirectory, 'assets', 'images', 'social-preview.png'));
