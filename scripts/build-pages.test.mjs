@@ -75,7 +75,8 @@ test('The Pages artifact contains the complete site and valid social image', asy
   assert.ok(html.includes('src="assets/images/riccardo-siena.webp" alt="Riccardo Siena"'));
   assert.ok(html.includes('href="https://www.linkedin.com/in/riccardo-siena-59439b2a1/" target="_blank" rel="noopener noreferrer"'));
   assert.equal(html.split('class="linkedin-link"').length - 1, 4);
-  assert.equal(html.split('class="linkedin-link" type="button" disabled').length - 1, 1);
+  assert.equal(html.split('class="linkedin-link" type="button" disabled').length - 1, 0);
+  assert.ok(html.includes('href="https://www.linkedin.com/in/azmihamdi/" target="_blank" rel="noopener noreferrer"'));
   assert.ok(html.includes('<a class="back-to-top" href="#top"'));
   assert.deepEqual((await readdir(outputDirectory)).sort(), ['assets', 'index.html', 'robots.txt', 'sitemap.xml']);
   assert.equal(await readFile(join(outputDirectory, 'robots.txt'), 'utf8'), result.robots);
