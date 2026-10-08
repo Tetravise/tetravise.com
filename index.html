@@ -97,9 +97,10 @@
     .hero h1 { max-width: 21ch; margin-top: 1.125rem; font-size: 2.375rem; font-weight: 400; line-height: 1.1; animation: enter .6s ease both; }
     .hero h1 span { display: block; color: var(--accent); }
     .lead { max-width: 38rem; margin-top: 1.25rem; color: var(--soft); animation: enter .6s ease .08s both; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; animation: enter .6s ease .16s both; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.5rem; animation: enter .6s ease .16s both; }
     .button { display: inline-flex; max-width: 100%; min-height: 3.125rem; align-items: center; justify-content: space-between; gap: 1.25rem; padding: .875rem 1.25rem; border: 1px solid var(--button-bg); border-radius: 4px; background: var(--button-bg); color: var(--button-ink); font-size: .9375rem; font-weight: 500; text-decoration: none; transition: background .2s; }
     .button:hover { background: var(--button-hover); }
+    .hero-offer { color: var(--muted); font-size: .875rem; }
     .hero-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; padding-block: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8125rem; }
     .text-link { display: inline-flex; min-height: 2rem; align-items: center; gap: .75rem; text-decoration: none; }
     .text-link:hover { text-decoration: underline; text-underline-offset: .3em; }
@@ -109,37 +110,64 @@
     .kicker { color: var(--muted); font-size: .75rem; font-weight: 600; text-transform: uppercase; }
     .section h2 { max-width: 24ch; font-size: 1.875rem; }
     .sub { max-width: 35rem; color: var(--soft); }
-    .services { border-top: 1px solid var(--line); background: var(--surface); }
+    .alt { border-top: 1px solid var(--line); background: var(--surface); }
+    .section-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 2.5rem; }
+    .section-cta p { max-width: 32rem; color: var(--muted); font-size: .9375rem; }
+
+    .pains { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+    .pain { position: relative; min-width: 0; padding: 1.25rem 1.25rem 1.25rem 2.75rem; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); }
+    .pain::before { content: ""; position: absolute; top: calc(1.25rem + .8em); left: 1.25rem; width: .75rem; height: 2px; background: var(--accent); }
+
     .fields { display: grid; gap: 1rem; }
-    .field { display: flex; min-width: 0; flex-direction: column; gap: 1.5rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 6px; transition: border-color .2s, box-shadow .2s; }
+    .field { display: flex; min-width: 0; flex-direction: column; gap: 1.5rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); transition: border-color .2s, box-shadow .2s; }
     .field-icon { display: grid; width: 3.25rem; height: 3.25rem; place-items: center; border-radius: 4px; background: var(--tile); transition: transform .25s; }
     .field-icon .icon { width: 1.75rem; height: 1.75rem; }
     .field h3 { max-width: 16ch; margin-bottom: .75rem; font-size: 1.25rem; }
     .field p { color: var(--soft); font-size: .9375rem; }
+    .field .field-example { margin-top: auto; padding-top: 1rem; border-top: 1px dashed var(--line); font-size: .875rem; }
+    .field-example span, .case-sector, .case dt { display: block; color: var(--muted); font-size: .75rem; font-weight: 600; text-transform: uppercase; }
+    .field-example span { margin-bottom: .25rem; }
     .f1 { --tile: light-dark(#E5EDD9, #2F4234); }
     .f2 { --tile: light-dark(#DEE9ED, #2C4147); }
     .f3 { --tile: light-dark(#F3E9D8, #493F2B); }
     .f4 { --tile: light-dark(#EFDFDE, #483236); }
 
     .inverse { --ink: #F4F6F1; --soft: #BCCAC5; --muted: #B5C6BE; --line: #3A4A46; --focus: #C9DD97; background: var(--inverse-bg); color: var(--ink); }
-    .method-layout { display: grid; gap: 2rem; }
-    .method-layout .section-head { margin-bottom: 0; }
-    .method details { border-top: 1px solid var(--line); }
-    .method details:last-child { border-bottom: 1px solid var(--line); }
+    .cases { display: grid; gap: 1rem; }
+    .case { display: flex; min-width: 0; flex-direction: column; gap: 1.25rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); }
+    .case h3 { margin-top: .5rem; font-size: 1.25rem; }
+    .case-metric { display: flex; flex-direction: column; gap: .25rem; padding-block: 1rem; border-block: 1px solid var(--line); }
+    .case-metric strong { color: var(--accent); font-family: var(--font-display); font-size: 2.5rem; font-weight: 500; line-height: 1; }
+    .case-metric span { color: var(--muted); font-size: .875rem; }
+    .case dl { display: grid; gap: .875rem; margin: 0; }
+    .case dd { margin: .125rem 0 0; color: var(--soft); font-size: .9375rem; }
+    .case-time { margin-top: auto; color: var(--muted); font-size: .8125rem; }
+    .quote { max-width: 46rem; margin-top: 3rem; padding-left: 1.5rem; border-left: 3px solid var(--accent); }
+    .quote blockquote { margin: 0; }
+    .quote p { font-family: var(--font-display); font-size: 1.375rem; line-height: 1.4; }
+    .quote figcaption { margin-top: .75rem; color: var(--muted); font-size: .875rem; }
+
+    .split-layout { display: grid; gap: 2rem; }
+    .split-layout .section-head { margin-bottom: 0; }
+    :is(.method, .faq) details { border-top: 1px solid var(--line); }
+    :is(.method, .faq) details:last-child { border-bottom: 1px solid var(--line); }
     .method summary { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr) 1.5rem; gap: 1rem; align-items: center; padding-block: 1.5rem; font-family: var(--font-display); font-size: 1.125rem; line-height: 1.4; list-style: none; cursor: pointer; }
-    .method summary::-webkit-details-marker { display: none; }
-    .method summary::marker { content: ""; }
+    :is(.method, .faq) summary::-webkit-details-marker { display: none; }
+    :is(.method, .faq) summary::marker { content: ""; }
     .method summary:hover { color: #DBEAB6; }
     .step-index { color: #C9DD97; font-family: var(--font-body); font-size: .8125rem; }
+    .step-time { display: block; color: var(--muted); font-family: var(--font-body); font-size: .8125rem; }
     .accordion-icon { transition: transform .2s; }
-    .method details[open] .accordion-icon { transform: rotate(45deg); }
+    :is(.method, .faq) details[open] .accordion-icon { transform: rotate(45deg); }
     .method details p { max-width: 48ch; padding: 0 2.5rem 1.5rem 2.75rem; color: var(--soft); font-size: .9375rem; }
     .method details[open] summary { margin-bottom: .75rem; }
-    .method details[open] p { animation: enter .3s ease both; }
+    :is(.method, .faq) details[open] p { animation: enter .3s ease both; }
+    .faq summary { display: grid; grid-template-columns: minmax(0, 1fr) 1.5rem; gap: 1rem; align-items: center; padding-block: 1.25rem; font-family: var(--font-display); font-size: 1.125rem; line-height: 1.4; list-style: none; cursor: pointer; }
+    .faq summary:hover { color: var(--accent); }
+    .faq details p { max-width: 60ch; padding: 0 2.5rem 1.25rem 0; color: var(--soft); font-size: .9375rem; }
 
-    .why { border-top: 1px solid var(--line); background: var(--surface); }
     .reasons { display: grid; gap: 1rem; }
-    .reason { min-width: 0; padding: 1.5rem; border: 1px solid var(--line); border-radius: 4px; }
+    .reason { min-width: 0; padding: 1.5rem; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); }
     .reason h3 { margin-bottom: .75rem; font-size: 1.25rem; }
     .reason p { color: var(--soft); font-size: .9375rem; }
 
@@ -181,9 +209,9 @@
     .button .icon, .mail .icon, .text-link .icon { transition: transform .25s; }
     .reveal-ready [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.22, 1, .36, 1); transition-delay: var(--reveal-delay, 0ms); }
     .reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
-    .fields > :nth-child(2) { --reveal-delay: 70ms; }
-    .fields > :nth-child(3) { --reveal-delay: 140ms; }
-    .fields > :nth-child(4) { --reveal-delay: 210ms; }
+    :is(.fields, .reasons, .pains, .cases) > :nth-child(2) { --reveal-delay: 70ms; }
+    :is(.fields, .reasons, .pains, .cases) > :nth-child(3) { --reveal-delay: 140ms; }
+    :is(.fields, .reasons, .pains) > :nth-child(n+4) { --reveal-delay: 210ms; }
     @keyframes enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     @media (hover: hover) {
       .field:hover { border-color: var(--muted); box-shadow: 0 8px 24px rgb(0 0 0 / .06); }
@@ -217,7 +245,7 @@
       .lead { margin-top: 1.25rem; }
       .hero-actions { margin-top: 1.5rem; }
       .hero-bottom { margin-top: 2.5rem; padding-block: 1rem; }
-      .services { padding-top: 2rem; }
+      .hero + .section { padding-top: 2rem; }
     }
     @media (min-width: 40rem) {
       :root { --gutter: 2.5rem; }
@@ -229,7 +257,8 @@
       .section { padding-block: 4.5rem; }
       .section h2 { font-size: 2.25rem; }
       .fields, .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .reasons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .reasons, .pains { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .quote p { font-size: 1.625rem; }
       .field h3 { font-size: 1.375rem; }
       .mail { font-size: 1.75rem; }
       .footer-meta { text-align: right; }
@@ -237,6 +266,7 @@
     @media (min-width: 56rem) {
       .header-inner { grid-template-columns: auto 1fr auto; grid-template-areas: "brand nav theme"; gap: 2rem; }
       .nav { justify-content: flex-end; gap: 1.75rem; font-size: .875rem; }
+      .cases { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     @media (min-width: 64rem) {
       .hero h1 { font-size: 4.5rem; }
@@ -244,7 +274,8 @@
       .section { padding-block: 5rem; }
       .section h2 { font-size: 2.5rem; }
       .fields, .team { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .method-layout { grid-template-columns: minmax(0, .85fr) minmax(0, 1.25fr); gap: 5rem; }
+      .pains { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .split-layout { grid-template-columns: minmax(0, .85fr) minmax(0, 1.25fr); gap: 5rem; }
       .team { gap: 1.5rem; }
       .contact-layout { flex-direction: row; align-items: center; justify-content: space-between; gap: 3rem; }
       .contact .section-head { max-width: 33rem; }
@@ -321,7 +352,8 @@
       </a>
       <nav class="nav" aria-label="Navigazione principale">
         <a class="nav-secondary" href="#competenze">Servizi</a>
-        <a class="nav-secondary" href="#metodo">Il metodo</a>
+        <a class="nav-secondary" href="#casi">Casi</a>
+        <a class="nav-secondary" href="#metodo">Metodo</a>
         <a class="nav-secondary" href="#team">Chi siamo</a>
         <a class="nav-secondary" href="#contatti">Contatti</a>
       </nav>
@@ -336,15 +368,34 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
         <p class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#icon-map-pin"/></svg>Bassa Modenese, Emilia-Romagna</p>
-        <h1 id="hero-title">Consulenza operativa.<span>Soluzioni digitali.</span></h1>
-        <p class="lead">Affianchiamo le PMI con processi più semplici, software su misura e dati che aiutano a decidere.</p>
+        <h1 id="hero-title">Meno lavoro manuale.<span>Più controllo sulla tua azienda.</span></h1>
+        <p class="lead">Aiutiamo le PMI della Bassa Modenese a semplificare i processi, collegare i software che già usano e trasformare i dati in decisioni.</p>
         <div class="hero-actions">
-          <a class="button" href="#contatti">Parliamo del tuo progetto <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
+          <a class="button" href="#contatti">Prenota il check-up gratuito <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
+          <p class="hero-offer">45 minuti · in azienda o online · senza impegno</p>
         </div>
         <div class="hero-bottom">
           <span class="hero-note">Vicini alle persone. Dentro ai processi.</span>
-          <a class="text-link" href="#competenze">Esplora le competenze <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg></a>
+          <a class="text-link" href="#problemi">Ti riconosci in questi problemi? <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg></a>
         </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="problemi" aria-labelledby="pains-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="kicker">Ti riconosci?</span>
+          <h2 id="pains-title">Se succede anche nella tua azienda, possiamo aiutarti.</h2>
+          <p class="sub">Sono i segnali che incontriamo più spesso nelle PMI. Ognuno, da solo, costa ore di lavoro ogni settimana.</p>
+        </div>
+        <ul class="pains">
+          <li class="pain" data-reveal>Gli stessi dati vengono copiati a mano tra Excel, gestionale ed email.</li>
+          <li class="pain" data-reveal>Per avere un numero aggiornato devi chiederlo a qualcuno e aspettare.</li>
+          <li class="pain" data-reveal>Il gestionale non dialoga con gli altri software che usi ogni giorno.</li>
+          <li class="pain" data-reveal>Il report mensile richiede giorni di lavoro e arriva quando è già vecchio.</li>
+          <li class="pain" data-reveal>Alcune attività funzionano solo perché una persona sa come farle.</li>
+          <li class="pain" data-reveal>Senti parlare di intelligenza artificiale, ma non sai da dove partire.</li>
+        </ul>
       </div>
     </section>
 
@@ -362,6 +413,7 @@
               <h3>Analisi dei processi</h3>
               <p>Troviamo inefficienze e colli di bottiglia. Definiamo interventi concreti e misurabili.</p>
             </div>
+            <p class="field-example"><span>Esempio</span>Mappatura del ciclo ordine-consegna e passaggi manuali ridotti da nove a quattro.</p>
           </article>
           <article class="field f2" data-reveal>
             <div class="field-icon"><svg class="icon" aria-hidden="true"><use href="#icon-code-xml"/></svg></div>
@@ -369,6 +421,7 @@
               <h3>Software su misura</h3>
               <p>Applicazioni e integrazioni costruite attorno al tuo lavoro, non il contrario.</p>
             </div>
+            <p class="field-example"><span>Esempio</span>Un portale preventivi collegato al gestionale, al posto dei fogli Excel inviati via email.</p>
           </article>
           <article class="field f3" data-reveal>
             <div class="field-icon"><svg class="icon" aria-hidden="true"><use href="#icon-chart-no-axes-combined"/></svg></div>
@@ -376,6 +429,7 @@
               <h3>Dati e KPI</h3>
               <p>Dai fogli sparsi a una visione d'insieme. Indicatori e dashboard per decidere meglio.</p>
             </div>
+            <p class="field-example"><span>Esempio</span>Vendite e margini in una dashboard aggiornata ogni mattina, al posto del report mensile.</p>
           </article>
           <article class="field f4" data-reveal>
             <div class="field-icon"><svg class="icon" aria-hidden="true"><use href="#icon-brain-circuit"/></svg></div>
@@ -383,13 +437,79 @@
               <h3>Intelligenza artificiale</h3>
               <p>Meno attività ripetitive, più tempo per ciò che conta. AI applicata a problemi reali.</p>
             </div>
+            <p class="field-example"><span>Esempio</span>Lettura automatica di DDT e fatture fornitori, con controllo umano solo sulle eccezioni.</p>
           </article>
+        </div>
+        <div class="section-cta" data-reveal>
+          <a class="button" href="#contatti">Prenota il check-up gratuito <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
+          <p>Non sai quale competenza ti serve? È proprio quello che scopriamo insieme nel check-up.</p>
         </div>
       </div>
     </section>
 
+    <!-- CONTENUTO CONCETTUALE: casi studio e testimonianza illustrativi. Sostituire con casi reali verificati prima della pubblicazione. -->
+    <section class="section alt" id="casi" aria-labelledby="cases-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="kicker">Casi studio</span>
+          <h2 id="cases-title">Problemi reali.<br>Risultati misurabili.</h2>
+          <p class="sub">Tre interventi tipici nelle PMI del territorio: cosa non funzionava, cosa abbiamo fatto, cosa è cambiato.</p>
+        </div>
+        <div class="cases">
+          <article class="case" data-reveal>
+            <div>
+              <span class="case-sector">Metalmeccanica · 35 dipendenti</span>
+              <h3>Dagli ordini su Excel a un flusso unico</h3>
+            </div>
+            <p class="case-metric"><strong>−70%</strong><span>tempo di inserimento ordini</span></p>
+            <dl>
+              <div><dt>Problema</dt><dd>Ordini ricevuti via email e ricopiati a mano in tre file diversi, con errori su quantità e date di consegna.</dd></div>
+              <div><dt>Intervento</dt><dd>Analisi del flusso, modulo ordini web collegato al gestionale e avvisi automatici al magazzino.</dd></div>
+              <div><dt>Risultato</dt><dd>12 ore a settimana recuperate in ufficio e consegne pianificate su dati sempre aggiornati.</dd></div>
+            </dl>
+            <p class="case-time">Durata: 6 settimane</p>
+          </article>
+          <article class="case" data-reveal>
+            <div>
+              <span class="case-sector">Agroalimentare · 60 dipendenti</span>
+              <h3>Margini visibili ogni giorno, non a fine mese</h3>
+            </div>
+            <p class="case-metric"><strong>3 giorni → 0</strong><span>per preparare il report mensile</span></p>
+            <dl>
+              <div><dt>Problema</dt><dd>Il controllo di gestione dipendeva da un report costruito a mano unendo dati di vendita e produzione.</dd></div>
+              <div><dt>Intervento</dt><dd>Modello dati unico tra gestionale e produzione, KPI condivisi con la direzione e dashboard automatica.</dd></div>
+              <div><dt>Risultato</dt><dd>Margini per prodotto e cliente consultabili ogni mattina, decisioni sui prezzi in giorni invece che in settimane.</dd></div>
+            </dl>
+            <p class="case-time">Durata: 8 settimane</p>
+          </article>
+          <article class="case" data-reveal>
+            <div>
+              <span class="case-sector">Servizi alle imprese · 15 dipendenti</span>
+              <h3>Documenti fornitori letti dall'AI</h3>
+            </div>
+            <p class="case-metric"><strong>−80%</strong><span>documenti registrati a mano</span></p>
+            <dl>
+              <div><dt>Problema</dt><dd>Centinaia di DDT e fatture al mese registrati manualmente, con controlli in ritardo di settimane.</dd></div>
+              <div><dt>Intervento</dt><dd>Estrazione automatica dei dati con AI, verifica delle anomalie e registrazione diretta nel gestionale.</dd></div>
+              <div><dt>Risultato</dt><dd>Il personale controlla solo le eccezioni e i documenti sono registrati in giornata.</dd></div>
+            </dl>
+            <p class="case-time">Durata: 5 settimane</p>
+          </article>
+        </div>
+        <figure class="quote" data-reveal>
+          <blockquote><p>“Pensavamo servisse un nuovo gestionale. Ci hanno mostrato che bastava far parlare bene quello che avevamo già.”</p></blockquote>
+          <figcaption>Responsabile amministrativa, azienda metalmeccanica</figcaption>
+        </figure>
+        <div class="section-cta" data-reveal>
+          <a class="button" href="#contatti">Prenota il check-up gratuito <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
+          <p>Raccontaci il tuo caso: in 45 minuti capiamo se e come possiamo aiutarti.</p>
+        </div>
+      </div>
+    </section>
+    <!-- /CONTENUTO CONCETTUALE -->
+
     <section class="section inverse" id="metodo" aria-labelledby="method-title">
-      <div class="container method-layout">
+      <div class="container split-layout">
         <div class="section-head" data-reveal>
           <span class="kicker">Il metodo</span>
           <h2 id="method-title">Dall'analisi al risultato.</h2>
@@ -397,23 +517,23 @@
         </div>
         <div class="method">
           <details name="metodo" open>
-            <summary><span class="step-index">01</span><span>Analizziamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
-            <p>Partiamo da come funziona realmente la tua azienda. Ascoltiamo le persone coinvolte, osserviamo i processi e analizziamo strumenti, dati e attività quotidiane.</p>
+            <summary><span class="step-index">01</span><span>Analizziamo<small class="step-time">1–2 settimane</small></span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Si parte dal check-up gratuito, poi entriamo nel dettaglio di come funziona realmente la tua azienda. Ascoltiamo le persone coinvolte, osserviamo i processi e analizziamo strumenti, dati e attività quotidiane.</p>
           </details>
           <details name="metodo">
-            <summary><span class="step-index">02</span><span>Individuiamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <summary><span class="step-index">02</span><span>Individuiamo<small class="step-time">1 settimana</small></span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
             <p>Identifichiamo attività manuali, inefficienze, duplicazioni e colli di bottiglia. Diamo priorità alle opportunità che possono generare il maggior beneficio.</p>
           </details>
           <details name="metodo">
-            <summary><span class="step-index">03</span><span>Progettiamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <summary><span class="step-index">03</span><span>Progettiamo<small class="step-time">1–2 settimane</small></span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
             <p>Definiamo la soluzione più adatta al problema, scegliendo tecnologie e strumenti in funzione delle esigenze dell'azienda, non viceversa.</p>
           </details>
           <details name="metodo">
-            <summary><span class="step-index">04</span><span>Implementiamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <summary><span class="step-index">04</span><span>Implementiamo<small class="step-time">4–8 settimane</small></span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
             <p>Trasformiamo il progetto in una soluzione concreta: automazioni, integrazioni, dashboard o software sviluppati e integrati nei processi esistenti.</p>
           </details>
           <details name="metodo">
-            <summary><span class="step-index">05</span><span>Misuriamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <summary><span class="step-index">05</span><span>Misuriamo<small class="step-time">a 30 e 90 giorni</small></span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
             <p>Verifichiamo l'impatto della soluzione attraverso risultati concreti: tempo risparmiato, riduzione degli errori, maggiore controllo dei dati e semplificazione delle attività.</p>
           </details>
         </div>
@@ -425,30 +545,30 @@
         <div class="section-head" data-reveal>
           <span class="kicker">Perché Tetravise</span>
           <h2 id="why-title">Tecnologia al servizio del business.</h2>
-          <p class="sub">Non partiamo dalla tecnologia. Partiamo da ciò che serve davvero alla tua azienda e costruiamo la soluzione più efficace per ottenerlo.</p>
+          <p class="sub">Cosa cambia, in pratica, quando lavori con noi.</p>
         </div>
         <div class="reasons">
           <article class="reason" data-reveal>
-            <h3>Business first</h3>
-            <p>Partiamo dal problema aziendale e dagli obiettivi da raggiungere, non dalla tecnologia da utilizzare.</p>
+            <h3>Veniamo in azienda</h3>
+            <p>Siamo nella Bassa Modenese. Osserviamo il lavoro dove succede, non solo da una videochiamata.</p>
           </article>
           <article class="reason" data-reveal>
-            <h3>Su misura</h3>
-            <p>Ogni azienda ha processi diversi. Costruiamo soluzioni proporzionate alle esigenze reali, evitando complessità inutili.</p>
+            <h3>Un team, quattro competenze</h3>
+            <p>Processi, software, dati e AI nello stesso gruppo: nessun fornitore da coordinare, nessun rimpallo di responsabilità.</p>
           </article>
           <article class="reason" data-reveal>
-            <h3>Al tuo fianco</h3>
-            <p>Seguiamo ogni progetto dall'analisi all'implementazione e restiamo al tuo fianco nel tempo, supportando l'evoluzione della soluzione e le nuove esigenze.</p>
+            <h3>Si parte in piccolo</h3>
+            <p>Prima un progetto pilota a prezzo concordato, con un obiettivo misurabile. Poi decidi tu se proseguire.</p>
           </article>
           <article class="reason" data-reveal>
-            <h3>Risultati concreti</h3>
-            <p>Non ci limitiamo a implementare strumenti. Puntiamo a generare un beneficio misurabile in termini di tempo, efficienza e controllo.</p>
+            <h3>Parli con chi realizza</h3>
+            <p>Chi analizza il problema è la stessa persona che costruisce la soluzione e la segue nel tempo.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="team" aria-labelledby="team-title">
+    <section class="section alt" id="team" aria-labelledby="team-title">
       <div class="container team-layout">
         <div class="section-head" data-reveal>
           <span class="kicker">Chi siamo</span>
@@ -512,14 +632,55 @@
       </div>
     </section>
 
+    <!-- CONTENUTO CONCETTUALE: verificare risposte, fasce dimensionali e condizioni commerciali. -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container split-layout">
+        <div class="section-head" data-reveal>
+          <span class="kicker">Domande frequenti</span>
+          <h2 id="faq-title">Prima di iniziare.</h2>
+          <p class="sub">Le domande che ci fanno più spesso. Se la tua non c'è, scrivici.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary><span>Quanto costa?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Il check-up iniziale è gratuito. Dopo ti proponiamo un progetto pilota a prezzo fisso, con obiettivi e tempi scritti prima di iniziare. Nessuna sorpresa a consuntivo.</p>
+          </details>
+          <details>
+            <summary><span>Dobbiamo cambiare gestionale?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Quasi mai. Partiamo dagli strumenti che usi già e li colleghiamo tra loro. Proponiamo di sostituire un software solo quando è davvero l'ostacolo principale.</p>
+          </details>
+          <details>
+            <summary><span>Siamo un'azienda piccola: ha senso per noi?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Sì. Lavoriamo con imprese da 5 a 100 persone e dimensioniamo ogni intervento sul beneficio atteso. Spesso i risultati più rapidi arrivano proprio nelle realtà piccole.</p>
+          </details>
+          <details>
+            <summary><span>Quanto tempo serve per vedere risultati?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Un progetto pilota dura in genere da 4 a 8 settimane, e i primi benefici sono misurabili già alla sua conclusione.</p>
+          </details>
+          <details>
+            <summary><span>Quanto tempo dovremo dedicarci?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Qualche ora nella fase di analisi, per ascoltare le persone coinvolte. Poi brevi verifiche periodiche: il lavoro tecnico è nostro.</p>
+          </details>
+          <details>
+            <summary><span>I dati restano nostri?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Sempre. Le soluzioni girano sui tuoi sistemi o su servizi cloud intestati alla tua azienda, e a fine progetto ricevi codice, accessi e documentazione.</p>
+          </details>
+          <details>
+            <summary><span>E dopo la consegna?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <p>Restiamo disponibili per assistenza, manutenzione ed evoluzioni, con un supporto concordato in base alle tue esigenze.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <section class="section contact inverse" id="contatti" aria-labelledby="contact-title">
       <div class="container contact-layout">
         <div class="section-head" data-reveal>
-          <span class="kicker">Facciamo il primo passo</span>
-          <h2 id="contact-title">Parliamo della<br>tua impresa.</h2>
-          <p class="sub">Raccontaci dove vuoi migliorare. Partiamo da una conversazione.</p>
+          <span class="kicker">Il primo passo</span>
+          <h2 id="contact-title">Prenota il tuo<br>check-up gratuito.</h2>
+          <p class="sub">45 minuti, in azienda o online. Guardiamo insieme come lavorate oggi e ti lasciamo per iscritto le tre aree da cui partire. Senza impegno.</p>
         </div>
-        <a class="mail" href="mailto:info@tetravise.com"><span>info@tetravise.com</span><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
+        <a class="mail" href="mailto:info@tetravise.com?subject=Richiesta%20check-up%20gratuito"><span>info@tetravise.com</span><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
       </div>
     </section>
   </main>
