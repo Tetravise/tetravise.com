@@ -21,7 +21,7 @@ export function createSeo(siteUrl) {
   const organizationId = new URL('#organization', baseUrl).href;
   const websiteId = new URL('#website', baseUrl).href;
   const socialImage = new URL('assets/images/social-preview.png', baseUrl).href;
-  const areaServed = { '@type': 'Place', name: 'Bassa Modenese, Emilia-Romagna, Italia' };
+  const areaServed = { '@type': 'Country', name: 'Italia' };
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -66,7 +66,7 @@ export function createSeo(siteUrl) {
         '@type': 'WebPage',
         '@id': new URL('#webpage', baseUrl).href,
         url: canonical,
-        name: 'Tetravise | Consulenza e software nella Bassa Modenese',
+        name: 'Tetravise | Consulenza e software per le PMI',
         inLanguage: 'it-IT',
         isPartOf: { '@id': websiteId },
         about: { '@id': organizationId },
@@ -81,9 +81,9 @@ export function createSeo(siteUrl) {
     '<meta property="og:image:type" content="image/png">',
     '<meta property="og:image:width" content="1200">',
     '<meta property="og:image:height" content="630">',
-    '<meta property="og:image:alt" content="Tetravise: consulenza operativa e soluzioni digitali nella Bassa Modenese">',
+    '<meta property="og:image:alt" content="Tetravise: consulenza operativa e soluzioni digitali per le PMI">',
     `<meta name="twitter:image" content="${escapeMarkup(socialImage)}">`,
-    '<meta name="twitter:image:alt" content="Tetravise: consulenza operativa e soluzioni digitali nella Bassa Modenese">',
+    '<meta name="twitter:image:alt" content="Tetravise: consulenza operativa e soluzioni digitali per le PMI">',
     `<script type="application/ld+json">${serializedSchema}</script>`,
   ].join('\n  ');
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${escapeMarkup(canonical)}</loc></url>\n</urlset>\n`;
