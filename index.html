@@ -150,6 +150,7 @@
     .quote figcaption { margin-top: .75rem; color: var(--muted); font-size: .875rem; }
 
     .split-layout { display: grid; gap: 2rem; }
+    #metodo .split-layout { gap: 1rem; }
     .split-layout .section-head { margin-bottom: 0; }
     :is(.method, .faq) details { border-top: 1px solid var(--line); }
     :is(.method, .faq) details:last-child { border-bottom: 1px solid var(--line); }
@@ -158,11 +159,10 @@
     :is(.method, .faq) summary::marker { content: ""; }
     .method summary:hover { color: #DBEAB6; }
     .step-index { color: #C9DD97; font-family: var(--font-body); font-size: .8125rem; }
-    .step-time { display: block; color: var(--muted); font-family: var(--font-body); font-size: .8125rem; }
     .accordion-icon { transition: transform .2s; }
     :is(.method, .faq) details[open] .accordion-icon { transform: rotate(45deg); }
     .method details p { max-width: 48ch; padding: 0 2.5rem 1.5rem 2.75rem; color: var(--soft); font-size: .9375rem; }
-    .method details[open] summary { margin-bottom: .75rem; }
+    .method details[open] summary { margin-bottom: 0; padding-bottom: .5rem; }
     :is(.method, .faq) details[open] p { animation: enter .3s ease both; }
     .faq summary { display: grid; grid-template-columns: minmax(0, 1fr) 1.5rem; gap: 1rem; align-items: center; padding-block: 1.25rem; font-family: var(--font-display); font-size: 1.125rem; line-height: 1.4; list-style: none; cursor: pointer; }
     .faq summary:hover { color: var(--accent); }
@@ -278,6 +278,7 @@
       .fields, .team { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .pains { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .split-layout { grid-template-columns: minmax(0, .85fr) minmax(0, 1.25fr); gap: 5rem; }
+      #metodo .split-layout { gap: 5rem; }
       .team { gap: 1.5rem; }
       .contact-layout { flex-direction: row; align-items: center; justify-content: space-between; gap: 3rem; }
       .contact .section-head { max-width: 33rem; }
@@ -372,7 +373,7 @@
         <p class="lead">Aiutiamo le PMI a semplificare i processi, collegare i software che già usano e trasformare i dati in decisioni.</p>
         <div class="hero-actions">
           <a class="button" href="#contatti">Prenota il check-up gratuito <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
-          <p class="hero-offer">45 minuti · in azienda o online · senza impegno</p>
+          <p class="hero-offer">In azienda o online, senza impegno</p>
         </div>
         <div class="hero-bottom">
           <span class="hero-note">Vicini alle persone. Dentro ai processi.</span>
@@ -509,23 +510,23 @@
         </div>
         <div class="method">
           <details name="metodo" open>
-            <summary><span class="step-index">01</span><span>Analizziamo<small class="step-time">1–2 settimane</small></span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <summary><span class="step-index">01</span><span>Analizziamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
             <p>Si parte dal check-up gratuito, poi entriamo nel dettaglio di come funziona realmente la tua azienda. Ascoltiamo le persone coinvolte, osserviamo i processi e analizziamo strumenti, dati e attività quotidiane.</p>
           </details>
           <details name="metodo">
-            <summary><span class="step-index">02</span><span>Individuiamo<small class="step-time">1 settimana</small></span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <summary><span class="step-index">02</span><span>Individuiamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
             <p>Identifichiamo attività manuali, inefficienze, duplicazioni e colli di bottiglia. Diamo priorità alle opportunità che possono generare il maggior beneficio.</p>
           </details>
           <details name="metodo">
-            <summary><span class="step-index">03</span><span>Progettiamo<small class="step-time">1–2 settimane</small></span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <summary><span class="step-index">03</span><span>Progettiamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
             <p>Definiamo la soluzione più adatta al problema, scegliendo tecnologie e strumenti in funzione delle esigenze dell'azienda, non viceversa.</p>
           </details>
           <details name="metodo">
-            <summary><span class="step-index">04</span><span>Implementiamo<small class="step-time">4–8 settimane</small></span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <summary><span class="step-index">04</span><span>Implementiamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
             <p>Trasformiamo il progetto in una soluzione concreta: automazioni, integrazioni, dashboard o software sviluppati e integrati nei processi esistenti.</p>
           </details>
           <details name="metodo">
-            <summary><span class="step-index">05</span><span>Misuriamo<small class="step-time">a 30 e 90 giorni</small></span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
+            <summary><span class="step-index">05</span><span>Misuriamo</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
             <p>Verifichiamo l'impatto della soluzione attraverso risultati concreti: tempo risparmiato, riduzione degli errori, maggiore controllo dei dati e semplificazione delle attività.</p>
           </details>
         </div>
@@ -643,19 +644,15 @@
           </details>
           <details>
             <summary><span>Siamo un'azienda piccola: ha senso per noi?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
-            <p>Sì. Lavoriamo con imprese da 5 a 100 persone e dimensioniamo ogni intervento sul beneficio atteso. Spesso i risultati più rapidi arrivano proprio nelle realtà piccole.</p>
+            <p>Sì. Lavoriamo con piccole e medie imprese, e dimensioniamo ogni intervento sul beneficio atteso. Spesso i risultati più rapidi arrivano proprio nelle realtà piccole.</p>
           </details>
           <details>
             <summary><span>Quanto tempo serve per vedere risultati?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
-            <p>Un progetto pilota dura in genere da 4 a 8 settimane, e i primi benefici sono misurabili già alla sua conclusione.</p>
+            <p>Un progetto pilota porta risultati concreti e misurabili fin dalle prime fasi.</p>
           </details>
           <details>
             <summary><span>Quanto tempo dovremo dedicarci?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
             <p>Qualche ora nella fase di analisi, per ascoltare le persone coinvolte. Poi brevi verifiche periodiche: il lavoro tecnico è nostro.</p>
-          </details>
-          <details>
-            <summary><span>I dati restano nostri?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
-            <p>Sempre. Le soluzioni girano sui tuoi sistemi o su servizi cloud intestati alla tua azienda, e a fine progetto ricevi codice, accessi e documentazione.</p>
           </details>
           <details>
             <summary><span>E dopo la consegna?</span><svg class="icon accordion-icon" aria-hidden="true"><use href="#icon-plus"/></svg></summary>
@@ -670,7 +667,7 @@
         <div class="section-head" data-reveal>
           <span class="kicker">Il primo passo</span>
           <h2 id="contact-title">Prenota il tuo<br>check-up gratuito.</h2>
-          <p class="sub">45 minuti, in azienda o online. Guardiamo insieme come lavorate oggi e ti lasciamo per iscritto le tre aree da cui partire. Senza impegno.</p>
+          <p class="sub">Guardiamo insieme come lavorate oggi e ti lasciamo per iscritto le tre aree da cui partire. Senza impegno.</p>
         </div>
         <a class="mail" href="mailto:info@tetravise.com?subject=Richiesta%20check-up%20gratuito"><span>info@tetravise.com</span><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
       </div>
