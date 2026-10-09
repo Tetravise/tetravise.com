@@ -97,9 +97,9 @@
     .nav a:hover { color: var(--soft); }
     .theme-toggle { display: grid; grid-area: theme; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 4px; background: var(--surface); color: var(--ink); cursor: pointer; }
     .theme-toggle:hover { border-color: var(--ink); }
-    .theme-toggle .theme-moon { display: none; }
-    :root[data-theme="dark"] .theme-toggle .theme-sun { display: none; }
-    :root[data-theme="dark"] .theme-toggle .theme-moon { display: block; }
+    .theme-toggle .theme-sun { display: none; }
+    :root[data-theme="dark"] .theme-toggle .theme-moon { display: none; }
+    :root[data-theme="dark"] .theme-toggle .theme-sun { display: block; }
     .language-toggle { display: grid; grid-area: language; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 4px; background: var(--surface); color: var(--ink); font: 600 .6875rem var(--font-body); letter-spacing: .04em; cursor: pointer; }
     .language-toggle:hover { border-color: var(--ink); }
 
@@ -138,8 +138,9 @@
     .field h3 { max-width: 16ch; margin-bottom: .75rem; font-size: 1.25rem; }
     .field p { color: var(--soft); font-size: .9375rem; }
     .field .field-example { margin-top: auto; padding-top: 1rem; border-top: 1px dashed var(--line); font-size: .875rem; }
-    .field-example span, .case dt { color: var(--muted); font-size: .75rem; font-weight: 600; text-transform: uppercase; }
+    .field-example span:first-child, .case dt { color: var(--muted); font-size: .75rem; font-weight: 600; text-transform: uppercase; }
     .field-example span { margin-bottom: .25rem; }
+    .field-example span:first-child { display: block; }
     .f1 { --tile: light-dark(#E5EDD9, #2F4234); }
     .f2 { --tile: light-dark(#DEE9ED, #2C4147); }
     .f3 { --tile: light-dark(#F3E9D8, #493F2B); }
@@ -428,7 +429,7 @@
               <h3 data-i18n="services.process.title">Analisi dei processi</h3>
               <p data-i18n="services.process.body">Troviamo inefficienze e colli di bottiglia. Definiamo interventi concreti e misurabili.</p>
             </div>
-            <p class="field-example"><span data-i18n="ui.example">Esempio</span><span data-i18n="services.process.example">Mappatura del ciclo ordine-consegna e passaggi manuali ridotti da nove a quattro.</span></p>
+            <p class="field-example"><span data-i18n="ui.example">Esempio</span> <span data-i18n="services.process.example">Mappatura del ciclo ordine-consegna e passaggi manuali ridotti da nove a quattro.</span></p>
           </article>
           <article class="field f2" data-reveal>
             <div class="field-icon"><svg class="icon" aria-hidden="true"><use href="#icon-code-xml"/></svg></div>
@@ -436,7 +437,7 @@
               <h3 data-i18n="services.software.title">Software su misura</h3>
               <p data-i18n="services.software.body">Applicazioni e integrazioni costruite attorno al tuo lavoro, non il contrario.</p>
             </div>
-            <p class="field-example"><span data-i18n="ui.example">Esempio</span><span data-i18n="services.software.example">Un portale preventivi collegato al gestionale, al posto dei fogli Excel inviati via email.</span></p>
+            <p class="field-example"><span data-i18n="ui.example">Esempio</span> <span data-i18n="services.software.example">Un portale preventivi collegato al gestionale, al posto dei fogli Excel inviati via email.</span></p>
           </article>
           <article class="field f3" data-reveal>
             <div class="field-icon"><svg class="icon" aria-hidden="true"><use href="#icon-chart-no-axes-combined"/></svg></div>
@@ -444,7 +445,7 @@
               <h3 data-i18n="services.data.title">Dati e KPI</h3>
               <p data-i18n="services.data.body">Dai fogli sparsi a una visione d'insieme. Indicatori e dashboard per decidere meglio.</p>
             </div>
-            <p class="field-example"><span data-i18n="ui.example">Esempio</span><span data-i18n="services.data.example">Vendite e margini in una dashboard aggiornata ogni mattina, al posto del report mensile.</span></p>
+            <p class="field-example"><span data-i18n="ui.example">Esempio</span> <span data-i18n="services.data.example">Vendite e margini in una dashboard aggiornata ogni mattina, al posto del report mensile.</span></p>
           </article>
           <article class="field f4" data-reveal>
             <div class="field-icon"><svg class="icon" aria-hidden="true"><use href="#icon-brain-circuit"/></svg></div>
@@ -452,7 +453,7 @@
               <h3 data-i18n="services.ai.title">Intelligenza artificiale</h3>
               <p data-i18n="services.ai.body">Meno attività ripetitive, più tempo per ciò che conta. AI applicata a problemi reali.</p>
             </div>
-            <p class="field-example"><span data-i18n="ui.example">Esempio</span><span data-i18n="services.ai.example">Lettura automatica di DDT e fatture fornitori, con controllo umano solo sulle eccezioni.</span></p>
+            <p class="field-example"><span data-i18n="ui.example">Esempio</span> <span data-i18n="services.ai.example">Lettura automatica di DDT e fatture fornitori, con controllo umano solo sulle eccezioni.</span></p>
           </article>
         </div>
         <div class="section-cta" data-reveal>
