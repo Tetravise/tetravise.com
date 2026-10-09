@@ -1,0 +1,38 @@
+{
+  "it": {
+    "ui.nav": "Navigazione principale",
+    "ui.skip": "Vai al contenuto",
+    "ui.switchTo": "Passa all'inglese",
+    "nav.services": "Servizi",
+    "nav.cases": "Casi",
+    "nav.method": "Metodo",
+    "nav.team": "Chi siamo",
+    "nav.contact": "Contatti",
+    "hero.eyebrow": "Consulenza operativa e software per le PMI",
+    "hero.title": "Meno lavoro manuale.",
+    "hero.titleAccent": "Più controllo sulla tua azienda.",
+    "hero.lead": "Aiutiamo le PMI a semplificare i processi, collegare i software che già usano e trasformare i dati in decisioni.",
+    "hero.cta": "Prenota il check-up gratuito",
+    "hero.offer": "In azienda o online, senza impegno",
+    "hero.note": "Vicini alle persone. Dentro ai processi.",
+    "hero.link": "Ti riconosci in questi problemi?"
+  },
+  "en": {
+    "ui.nav": "Main navigation",
+    "ui.skip": "Skip to content",
+    "ui.switchTo": "Passa all’italiano",
+    "nav.services": "Services",
+    "nav.cases": "Cases",
+    "nav.method": "Method",
+    "nav.team": "About us",
+    "nav.contact": "Contact",
+    "hero.eyebrow": "Operations consulting and software for SMEs",
+    "hero.title": "Less manual work.",
+    "hero.titleAccent": "More control over your business.",
+    "hero.lead": "We help SMEs simplify processes, connect the software they already use and turn data into decisions.",
+    "hero.cta": "Book your free check-up",
+    "hero.offer": "On-site or online, with no obligation",
+    "hero.note": "Close to people. Inside your processes.",
+    "hero.link": "Do you recognise these problems?"
+  }
+}

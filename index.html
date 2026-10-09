@@ -20,6 +20,16 @@
   <title>Tetravise | Consulenza e software per le PMI</title>
   <script>
     (() => {
+      let language = 'it';
+      try {
+        const saved = localStorage.getItem('tetravise-language');
+        language = ['it', 'en'].includes(saved) ? saved : (navigator.language.toLowerCase().startsWith('it') ? 'it' : 'en');
+      } catch {
+        language = navigator.language.toLowerCase().startsWith('it') ? 'it' : 'en';
+      }
+      document.documentElement.lang = language;
+      document.documentElement.dataset.language = language;
+
       let preference = 'system';
       try {
         const saved = localStorage.getItem('tetravise-theme');
@@ -76,7 +86,7 @@
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 
     .site-header { border-bottom: 1px solid var(--line); }
-    .header-inner { display: grid; min-height: 5.5rem; grid-template-columns: 1fr auto; grid-template-areas: "brand theme" "nav nav"; align-items: center; gap: .25rem 1rem; padding-block: .5rem; }
+    .header-inner { display: grid; min-height: 5.5rem; grid-template-columns: 1fr auto auto; grid-template-areas: "brand language theme" "nav nav nav"; align-items: center; gap: .25rem .5rem; padding-block: .5rem; }
     .brand { display: inline-flex; grid-area: brand; justify-self: start; }
     .brand img { display: block; width: 11.5rem; height: auto; }
     .brand .logo-dark { display: none; }
@@ -90,6 +100,8 @@
     .theme-toggle .theme-sun { display: none; }
     :root[data-theme="dark"] .theme-toggle .theme-moon { display: none; }
     :root[data-theme="dark"] .theme-toggle .theme-sun { display: block; }
+    .language-toggle { display: grid; grid-area: language; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 4px; background: var(--surface); color: var(--ink); font: 600 .6875rem var(--font-body); letter-spacing: .04em; cursor: pointer; }
+    .language-toggle:hover { border-color: var(--ink); }
 
     .hero { padding-top: 2.5rem; }
     .eyebrow { display: flex; align-items: center; gap: .5rem; color: var(--muted); font-size: .8125rem; }
@@ -266,7 +278,8 @@
       .footer-meta { text-align: right; }
     }
     @media (min-width: 56rem) {
-      .header-inner { grid-template-columns: auto 1fr auto; grid-template-areas: "brand nav theme"; gap: 2rem; }
+      .header-inner { grid-template-columns: auto 1fr auto auto; grid-template-areas: "brand nav language theme"; column-gap: .75rem; row-gap: .25rem; }
+      .nav { margin-right: 1.25rem; }
       .nav { justify-content: flex-end; gap: 1.75rem; font-size: .875rem; }
       .cases { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
@@ -352,12 +365,13 @@
         <img class="logo-dark" src="assets/images/tetravise-dark-h.svg" alt="Tetravise" width="850" height="300">
       </a>
       <nav class="nav" aria-label="Navigazione principale">
-        <a class="nav-secondary" href="#competenze">Servizi</a>
-        <a class="nav-secondary" href="#casi">Casi</a>
-        <a class="nav-secondary" href="#metodo">Metodo</a>
-        <a class="nav-secondary" href="#team">Chi siamo</a>
-        <a class="nav-secondary" href="#contatti">Contatti</a>
+        <a class="nav-secondary" data-i18n="nav.services" href="#competenze">Servizi</a>
+        <a class="nav-secondary" data-i18n="nav.cases" href="#casi">Casi</a>
+        <a class="nav-secondary" data-i18n="nav.method" href="#metodo">Metodo</a>
+        <a class="nav-secondary" data-i18n="nav.team" href="#team">Chi siamo</a>
+        <a class="nav-secondary" data-i18n="nav.contact" href="#contatti">Contatti</a>
       </nav>
+      <button class="language-toggle" type="button" aria-label="Passa all'inglese" title="Passa all'inglese">EN</button>
       <button class="theme-toggle" type="button" aria-label="Cambia tema" title="Cambia tema">
         <svg class="icon theme-sun" aria-hidden="true"><use href="#icon-sun"/></svg>
         <svg class="icon theme-moon" aria-hidden="true"><use href="#icon-moon"/></svg>
@@ -368,16 +382,16 @@
   <main id="contenuto" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
-        <p class="eyebrow">Consulenza operativa e software per le PMI</p>
-        <h1 id="hero-title">Meno lavoro manuale.<span>Più controllo sulla tua azienda.</span></h1>
-        <p class="lead">Aiutiamo le PMI a semplificare i processi, collegare i software che già usano e trasformare i dati in decisioni.</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Consulenza operativa e software per le PMI</p>
+        <h1 id="hero-title"><span data-i18n="hero.title">Meno lavoro manuale.</span><span data-i18n="hero.titleAccent">Più controllo sulla tua azienda.</span></h1>
+        <p class="lead" data-i18n="hero.lead">Aiutiamo le PMI a semplificare i processi, collegare i software che già usano e trasformare i dati in decisioni.</p>
         <div class="hero-actions">
-          <a class="button" href="#contatti">Prenota il check-up gratuito <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
-          <p class="hero-offer">In azienda o online, senza impegno</p>
+          <a class="button" href="#contatti"><span data-i18n="hero.cta">Prenota il check-up gratuito</span> <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
+          <p class="hero-offer" data-i18n="hero.offer">In azienda o online, senza impegno</p>
         </div>
         <div class="hero-bottom">
-          <span class="hero-note">Vicini alle persone. Dentro ai processi.</span>
-          <a class="text-link" href="#problemi">Ti riconosci in questi problemi? <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg></a>
+          <span class="hero-note" data-i18n="hero.note">Vicini alle persone. Dentro ai processi.</span>
+          <a class="text-link" href="#problemi"><span data-i18n="hero.link">Ti riconosci in questi problemi?</span> <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg></a>
         </div>
       </div>
     </section>
@@ -489,7 +503,7 @@
             <dl>
               <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-circle-alert"/></svg>Problema</dt><dd>Informazioni distribuite tra documenti, e-mail e gestionali costringono le persone a cercare manualmente dati e risposte, ripetendo spesso le stesse attività.</dd></div>
               <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-wand-sparkles"/></svg>Intervento</dt><dd>Agente AI collegato alle fonti aziendali autorizzate, capace di recuperare informazioni, sintetizzare documenti e supportare attività ricorrenti, con verifiche umane dove necessarie.</dd></div>
-              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-chart-no-axes-combined"/></svg>Risultato</dt><dd>Meno ricerche manuali, risposte più rapide e possibilità di automatizzare le richieste ripetitive.</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-chart-no-axes-combined"/></svg>Risultato</dt><dd>Ricerche manuali ridotte, risposte più rapide e richieste ripetitive automatizzate.</dd></div>
             </dl>
           </article>
         </div>
@@ -730,6 +744,41 @@
         });
       }
 
+      async function setupLanguage() {
+        const languageToggle = document.querySelector('.language-toggle');
+        const fallbackTranslations = {
+          it: { 'ui.nav': 'Navigazione principale', 'ui.skip': 'Vai al contenuto', 'ui.switchTo': "Passa all'inglese" },
+          en: { 'ui.nav': 'Main navigation', 'ui.skip': 'Skip to content', 'ui.switchTo': 'Passa all’italiano' },
+        };
+        let translations = fallbackTranslations;
+        try {
+          const response = await fetch('assets/i18n.json', { cache: 'no-store' });
+          if (response.ok) translations = await response.json();
+        } catch {}
+
+        function applyLanguage(language) {
+          const labels = translations[language];
+          root.dataset.language = language;
+          document.documentElement.lang = language;
+          document.querySelector('.nav').setAttribute('aria-label', labels['ui.nav']);
+          document.querySelector('.skip-link').textContent = labels['ui.skip'];
+          document.querySelectorAll('[data-i18n]').forEach(element => {
+            const value = translations[language]?.[element.dataset.i18n];
+            if (value) element.textContent = value;
+          });
+          languageToggle.textContent = language.toUpperCase();
+          languageToggle.setAttribute('aria-label', labels['ui.switchTo']);
+          languageToggle.title = labels['ui.switchTo'];
+        }
+
+        applyLanguage(root.dataset.language || 'it');
+        languageToggle.addEventListener('click', () => {
+          const language = root.dataset.language === 'en' ? 'it' : 'en';
+          applyLanguage(language);
+          try { localStorage.setItem('tetravise-language', language); } catch {}
+        });
+      }
+
       function setupBackToTop() {
         const backToTop = document.querySelector('.back-to-top');
         backToTop.classList.add('is-floating');
@@ -846,6 +895,7 @@
       }
 
       shuffleTeam();
+      setupLanguage();
       setupTheme();
       setupBackToTop();
       setupContactLinks();
