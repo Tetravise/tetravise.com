@@ -114,8 +114,10 @@
     .section-cta p { max-width: 32rem; color: var(--muted); font-size: .9375rem; }
 
     .pains { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; }
-    .pain { position: relative; min-width: 0; padding: 1.25rem 1.25rem 1.25rem 2.75rem; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); }
-    .pain::before { content: ""; position: absolute; top: calc(1.25rem + .8em); left: 1.25rem; width: .75rem; height: 2px; background: var(--accent); }
+    .pain { position: relative; min-width: 0; padding: 1.25rem 1.5rem; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); }
+    .pain::before, .pain::after { color: var(--accent); font-family: var(--font-display); font-weight: 500; }
+    .pain::before { content: "\201C"; margin-right: .25rem; }
+    .pain::after { content: "\201D"; margin-left: .25rem; }
 
     .fields { display: grid; gap: 1rem; }
     .field { display: flex; min-width: 0; flex-direction: column; gap: 1.5rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); transition: border-color .2s, box-shadow .2s; }
@@ -201,7 +203,7 @@
     .back-to-top { display: grid; flex: none; width: 3rem; height: 3rem; place-items: center; border: 1px solid var(--muted); border-radius: 4px; text-decoration: none; transition: color .2s, border-color .2s; }
     .back-to-top .icon { transform: rotate(180deg); transition: transform .25s ease; }
     .back-to-top:hover { color: #DBEAB6; border-color: currentColor; }
-    .back-to-top.is-floating { position: fixed; z-index: 10; right: max(1rem, env(safe-area-inset-right)); bottom: calc(max(1rem, env(safe-area-inset-bottom)) + var(--footer-offset, 0px)); border-color: var(--muted); background: var(--button-bg); color: var(--button-ink); box-shadow: 0 6px 20px rgb(0 0 0 / .18); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px) scale(.9); transition: opacity .22s ease, transform .28s cubic-bezier(.2, .7, .2, 1), visibility 0s .28s, background .2s, border-color .2s; }
+    .back-to-top.is-floating { position: fixed; z-index: 10; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); border-color: var(--muted); background: var(--button-bg); color: var(--button-ink); box-shadow: 0 6px 20px rgb(0 0 0 / .18); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px) scale(.9); transition: opacity .22s ease, transform .28s cubic-bezier(.2, .7, .2, 1), visibility 0s .28s, background .2s, border-color .2s; }
     .back-to-top.is-floating.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1); transition-delay: 0s; }
     .back-to-top.is-floating:hover { border-color: var(--muted); background: var(--button-hover); color: var(--button-ink); }
 
@@ -737,13 +739,10 @@
 
       function setupBackToTop() {
         const backToTop = document.querySelector('.back-to-top');
-        const footer = document.querySelector('.site-footer');
         backToTop.classList.add('is-floating');
 
         function updateBackToTop() {
           const visible = window.scrollY > 480;
-          const footerOffset = Math.max(0, window.innerHeight - footer.getBoundingClientRect().top);
-          backToTop.style.setProperty('--footer-offset', `${footerOffset}px`);
           if (!visible && document.activeElement === backToTop) document.querySelector('.brand').focus({ preventScroll: true });
           backToTop.classList.toggle('is-visible', visible);
           backToTop.inert = !visible;
