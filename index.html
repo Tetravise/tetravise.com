@@ -126,7 +126,7 @@
     .field h3 { max-width: 16ch; margin-bottom: .75rem; font-size: 1.25rem; }
     .field p { color: var(--soft); font-size: .9375rem; }
     .field .field-example { margin-top: auto; padding-top: 1rem; border-top: 1px dashed var(--line); font-size: .875rem; }
-    .field-example span, .case-sector, .case dt { display: block; color: var(--muted); font-size: .75rem; font-weight: 600; text-transform: uppercase; }
+    .field-example span, .case dt { color: var(--muted); font-size: .75rem; font-weight: 600; text-transform: uppercase; }
     .field-example span { margin-bottom: .25rem; }
     .f1 { --tile: light-dark(#E5EDD9, #2F4234); }
     .f2 { --tile: light-dark(#DEE9ED, #2C4147); }
@@ -141,8 +141,9 @@
     .case-metric strong { color: var(--accent); font-family: var(--font-display); font-size: 2.5rem; font-weight: 500; line-height: 1; }
     .case-metric span { color: var(--muted); font-size: .875rem; }
     .case dl { display: grid; gap: .875rem; margin: 0; }
+    .case dt { display: flex; align-items: center; gap: .4rem; }
+    .case dt .icon { width: 1rem; height: 1rem; color: var(--accent); }
     .case dd { margin: .125rem 0 0; color: var(--soft); font-size: .9375rem; }
-    .case-time { margin-top: auto; color: var(--muted); font-size: .8125rem; }
     .quote { max-width: 46rem; margin-top: 3rem; padding-left: 1.5rem; border-left: 3px solid var(--accent); }
     .quote blockquote { margin: 0; }
     .quote p { font-family: var(--font-display); font-size: 1.375rem; line-height: 1.4; }
@@ -339,6 +340,8 @@
     <symbol id="icon-moon" viewBox="0 0 24 24">
       <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
     </symbol>
+    <symbol id="icon-circle-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
+    <symbol id="icon-wand-sparkles" viewBox="0 0 24 24"><path d="m15 4 5 5"/><path d="m13 6 5 5"/><path d="m3 21 9-9"/><path d="m14 3 1-2 1 2 2 1-2 1-1 2-1-2-2-1 2-1Z"/><path d="m20 15 1-2 1 2 2 1-2 1-1 2-1-2-2-1 2-1Z"/></symbol>
   </svg>
 
   <header class="site-header">
@@ -455,51 +458,43 @@
         <div class="cases">
           <article class="case" data-reveal>
             <div>
-              <span class="case-sector">Metalmeccanica · 35 dipendenti</span>
               <h3>Dagli ordini su Excel a un flusso unico</h3>
             </div>
             <p class="case-metric"><strong>−70%</strong><span>tempo di inserimento ordini</span></p>
             <dl>
-              <div><dt>Problema</dt><dd>Ordini ricevuti via email e ricopiati a mano in tre file diversi, con errori su quantità e date di consegna.</dd></div>
-              <div><dt>Intervento</dt><dd>Analisi del flusso, modulo ordini web collegato al gestionale e avvisi automatici al magazzino.</dd></div>
-              <div><dt>Risultato</dt><dd>12 ore a settimana recuperate in ufficio e consegne pianificate su dati sempre aggiornati.</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-circle-alert"/></svg>Problema</dt><dd>Ordini ricevuti via email e ricopiati a mano in tre file diversi, con errori su quantità e date di consegna.</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-wand-sparkles"/></svg>Intervento</dt><dd>Analisi del flusso, modulo ordini web collegato al gestionale e avvisi automatici al magazzino.</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-chart-no-axes-combined"/></svg>Risultato</dt><dd>12 ore a settimana recuperate in ufficio e consegne pianificate su dati sempre aggiornati.</dd></div>
             </dl>
-            <p class="case-time">Durata: 6 settimane</p>
           </article>
           <article class="case" data-reveal>
             <div>
-              <span class="case-sector">Agroalimentare · 60 dipendenti</span>
               <h3>Margini visibili ogni giorno, non a fine mese</h3>
             </div>
             <p class="case-metric"><strong>3 giorni → 0</strong><span>per preparare il report mensile</span></p>
             <dl>
-              <div><dt>Problema</dt><dd>Il controllo di gestione dipendeva da un report costruito a mano unendo dati di vendita e produzione.</dd></div>
-              <div><dt>Intervento</dt><dd>Modello dati unico tra gestionale e produzione, KPI condivisi con la direzione e dashboard automatica.</dd></div>
-              <div><dt>Risultato</dt><dd>Margini per prodotto e cliente consultabili ogni mattina, decisioni sui prezzi in giorni invece che in settimane.</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-circle-alert"/></svg>Problema</dt><dd>Il controllo di gestione dipendeva da un report costruito a mano unendo dati di vendita e produzione.</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-wand-sparkles"/></svg>Intervento</dt><dd>Modello dati unico tra gestionale e produzione, KPI condivisi con la direzione e dashboard automatica.</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-chart-no-axes-combined"/></svg>Risultato</dt><dd>Margini per prodotto e cliente consultabili ogni mattina, decisioni sui prezzi in giorni invece che in settimane.</dd></div>
             </dl>
-            <p class="case-time">Durata: 8 settimane</p>
           </article>
           <article class="case" data-reveal>
             <div>
-              <span class="case-sector">Servizi alle imprese · 15 dipendenti</span>
               <h3>Documenti fornitori letti dall'AI</h3>
             </div>
             <p class="case-metric"><strong>−80%</strong><span>documenti registrati a mano</span></p>
             <dl>
-              <div><dt>Problema</dt><dd>Centinaia di DDT e fatture al mese registrati manualmente, con controlli in ritardo di settimane.</dd></div>
-              <div><dt>Intervento</dt><dd>Estrazione automatica dei dati con AI, verifica delle anomalie e registrazione diretta nel gestionale.</dd></div>
-              <div><dt>Risultato</dt><dd>Il personale controlla solo le eccezioni e i documenti sono registrati in giornata.</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-circle-alert"/></svg>Problema</dt><dd>Centinaia di DDT e fatture al mese registrati manualmente, con controlli in ritardo di settimane.</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-wand-sparkles"/></svg>Intervento</dt><dd>Estrazione automatica dei dati con AI, verifica delle anomalie e registrazione diretta nel gestionale.</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="#icon-chart-no-axes-combined"/></svg>Risultato</dt><dd>Il personale controlla solo le eccezioni e i documenti sono registrati in giornata.</dd></div>
             </dl>
-            <p class="case-time">Durata: 5 settimane</p>
           </article>
         </div>
         <figure class="quote" data-reveal>
           <blockquote><p>“Pensavamo servisse un nuovo gestionale. Ci hanno mostrato che bastava far parlare bene quello che avevamo già.”</p></blockquote>
-          <figcaption>Responsabile amministrativa, azienda metalmeccanica</figcaption>
         </figure>
         <div class="section-cta" data-reveal>
           <a class="button" href="#contatti">Prenota il check-up gratuito <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg></a>
-          <p>Raccontaci il tuo caso: in 45 minuti capiamo se e come possiamo aiutarti.</p>
         </div>
       </div>
     </section>
