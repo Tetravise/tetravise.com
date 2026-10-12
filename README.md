@@ -93,3 +93,9 @@ Il template SEO in `index.html` viene completato prima del deploy, non nel brows
   autorevolezza e concorrenza; non sono garantiti da un punteggio tecnico.
 
 Le icone Lucide sono incluse localmente; la licenza si trova in `assets/lucide-LICENSE.txt`.
+
+## Copyright e Licenza
+
+© Tetravise. Tutti i diritti riservati.
+
+Questo repository contiene il codice sorgente del sito web aziendale. Il codice, la grafica, i testi e i marchi contenuti sono di proprietà esclusiva e non possono essere copiati, modificati, redistribuiti o utilizzati per altri scopi senza previa autorizzazione scritta.
