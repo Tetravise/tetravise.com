@@ -16,6 +16,8 @@ for (const [input, expected] of [
     assert.ok(seo.metadata.includes(`rel="canonical" href="${expected}"`));
     assert.ok(seo.metadata.includes(`${expected}assets/images/social-preview.png`));
     assert.ok(seo.sitemap.includes(`<loc>${expected}</loc>`));
+    assert.ok(seo.sitemap.includes(`<loc>${expected}relay/</loc>`));
+    assert.ok(seo.relayMetadata.includes(`rel="canonical" href="${expected}relay/"`));
     assert.ok(seo.robots.includes(`Sitemap: ${expected}sitemap.xml`));
     const organization = seo.structuredData['@graph'][0];
     assert.equal(organization.url, expected);
@@ -78,7 +80,12 @@ test('The Pages artifact contains the complete site and valid social image', asy
   assert.equal(html.split('class="linkedin-link" type="button" disabled').length - 1, 0);
   assert.ok(html.includes('href="https://www.linkedin.com/in/azmihamdi/" target="_blank" rel="noopener noreferrer"'));
   assert.ok(html.includes('<a class="back-to-top" href="#top"'));
-  assert.deepEqual((await readdir(outputDirectory)).sort(), ['assets', 'index.html', 'robots.txt', 'sitemap.xml']);
+  assert.deepEqual((await readdir(outputDirectory)).sort(), ['assets', 'index.html', 'relay', 'robots.txt', 'sitemap.xml']);
+  const relay = await readFile(join(outputDirectory, 'relay', 'index.html'), 'utf8');
+  assert.ok(relay.includes(result.relayMetadata));
+  assert.ok(!relay.includes('<template id="seo-metadata"></template>'));
+  assert.ok(relay.includes('<h1 id="hero-title">Nessuna chiamata persa.'));
+  assert.ok(relay.includes('href="../assets/favicon/favicon.ico"'));
   assert.equal(await readFile(join(outputDirectory, 'robots.txt'), 'utf8'), result.robots);
   assert.equal(await readFile(join(outputDirectory, 'sitemap.xml'), 'utf8'), result.sitemap);
   for (const asset of ['tetravise-light-h.svg', 'tetravise-dark-h.svg', 'social-preview.png', 'alex-mengoli.webp', 'giovanni-cioli-puviani.webp', 'riccardo-siena.webp']) {

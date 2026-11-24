@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Relay: assistente telefonico AI per la tua attività</title>
+  <meta name="description" content="Relay risponde al telefono quando non puoi: dà le informazioni giuste, raccoglie messaggi chiari e mostra ogni chiamata in dashboard. Richiedi una demo.">
+  <meta name="theme-color" content="#F5F6F2">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Tetravise">
+  <meta property="og:title" content="Relay: assistente telefonico AI per la tua attività">
+  <meta property="og:description" content="Relay risponde al telefono quando non puoi: dà le informazioni giuste, raccoglie messaggi chiari e mostra ogni chiamata in dashboard.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Relay: assistente telefonico AI per la tua attività">
+  <meta name="twitter:description" content="Relay risponde al telefono quando non puoi: dà le informazioni giuste, raccoglie messaggi chiari e mostra ogni chiamata in dashboard.">
+  <link rel="icon" href="../assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+  <template id="seo-metadata"></template>
+  <script>
+    (() => {
+      let preference = 'system';
+      try {
+        const saved = localStorage.getItem('tetravise-theme');
+        if (['light', 'dark'].includes(saved)) preference = saved;
+      } catch {}
+      const systemColor = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = preference === 'system' ? systemColor : preference;
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "inLanguage": "it-IT",
+      "mainEntity": [
+        { "@type": "Question", "name": "Quanto costa?", "acceptedAnswer": { "@type": "Answer", "text": "Dipende dal volume di chiamate e dai collegamenti necessari. Nella demo ti facciamo un preventivo su misura." } },
+        { "@type": "Question", "name": "Devo cambiare numero di telefono?", "acceptedAnswer": { "@type": "Answer", "text": "No. Resta il tuo numero: attivi l'inoltro verso Relay." } },
+        { "@type": "Question", "name": "Chi chiama capisce che parla con un'intelligenza artificiale?", "acceptedAnswer": { "@type": "Answer", "text": "Sì: l'assistente si presenta come assistente virtuale." } },
+        { "@type": "Question", "name": "E se l'assistente non sa rispondere?", "acceptedAnswer": { "@type": "Answer", "text": "Lo dice onestamente, raccoglie nome, recapito e motivo e ti lascia un messaggio. Il passaggio a una persona, con le regole che scegli tu, è in arrivo." } },
+        { "@type": "Question", "name": "Può prenotare al posto mio?", "acceptedAnswer": { "@type": "Answer", "text": "Oggi consulta le informazioni e raccoglie le richieste: la conferma resta a te." } },
+        { "@type": "Question", "name": "Funziona con il mio gestionale?", "acceptedAnswer": { "@type": "Answer", "text": "Dipende: lo valutiamo insieme in demo. Il collegamento riguarda gestionali con interfaccia web (API)." } },
+        { "@type": "Question", "name": "Registrate le chiamate?", "acceptedAnswer": { "@type": "Answer", "text": "L'audio non viene registrato, salvo diverso accordo. Nella dashboard trovi riassunto e trascrizione." } },
+        { "@type": "Question", "name": "Chi vede i miei dati?", "acceptedAnswer": { "@type": "Answer", "text": "Tu e i collaboratori che indichi. Il nostro team accede solo per assistenza." } },
+        { "@type": "Question", "name": "In che lingue risponde?", "acceptedAnswer": { "@type": "Answer", "text": "Oggi solo in italiano." } },
+        { "@type": "Question", "name": "Quanto ci vuole per partire?", "acceptedAnswer": { "@type": "Answer", "text": "Dipende dalle informazioni da raccogliere e dai collegamenti necessari. In demo ti diamo una data concreta." } }
+      ]
+    }
+  </script>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: light-dark(#F5F6F2, #111B18);
+      --surface: light-dark(#FFFFFF, #192722);
+      --ink: light-dark(#141E1E, #EFF5EF);
+      --soft: light-dark(#4F6260, #BECDC5);
+      --muted: light-dark(#5B6D69, #B2C3B8);
+      --line: light-dark(#D6DFD8, #3C5147);
+      --accent: light-dark(#536F5F, #C9DD97);
+      --focus: light-dark(#3C684A, #C9DD97);
+      --button-bg: light-dark(#141E1E, #CDDFAC);
+      --button-ink: light-dark(#FFFFFF, #17251B);
+      --button-hover: light-dark(#2C423C, #DDEBC6);
+      --inverse-bg: light-dark(#141E1E, #0A1410);
+      --tile: light-dark(#E5EDD9, #2F4234);
+      --good: light-dark(#2F6B3F, #A6DDAF);
+      --warn: light-dark(#A4532F, #F0B89B);
+      --error: light-dark(#A1262B, #FFB4AE);
+      --font-display: "Space Grotesk", "Hanken Grotesk", sans-serif;
+      --font-body: "Hanken Grotesk", sans-serif;
+      --gutter: 1rem;
+      --header-height: 4rem;
+    }
+
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    :root[data-theme="light"] { color-scheme: light; }
+    :root[data-theme="dark"] { color-scheme: dark; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 1rem); }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    h1, h2, h3, h4, p, figure, ul, ol, dl, dd, blockquote { margin: 0; }
+    ul, ol { padding: 0; list-style: none; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.15; text-wrap: balance; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    ::selection { background: var(--accent); color: var(--surface); }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 3px; }
+    .container { width: calc(100% - 2 * var(--gutter)); max-width: 72rem; margin-inline: auto; }
+    .icon-definitions { position: absolute; width: 0; height: 0; overflow: hidden; }
+    .icon { display: block; width: 1.25rem; height: 1.25rem; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    .skip-link { position: fixed; z-index: 100; top: 1rem; left: 1rem; padding: .75rem 1rem; background: var(--button-bg); color: var(--button-ink); transform: translateY(-300%); }
+    .skip-link:focus { transform: none; }
+    .inverse { color-scheme: dark; background: var(--inverse-bg); color: var(--ink); }
+
+    .button { display: inline-flex; max-width: 100%; min-height: 3rem; align-items: center; justify-content: center; gap: .75rem; padding: .75rem 1.25rem; border: 1px solid var(--button-bg); border-radius: 6px; background: var(--button-bg); color: var(--button-ink); font-size: 1rem; font-weight: 600; line-height: 1.25; text-decoration: none; cursor: pointer; transition: background .2s, border-color .2s; }
+    .button:hover { background: var(--button-hover); border-color: var(--button-hover); }
+    .button:disabled { cursor: progress; opacity: .7; }
+    .button--ghost { border-color: var(--muted); background: transparent; color: var(--ink); }
+    .button--ghost:hover { border-color: var(--ink); background: transparent; }
+    .button--small { min-height: 2.75rem; padding: .5rem .875rem; font-size: .9375rem; }
+    .text-link { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .5rem; font-weight: 600; text-decoration: underline; text-underline-offset: .25em; }
+    .badge { display: inline-flex; align-items: center; gap: .375rem; padding: .125rem .5rem; border: 1px solid currentColor; border-radius: 999px; font-size: .8125rem; font-weight: 600; line-height: 1.5; white-space: nowrap; }
+    .glass { border: 1px solid color-mix(in srgb, var(--surface) 70%, var(--line)); background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 90%, transparent), color-mix(in srgb, var(--surface) 76%, transparent)); box-shadow: 0 1px 0 color-mix(in srgb, white 40%, transparent) inset, 0 18px 40px rgb(10 20 16 / .12); -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%); }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .glass { background: var(--surface); } }
+    @media (prefers-reduced-transparency: reduce) { .glass { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+    .triangles { position: relative; isolation: isolate; }
+    .triangles::before { content: ""; position: absolute; z-index: -1; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104' viewBox='0 0 120 104'%3E%3Cpath d='M0 104 60 0l60 104ZM30 52h60L60 104Z' fill='none' stroke='%2390A89A' stroke-opacity='.22'/%3E%3C/svg%3E"); -webkit-mask-image: linear-gradient(to bottom, #000 20%, transparent 95%); mask-image: linear-gradient(to bottom, #000 20%, transparent 95%); pointer-events: none; }
+
+    .site-header { position: fixed; z-index: 50; inset: 0 0 auto; border-bottom: 1px solid transparent; transition: background .25s, border-color .25s, box-shadow .25s; }
+    .site-header.is-scrolled, .site-header:has(.nav.is-open) { border-bottom-color: color-mix(in srgb, var(--line) 80%, transparent); background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 92%, transparent), color-mix(in srgb, var(--bg) 84%, transparent)); box-shadow: 0 8px 24px rgb(10 20 16 / .06); -webkit-backdrop-filter: blur(16px) saturate(160%); backdrop-filter: blur(16px) saturate(160%); }
+    @media (prefers-reduced-transparency: reduce) { .site-header.is-scrolled { background: var(--bg); } }
+    .header-inner { display: flex; min-height: var(--header-height); align-items: center; gap: .5rem; }
+    .brand { display: inline-flex; align-items: center; gap: .5rem; margin-right: auto; font-family: var(--font-display); font-size: 1.375rem; font-weight: 500; text-decoration: none; }
+    .brand-mark { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 8px; background: var(--button-bg); color: var(--button-ink); }
+    .brand-mark .icon { width: 1.125rem; height: 1.125rem; stroke-width: 2; }
+    .nav { display: flex; flex-direction: column; font-size: .9375rem; font-weight: 500; }
+    .nav a { display: flex; min-height: 2.75rem; align-items: center; text-decoration: none; }
+    .nav a:hover { text-decoration: underline; text-underline-offset: .3em; }
+    .menu-toggle { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 6px; background: var(--surface); cursor: pointer; }
+    .menu-toggle .icon-close, .menu-toggle[aria-expanded="true"] .icon-open { display: none; }
+    .menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+    html:not(.js) .menu-toggle { display: none; }
+    .js .nav { position: absolute; top: 100%; right: 0; left: 0; display: none; padding: .5rem var(--gutter) 1rem; border-bottom: 1px solid var(--line); background: var(--bg); }
+    .js .nav.is-open { display: flex; }
+
+    .hero { padding: calc(var(--header-height) + 2rem) 0 2.5rem; background: radial-gradient(60rem 30rem at 85% 20%, color-mix(in srgb, var(--tile) 80%, transparent), transparent 70%); }
+    .hero-grid { display: grid; gap: 2.5rem; align-items: center; }
+    .eyebrow { color: var(--accent); font-size: .9375rem; font-weight: 600; }
+    .hero h1 { max-width: 18ch; margin-top: .75rem; font-size: 2.25rem; font-weight: 400; line-height: 1.08; }
+    .hero h1 span { display: block; color: var(--accent); }
+    .lead { max-width: 36rem; margin-top: 1.25rem; color: var(--soft); font-size: 1.125rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+    .hero-note { margin-top: .875rem; color: var(--muted); font-size: 1rem; }
+    .trust-strip { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--soft); font-size: 1rem; }
+    .trust-strip li { display: inline-flex; align-items: center; gap: .5rem; }
+    .trust-strip .icon { width: 1.125rem; height: 1.125rem; color: var(--accent); }
+
+    .preview { position: relative; width: 100%; max-width: 26rem; margin-inline: auto; }
+    .phone { padding: 1rem; border-radius: 28px; }
+    .phone-top { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .25rem .375rem .875rem; border-bottom: 1px solid var(--line); font-size: 1rem; font-weight: 600; }
+    .live { display: inline-flex; align-items: center; gap: .375rem; color: var(--good); font-size: 1rem; font-weight: 500; white-space: nowrap; }
+    .live::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: currentColor; }
+    .chat { display: flex; flex-direction: column; gap: .625rem; padding-top: .875rem; }
+    .bubble { max-width: 88%; padding: .625rem .875rem; border-radius: 16px; font-size: 1rem; line-height: 1.45; }
+    .bubble .who { display: block; margin-bottom: .125rem; font-size: 1rem; font-weight: 600; }
+    .from-assistant { align-self: flex-start; border-bottom-left-radius: 4px; background: var(--tile); }
+    .from-caller { align-self: flex-end; border-bottom-right-radius: 4px; background: var(--button-bg); color: var(--button-ink); }
+    .message-card { display: flex; gap: .75rem; margin: -.5rem 1rem 0; padding: 1rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 12px 32px rgb(10 20 16 / .14); font-size: 1rem; }
+    .message-card .icon { margin-top: .125rem; color: var(--accent); }
+    .message-card strong { display: block; }
+    .message-card .kicker { color: var(--muted); font-size: 1rem; }
+
+    .section { padding-block: 4rem; }
+    .section-head { display: flex; max-width: 44rem; flex-direction: column; gap: .875rem; margin-bottom: 2.25rem; }
+    .section-head.center { margin-inline: auto; text-align: center; align-items: center; }
+    .section h2 { font-size: 1.875rem; }
+    .sub { color: var(--soft); font-size: 1.0625rem; }
+    .alt { background: var(--surface); }
+    .closing { max-width: 40rem; margin: 2rem auto 0; text-align: center; }
+    .closing p { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.4; }
+    .section-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 1.5rem; margin-top: 2.5rem; text-align: center; }
+
+    .cards { display: grid; gap: 1rem; }
+    .card { min-width: 0; padding: 1.5rem; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+    .alt .card { background: var(--bg); }
+    .card h3 { margin-bottom: .5rem; font-size: 1.25rem; }
+    .card p { color: var(--soft); font-size: 1rem; }
+    .card-icon { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; margin-bottom: 1rem; border-radius: 8px; background: var(--tile); color: var(--accent); }
+    .card-icon .icon { width: 1.5rem; height: 1.5rem; }
+
+    .chart-figure { margin-bottom: 2.5rem; padding: 1.5rem 1rem 1rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    .chart-title { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; margin-bottom: 1.25rem; }
+    .chart-title h3 { font-size: 1.25rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: .25rem 1rem; font-size: 1rem; }
+    .legend li { display: inline-flex; align-items: center; gap: .5rem; }
+    .swatch { width: .875rem; height: .875rem; flex: none; border-radius: 3px; background: var(--c); }
+    .swatch--missed { background: repeating-linear-gradient(45deg, var(--warn) 0 3px, color-mix(in srgb, var(--warn) 55%, transparent) 3px 6px); }
+    .weeks { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); height: 14rem; gap: .375rem; }
+    .week { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: .375rem; min-width: 0; }
+    .week.is-start { margin-left: -.1875rem; padding-left: .1875rem; border-left: 2px dashed var(--muted); }
+    .track { display: flex; height: 100%; flex-direction: column; justify-content: flex-end; align-items: center; }
+    .total { font-size: 1rem; font-weight: 600; }
+    .seg { width: min(2.75rem, 80%); flex: none; height: calc(var(--v) * .78%); }
+    .seg--missed { border-radius: 4px 4px 0 0; background: repeating-linear-gradient(45deg, var(--warn) 0 3px, color-mix(in srgb, var(--warn) 55%, transparent) 3px 6px); }
+    .seg--answered { background: var(--accent); }
+    .seg--missed + .seg--answered { border-radius: 0; }
+    .seg--answered:first-child, .total + .seg--answered { border-radius: 4px 4px 0 0; }
+    .week-label { color: var(--muted); font-size: 1rem; text-align: center; }
+    .phases { display: grid; grid-template-columns: 1fr 1fr; margin-top: .5rem; padding-top: .5rem; border-top: 1px solid var(--line); color: var(--soft); font-size: 1rem; font-weight: 600; text-align: center; }
+    .chart-caption { margin-top: 1rem; color: var(--muted); font-size: 1rem; }
+    .compare { display: grid; gap: 1rem; }
+    .compare-col { padding: 1.5rem; border: 1px solid var(--line); border-radius: 12px; }
+    .compare-col h3 { margin-bottom: 1rem; font-size: 1.25rem; }
+    .compare-col li { display: flex; gap: .75rem; padding-block: .5rem; }
+    .compare-col li + li { border-top: 1px solid var(--line); }
+    .compare-col .icon { margin-top: .1875rem; }
+    .compare-before { background: var(--surface); }
+    .compare-before .icon { color: var(--warn); }
+    .compare-after { border-color: var(--accent); background: color-mix(in srgb, var(--tile) 55%, var(--surface)); }
+    .compare-after .icon { color: var(--accent); }
+
+    .steps { display: grid; gap: 1.5rem; counter-reset: step; }
+    .step { position: relative; display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); align-content: start; gap: 1rem; }
+    .step-number { display: grid; width: 3.5rem; height: 3.5rem; place-items: center; border-radius: 50%; background: var(--button-bg); color: var(--button-ink); font-family: var(--font-display); font-size: 1.5rem; }
+    .step:not(:last-child)::after { content: ""; position: absolute; top: 3.75rem; bottom: -1.25rem; left: 1.75rem; border-left: 2px dashed var(--line); }
+    .step h3 { margin: .375rem 0 .5rem; font-size: 1.25rem; }
+    .step p { color: var(--soft); font-size: 1rem; }
+    .step .card-icon { margin: 1rem 0 0; }
+
+    .demo-label { display: inline-flex; align-items: center; gap: .5rem; margin-bottom: .75rem; padding: .375rem .75rem; border-radius: 999px; background: #CDDFAC; color: #17251B; font-size: 1rem; font-weight: 600; }
+    .app { color-scheme: light; overflow: hidden; border: 1px solid #3A4A46; border-radius: 12px; background: var(--bg); color: var(--ink); box-shadow: 0 30px 60px rgb(0 0 0 / .35); }
+    .app-bar { display: flex; align-items: center; gap: 1rem; padding: .625rem 1rem; border-bottom: 1px solid var(--line); background: var(--surface); }
+    .dots { display: flex; gap: .375rem; }
+    .dots i { width: .625rem; height: .625rem; border-radius: 50%; background: #C9D2CC; }
+    .app-url { flex: 1; min-width: 0; overflow: hidden; padding: .25rem .75rem; border-radius: 6px; background: var(--bg); color: var(--soft); font-size: 1rem; text-overflow: ellipsis; white-space: nowrap; }
+    .app-body { display: grid; gap: 1rem; padding: 1rem; }
+    .app-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; }
+    .app-head h3 { font-size: 1.375rem; }
+    .period { color: var(--soft); font-size: 1rem; }
+    .kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+    .kpi { display: flex; min-width: 0; flex-direction: column; gap: .25rem; padding: 1rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+    .kpi-label { color: var(--soft); font-size: 1rem; }
+    .kpi strong { font-family: var(--font-display); font-size: 1.75rem; font-weight: 500; line-height: 1.1; }
+    .kpi strong small { font-size: 1rem; }
+    .kpi-note { color: var(--muted); font-size: 1rem; line-height: 1.35; }
+    .delta { display: inline-flex; align-items: center; gap: .25rem; margin-top: auto; color: var(--good); font-size: 1rem; font-weight: 600; }
+    .delta .icon { width: 1rem; height: 1rem; stroke-width: 2; }
+    .footnote { color: var(--muted); font-size: 1rem; }
+    .panels { display: grid; gap: 1rem; }
+    .panel { min-width: 0; padding: 1rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+    .panel h4 { margin-bottom: 1rem; font-size: 1.125rem; }
+    .days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); height: 12rem; gap: .375rem; }
+    .day { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: .375rem; min-width: 0; }
+    .day .seg { height: calc(var(--v) * 4%); border-radius: 4px 4px 0 0; background: var(--accent); }
+    .day-label { color: var(--muted); font-size: 1rem; text-align: center; white-space: nowrap; }
+    .outcomes { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.25rem; }
+    .donut { position: relative; width: 9rem; flex: none; }
+    .donut svg { display: block; width: 100%; transform: rotate(-90deg); }
+    .donut circle { fill: none; stroke-width: 6; }
+    .donut-center { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; font-size: 1rem; line-height: 1.2; }
+    .donut-center strong { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; }
+    .outcome-list { display: grid; flex: 1 1 12rem; align-content: start; gap: .5rem; font-size: 1rem; }
+    .outcome-list li { display: grid; grid-template-columns: .875rem minmax(0, 1fr) auto; gap: .5rem; align-items: center; }
+    .outcome-list span:last-child { font-variant-numeric: tabular-nums; font-weight: 600; }
+    .c-concluded { --c: #536F5F; }
+    .c-transferred { --c: #2F6690; }
+    .c-failed { --c: #B3393E; }
+    .c-other { --c: #8C9894; }
+    .calls-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: .75rem 1rem; margin-bottom: 1rem; }
+    .calls-head h4 { margin: 0; }
+    .filters { display: flex; flex-wrap: wrap; gap: .75rem; width: 100%; }
+    .filter { display: flex; flex: 1 1 15rem; flex-direction: column; gap: .25rem; font-size: 1rem; font-weight: 600; }
+    .input-icon { position: relative; }
+    .input-icon .icon { position: absolute; top: 50%; left: .75rem; color: var(--muted); transform: translateY(-50%); pointer-events: none; }
+    .input-icon input { padding-left: 2.5rem; }
+    .control { width: 100%; min-height: 2.75rem; padding: .5rem .75rem; border: 1px solid var(--muted); border-radius: 6px; background: var(--surface); font-weight: 400; }
+    .calls-status { color: var(--soft); font-size: 1rem; }
+    .calls-table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+    .calls-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .calls-table tbody { display: grid; gap: .75rem; }
+    .calls-table tr { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1rem; padding: 1rem; border: 1px solid var(--line); border-radius: 10px; }
+    .calls-table td { display: block; min-width: 0; }
+    .c-date { order: 1; margin-right: auto; color: var(--soft); white-space: nowrap; }
+    .c-outcome { order: 2; }
+    .c-name { order: 3; flex-basis: 100%; font-weight: 600; }
+    .c-phone { order: 4; color: var(--soft); white-space: nowrap; }
+    .c-duration { order: 5; color: var(--soft); white-space: nowrap; }
+    .c-summary { order: 6; flex-basis: 100%; }
+    .c-action { order: 7; flex-basis: 100%; margin-top: .25rem; }
+    .outcome { display: inline-flex; align-items: center; gap: .375rem; font-size: 1rem; line-height: 1.3; }
+    .outcome::before { content: ""; width: .625rem; height: .625rem; flex: none; border-radius: 50%; background: var(--c); }
+    .link-button { min-height: 2.75rem; padding: .375rem .75rem; border: 1px solid var(--muted); border-radius: 6px; background: var(--surface); font-weight: 600; cursor: pointer; }
+    .link-button:hover { border-color: var(--ink); }
+    .empty { padding: 1.5rem; color: var(--soft); text-align: center; }
+    .demo-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 1.5rem; margin-top: 2.5rem; text-align: center; }
+    .demo-cta p { font-family: var(--font-display); font-size: 1.25rem; }
+
+    .drawer { width: min(30rem, 100%); max-width: 100%; height: 100dvh; max-height: 100dvh; margin: 0 0 0 auto; padding: 0; border: 0; border-left: 1px solid var(--line); background: var(--bg); color: var(--ink); box-shadow: -20px 0 50px rgb(0 0 0 / .25); }
+    .drawer::backdrop { background: rgb(10 20 16 / .6); }
+    .drawer[open] { animation: slide .3s cubic-bezier(.2, .7, .2, 1); }
+    .drawer-inner { display: flex; min-height: 100%; flex-direction: column; gap: 1.25rem; padding: 1.25rem; }
+    .drawer-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .drawer-head h3 { font-size: 1.375rem; }
+    .drawer-head .badge { margin-top: .5rem; color: var(--accent); }
+    .icon-button { display: grid; width: 2.75rem; height: 2.75rem; flex: none; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 6px; background: var(--surface); cursor: pointer; }
+    .drawer section { padding: 1rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-size: 1rem; }
+    .drawer h4 { margin-bottom: .5rem; font-size: 1rem; color: var(--soft); }
+    .facts { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .25rem 1rem; }
+    .facts dt { color: var(--soft); }
+    .transcript { display: grid; gap: .5rem; }
+    .transcript li { padding: .5rem .75rem; border-radius: 8px; background: var(--bg); }
+    .transcript strong { display: block; font-size: 1rem; }
+    @keyframes slide { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+    .features { display: grid; gap: 1rem; }
+    .feature { display: flex; min-width: 0; flex-direction: column; gap: .5rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    .feature-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
+    .feature h3 { font-size: 1.25rem; }
+    .feature > p { color: var(--soft); font-size: 1rem; }
+    .feature .badge { color: var(--warn); }
+    .feature.is-soon { border-style: dashed; }
+    .example { display: grid; gap: .5rem; margin-top: auto; padding-top: 1rem; }
+    .example .bubble { max-width: 92%; }
+
+    .trust { display: grid; gap: 1.5rem; }
+    .trust-item h3 { margin: .25rem 0 .5rem; font-size: 1.125rem; }
+    .trust-item p { color: var(--soft); font-size: 1rem; }
+    .trust-link { margin-top: 2rem; }
+
+    .sector { display: grid; gap: 1.5rem; align-items: center; padding: 1.5rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .sector h3 { margin-bottom: .75rem; font-size: 1.375rem; }
+    .sector h3 + p { color: var(--soft); }
+    .sector .chat { padding: 0; }
+    .sector-invite { margin-top: 1.5rem; color: var(--soft); text-align: center; }
+
+    .activation { display: grid; gap: 1rem; counter-reset: activation; }
+    .activation li { display: flex; flex-direction: column; gap: .5rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); counter-increment: activation; }
+    .activation li::before { content: counter(activation, decimal-leading-zero); color: var(--muted); font-size: 1rem; font-weight: 600; }
+    .activation .badge { align-self: flex-start; }
+    .tag-us { color: var(--accent); }
+    .tag-you { border-color: var(--button-bg); background: var(--button-bg); color: var(--button-ink); }
+    .activation h3 { font-size: 1.125rem; }
+    .activation p { color: var(--soft); font-size: 1rem; }
+
+    .faq { max-width: 46rem; margin-inline: auto; }
+    .faq details { border-top: 1px solid var(--line); }
+    .faq details:last-child { border-bottom: 1px solid var(--line); }
+    .faq summary { display: grid; grid-template-columns: minmax(0, 1fr) 1.5rem; gap: 1rem; align-items: center; padding-block: 1.125rem; font-family: var(--font-display); font-size: 1.125rem; line-height: 1.4; list-style: none; cursor: pointer; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary:hover { color: var(--accent); }
+    .faq .icon { transition: transform .2s; }
+    .faq details[open] .icon { transform: rotate(45deg); }
+    .faq details p { padding: 0 2.5rem 1.25rem 0; color: var(--soft); }
+
+    .request { background: radial-gradient(50rem 30rem at 10% 90%, color-mix(in srgb, var(--tile) 90%, transparent), transparent 70%), var(--bg); }
+    .request-grid { display: grid; gap: 2rem; }
+    .request-points { display: grid; gap: .75rem; margin-top: 1.5rem; }
+    .request-points li { display: flex; gap: .75rem; }
+    .request-points .icon { margin-top: .1875rem; color: var(--accent); }
+    .form-card { padding: 1.5rem; border-radius: 16px; }
+    .form { display: grid; gap: 1.125rem; }
+    .form-field { display: flex; flex-direction: column; gap: .375rem; }
+    .form-field > label, .form-field legend { font-weight: 600; }
+    .optional { color: var(--soft); font-weight: 400; }
+    .form .control { min-height: 3rem; font-size: 1rem; }
+    .control[aria-invalid="true"] { border-color: var(--error); box-shadow: 0 0 0 1px var(--error); }
+    fieldset.form-field { margin: 0; padding: 0; border: 0; min-width: 0; }
+    .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+    .choice { display: flex; min-height: 2.75rem; align-items: center; gap: .5rem; padding: .5rem .75rem; border: 1px solid var(--muted); border-radius: 6px; background: var(--surface); cursor: pointer; }
+    .choice:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .choice:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+    .choice input, .consent input { width: 1.125rem; height: 1.125rem; flex: none; margin: 0; accent-color: var(--accent); }
+    .consent { display: flex; gap: .75rem; align-items: flex-start; font-size: 1rem; }
+    .consent input { margin-top: .25rem; }
+    .field-error { display: flex; gap: .375rem; color: var(--error); font-size: 1rem; font-weight: 600; }
+    .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .form-status { padding: 1rem; border-radius: 10px; font-size: 1rem; }
+    .form-status:focus { outline: none; }
+    .form-status--ok { border: 1px solid var(--accent); background: color-mix(in srgb, var(--tile) 60%, var(--surface)); }
+    .form-status--ok strong { display: block; font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; }
+    .form-status--error { border: 1px solid var(--error); background: var(--surface); color: var(--ink); }
+
+    .site-footer { padding-block: 2.5rem calc(2rem + env(safe-area-inset-bottom, 0px)); }
+    .footer-grid { display: grid; gap: 1.5rem; }
+    .footer-grid h2 { margin-bottom: .5rem; font-size: 1rem; color: var(--soft); font-family: var(--font-body); font-weight: 600; }
+    .footer-grid p, .footer-grid li { color: var(--soft); font-size: 1rem; }
+    .footer-links a { display: inline-flex; min-height: 2.75rem; align-items: center; }
+    .privacy { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--soft); font-size: 1rem; }
+    .privacy h2 { margin-bottom: .5rem; color: var(--ink); font-size: 1.125rem; }
+    .privacy p + p { margin-top: .5rem; }
+
+    .sticky-cta { position: fixed; z-index: 40; right: 0; bottom: 0; left: 0; padding: .75rem var(--gutter) calc(.75rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 94%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); transform: translateY(110%); transition: transform .25s ease; }
+    .sticky-cta .button { width: 100%; }
+    .sticky-cta.is-visible { transform: none; }
+    html:not(.js) .sticky-cta { display: none; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .js .reveal-chat .chat li, .js .reveal-chat .message-card { opacity: 0; animation: bubble .45s ease forwards; animation-delay: calc(var(--i) * 1.1s + .3s); }
+    }
+    @keyframes bubble { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @media (hover: hover) { .button:hover .icon { transform: translateX(2px); } .button .icon { transition: transform .2s; } }
+    @media (max-width: 22.5rem) {
+      .header-inner { gap: .375rem; }
+      .brand { gap: .375rem; font-size: 1.125rem; }
+      .brand-mark { width: 1.75rem; height: 1.75rem; }
+      .button--small { padding-inline: .5rem; font-size: .8125rem; white-space: nowrap; }
+    }
+    @media (max-width: 47.99rem) {
+      .js body { padding-bottom: 5rem; }
+    }
+    @media (min-width: 48rem) {
+      :root { --gutter: 2rem; --header-height: 4.5rem; }
+      .menu-toggle, .sticky-cta { display: none; }
+      .js .nav, .nav { position: static; display: flex; flex-direction: row; gap: 1.5rem; margin-right: 1rem; padding: 0; border: 0; background: none; }
+      .hero h1 { font-size: 3.25rem; }
+      .section { padding-block: 5rem; }
+      .section h2 { font-size: 2.25rem; }
+      .cards, .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .compare { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+      .step { grid-template-columns: 1fr; }
+      .step:not(:last-child)::after { top: 1.75rem; right: -2rem; bottom: auto; left: 4.25rem; border-top: 2px dashed var(--line); border-left: 0; }
+      .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .panels { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+      .outcomes { flex-direction: column; align-items: stretch; }
+      .donut { margin-inline: auto; }
+      .app-body { padding: 1.5rem; }
+      .filters { width: auto; }
+      .trust { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .activation { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sector { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); padding: 2rem; }
+      .footer-grid { grid-template-columns: 1.4fr 1fr 1.4fr; }
+      .form-card { padding: 2rem; }
+      .chart-figure { padding: 2rem; }
+    }
+    @media (min-width: 64rem) {
+      .hero { min-height: min(100svh, 52rem); display: flex; align-items: center; padding-block: calc(var(--header-height) + 2rem) 3rem; }
+      .hero > .container { width: calc(100% - 2 * var(--gutter)); }
+      .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 4rem; }
+      .hero h1 { font-size: 3.75rem; }
+      .section h2 { font-size: 2.5rem; }
+      .cards, .features { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .trust { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .activation { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .request-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 4rem; align-items: start; }
+      .calls-table thead { position: static; width: auto; height: auto; clip-path: none; }
+      .calls-table tbody { display: table-row-group; }
+      .calls-table tr { display: table-row; padding: 0; border: 0; }
+      .calls-table td, .calls-table th { display: table-cell; padding: .75rem .5rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+      .calls-table th { color: var(--soft); font-weight: 600; white-space: nowrap; }
+      .calls-table :is(.c-date, .c-name) { white-space: nowrap; }
+      .c-outcome { margin: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-icon-library="lucide">
+    <desc>Lucide icons. License: assets/lucide-LICENSE.txt</desc>
+    <symbol id="i-audio" viewBox="0 0 24 24"><path d="M2 10v3M6 6v11M10 3v18M14 8v7M18 5v13M22 10v3"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14m7-7-7 7-7-7"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7M12 19V5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-phone-missed" viewBox="0 0 24 24"><path d="m22 2-6 6m0-6 6 6"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-phone-forwarded" viewBox="0 0 24 24"><path d="m18 2 4 4-4 4M14 6h8"/><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="i-sticky-note" viewBox="0 0 24 24"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><path d="m2 2 20 20"/></symbol>
+    <symbol id="i-circle-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6m0-6 6 6"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></symbol>
+    <symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M13 8H7M17 12H7"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-mic-off" viewBox="0 0 24 24"><path d="m2 2 20 20M18.89 13.23A7.12 7.12 0 0 0 19 12v-2M5 10v2a7 7 0 0 0 12 5M15 9.34V5a3 3 0 0 0-5.68-1.33M9 9v3a3 3 0 0 0 5.12 2.12M12 19v3"/></symbol>
+    <symbol id="i-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></symbol>
+    <symbol id="i-calendar-check" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18m-12 6 2 2 4-4"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Relay, inizio pagina"><span class="brand-mark" aria-hidden="true"><svg class="icon"><use href="#i-audio"/></svg></span>Relay</a>
+      <nav class="nav" id="menu" aria-label="Sezioni della pagina">
+        <a href="#problema">Il problema</a>
+        <a href="#come-funziona">Come funziona</a>
+        <a href="#demo">Demo</a>
+        <a href="#domande">Domande</a>
+      </nav>
+      <a class="button button--small" href="#richiedi-demo" data-cta="header">Richiedi una demo</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu delle sezioni">
+        <svg class="icon icon-open" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="icon icon-close" aria-hidden="true"><use href="#i-x"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenuto" tabindex="-1">
+    <section class="hero triangles" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Assistente telefonico AI per piccole attività</p>
+          <h1 id="hero-title">Nessuna chiamata persa. <span>Il tuo telefono risponde sempre.</span></h1>
+          <p class="lead">Relay risponde alle chiamate quando non puoi farlo tu: dà le informazioni giuste, raccoglie messaggi chiari e ti mostra tutto in una dashboard.</p>
+          <div class="hero-actions">
+            <a class="button" href="#richiedi-demo" data-cta="hero">Richiedi una demo <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a class="button button--ghost" href="#demo" data-cta="hero-dashboard">Guarda la dashboard</a>
+          </div>
+          <p class="hero-note">Nessun impegno. Ti ricontattiamo noi.</p>
+          <ul class="trust-strip" aria-label="In breve">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Italiano naturale</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Dati separati per ogni attività</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Si presenta come assistente virtuale</li>
+          </ul>
+        </div>
+        <figure class="preview reveal-chat" aria-labelledby="preview-caption">
+          <figcaption class="sr-only" id="preview-caption">Esempio di chiamata gestita da Relay e del messaggio che arriva al titolare</figcaption>
+          <div class="phone glass">
+            <div class="phone-top"><span>Autonoleggio Lago Verde</span><span class="live">In chiamata</span></div>
+            <ol class="chat">
+              <li class="bubble from-assistant" style="--i:0"><span class="who">Assistente</span>Buongiorno, sono l'assistente virtuale di Autonoleggio Lago Verde. Come posso aiutarla?</li>
+              <li class="bubble from-caller" style="--i:1"><span class="who">Cliente</span>Vorrei noleggiare un'auto per sabato.</li>
+              <li class="bubble from-assistant" style="--i:2"><span class="who">Assistente</span>Sabato abbiamo auto disponibili. Lascio un messaggio al titolare per confermare?</li>
+              <li class="bubble from-caller" style="--i:3"><span class="who">Cliente</span>Sì, grazie. Sono Marco Rossi.</li>
+            </ol>
+          </div>
+          <div class="message-card" style="--i:4">
+            <svg class="icon" aria-hidden="true"><use href="#i-message"/></svg>
+            <p><span class="kicker">Messaggio per il titolare</span><strong>Marco R.</strong> Vuole noleggiare un'auto sabato · Urgenza: non urgente</p>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section alt" id="problema" aria-labelledby="pain-title">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="pain-title">Ogni telefonata persa è un cliente che chiama qualcun altro</h2>
+          <p class="sub">Lavori, e il telefono squilla. Quando non puoi rispondere, il cliente non aspetta.</p>
+        </div>
+        <ul class="cards">
+          <li class="card"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone-missed"/></svg></div><h3>Sei occupato</h3><p>Con un cliente, in officina, alla guida: il telefono squilla e tu non puoi rispondere.</p></li>
+          <li class="card"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg></div><h3>Fuori orario</h3><p>Sera, pausa pranzo, weekend: le richieste arrivano quando non c'è nessuno.</p></li>
+          <li class="card"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-repeat"/></svg></div><h3>Sempre le stesse domande</h3><p>Orari, indirizzo, disponibilità: venti volte al giorno, sempre interrotto.</p></li>
+          <li class="card"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-sticky-note"/></svg></div><h3>Messaggi che si perdono</h3><p>Un post-it con un numero e nessun nome. Chi richiami per primo?</p></li>
+          <li class="card"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-eye-off"/></svg></div><h3>Nessuna visibilità</h3><p>Quante chiamate ricevi? Quante ne perdi? Non lo sai.</p></li>
+          <li class="card"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-circle-x"/></svg></div><h3>Soluzioni scomode</h3><p>Segreterie ignorate, menu infiniti, costi fissi anche quando non squilla niente.</p></li>
+        </ul>
+        <div class="closing">
+          <p>Non è colpa tua. Il telefono chiede un presidio che una persona sola non può dare.</p>
+          <a class="text-link" href="#cosa-cambia">Scopri come lo risolviamo <svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cosa-cambia" aria-labelledby="change-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="change-title">Cosa cambia, in concreto</h2>
+        </div>
+        <!-- Dati dello scenario: le settimane 7 e 8 coincidono con i periodi della demo (87 e 98 chiamate). -->
+        <figure class="chart-figure" aria-labelledby="weeks-title">
+          <div class="chart-title">
+            <h3 id="weeks-title">Chiamate ricevute per settimana</h3>
+            <ul class="legend" aria-hidden="true">
+              <li><span class="swatch" style="--c: var(--accent)"></span>Con risposta</li>
+              <li><span class="swatch swatch--missed"></span>Senza risposta</li>
+            </ul>
+          </div>
+          <ol class="weeks">
+            <li class="week"><span class="sr-only">Settimana 1, prima di Relay: 84 chiamate, 29 senza risposta.</span><span class="track" aria-hidden="true"><span class="total">84</span><span class="seg seg--missed" style="--v:29"></span><span class="seg seg--answered" style="--v:55"></span></span><span class="week-label" aria-hidden="true">S1</span></li>
+            <li class="week"><span class="sr-only">Settimana 2, prima di Relay: 91 chiamate, 34 senza risposta.</span><span class="track" aria-hidden="true"><span class="total">91</span><span class="seg seg--missed" style="--v:34"></span><span class="seg seg--answered" style="--v:57"></span></span><span class="week-label" aria-hidden="true">S2</span></li>
+            <li class="week"><span class="sr-only">Settimana 3, prima di Relay: 79 chiamate, 26 senza risposta.</span><span class="track" aria-hidden="true"><span class="total">79</span><span class="seg seg--missed" style="--v:26"></span><span class="seg seg--answered" style="--v:53"></span></span><span class="week-label" aria-hidden="true">S3</span></li>
+            <li class="week"><span class="sr-only">Settimana 4, prima di Relay: 88 chiamate, 31 senza risposta.</span><span class="track" aria-hidden="true"><span class="total">88</span><span class="seg seg--missed" style="--v:31"></span><span class="seg seg--answered" style="--v:57"></span></span><span class="week-label" aria-hidden="true">S4</span></li>
+            <li class="week is-start"><span class="sr-only">Settimana 5, con Relay: 90 chiamate, tutte con risposta.</span><span class="track" aria-hidden="true"><span class="total">90</span><span class="seg seg--answered" style="--v:90"></span></span><span class="week-label" aria-hidden="true">S5</span></li>
+            <li class="week"><span class="sr-only">Settimana 6, con Relay: 93 chiamate, tutte con risposta.</span><span class="track" aria-hidden="true"><span class="total">93</span><span class="seg seg--answered" style="--v:93"></span></span><span class="week-label" aria-hidden="true">S6</span></li>
+            <li class="week"><span class="sr-only">Settimana 7, con Relay: 87 chiamate, tutte con risposta.</span><span class="track" aria-hidden="true"><span class="total">87</span><span class="seg seg--answered" style="--v:87"></span></span><span class="week-label" aria-hidden="true">S7</span></li>
+            <li class="week"><span class="sr-only">Settimana 8, con Relay: 98 chiamate, tutte con risposta.</span><span class="track" aria-hidden="true"><span class="total">98</span><span class="seg seg--answered" style="--v:98"></span></span><span class="week-label" aria-hidden="true">S8</span></li>
+          </ol>
+          <div class="phases" aria-hidden="true"><span>Prima</span><span>Con Relay</span></div>
+          <figcaption class="chart-caption">Scenario dimostrativo con dati inventati.</figcaption>
+        </figure>
+        <div class="compare">
+          <div class="compare-col compare-before">
+            <h3>Prima</h3>
+            <ul>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Chiamate perse quando sei impegnato</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Messaggi su post-it, senza nome né motivo</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Le stesse domande ripetute a voce</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>Nessun numero su quante chiamate arrivano</li>
+            </ul>
+          </div>
+          <div class="compare-col compare-after">
+            <h3>Con Relay</h3>
+            <ul>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Ogni chiamata ha una risposta</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Messaggi con nome, recapito, motivo e urgenza</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Le domande comuni le gestisce l'assistente</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Una dashboard con i numeri di ogni giorno</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="come-funziona" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="how-title">Attivo in tre passi, senza cambiare numero</h2>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-number" aria-hidden="true">1</span>
+            <div>
+              <h3>Configuriamo l'assistente con te</h3>
+              <p>Raccogliamo orari, servizi e risposte alle domande più frequenti. Dove è possibile colleghiamo il tuo gestionale.</p>
+              <div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-clipboard"/></svg></div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-number" aria-hidden="true">2</span>
+            <div>
+              <h3>Inoltri le chiamate</h3>
+              <p>Attivi l'inoltro dal tuo telefono verso Relay. Il tuo numero resta quello di sempre. Facciamo insieme una chiamata di prova.</p>
+              <div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-phone-forwarded"/></svg></div>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-number" aria-hidden="true">3</span>
+            <div>
+              <h3>Ricevi tutto in dashboard</h3>
+              <p>Ogni chiamata arriva con riassunto, messaggio ed esito. Tu decidi chi richiamare.</p>
+              <div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-dashboard"/></svg></div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section inverse" id="demo" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="demo-title">Guarda cosa vedresti ogni mattina</h2>
+          <p class="sub">Quante chiamate, di cosa si parlava, chi richiamare. I dati qui sotto sono inventati.</p>
+        </div>
+        <p class="demo-label"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Dati dimostrativi</p>
+        <div class="app" role="region" aria-label="Anteprima della dashboard di Relay con dati dimostrativi">
+          <div class="app-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="app-url">Relay · Panoramica · Autonoleggio Lago Verde</span></div>
+          <div class="app-body">
+            <div class="app-head">
+              <h3>Panoramica</h3>
+              <p class="period">Ultimi 7 giorni<span data-period></span></p>
+            </div>
+            <ul class="kpis">
+              <li class="kpi"><span class="kpi-label">Chiamate ricevute</span><strong>98</strong><span class="delta"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>+12,6%*</span></li>
+              <li class="kpi"><span class="kpi-label">Minuti utilizzati</span><strong>302 <small>min</small></strong><span class="delta"><svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>−0,8%*</span></li>
+              <li class="kpi"><span class="kpi-label">Durata media</span><strong>3 min 5 s</strong><span class="delta"><svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>−11,9%*</span></li>
+              <li class="kpi"><span class="kpi-label">Gestite dall'assistente</span><strong>68</strong><span class="kpi-note">il 69% delle chiamate, concluse senza passare a una persona</span><span class="delta"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>+30,8%*</span></li>
+            </ul>
+            <p class="footnote">* Variazione percentuale rispetto al periodo precedente di pari durata.</p>
+            <div class="panels">
+              <section class="panel" aria-labelledby="trend-title">
+                <h4 id="trend-title">Andamento delle chiamate</h4>
+                <ol class="days">
+                  <li class="day"><span class="track"><span class="total">11</span><span class="seg" style="--v:11"></span></span><span class="day-label"><span class="sr-only">chiamate il </span><span data-days-ago="7">7 giorni fa</span></span></li>
+                  <li class="day"><span class="track"><span class="total">6</span><span class="seg" style="--v:6"></span></span><span class="day-label"><span class="sr-only">chiamate il </span><span data-days-ago="6">6 giorni fa</span></span></li>
+                  <li class="day"><span class="track"><span class="total">17</span><span class="seg" style="--v:17"></span></span><span class="day-label"><span class="sr-only">chiamate il </span><span data-days-ago="5">5 giorni fa</span></span></li>
+                  <li class="day"><span class="track"><span class="total">15</span><span class="seg" style="--v:15"></span></span><span class="day-label"><span class="sr-only">chiamate il </span><span data-days-ago="4">4 giorni fa</span></span></li>
+                  <li class="day"><span class="track"><span class="total">14</span><span class="seg" style="--v:14"></span></span><span class="day-label"><span class="sr-only">chiamate il </span><span data-days-ago="3">3 giorni fa</span></span></li>
+                  <li class="day"><span class="track"><span class="total">16</span><span class="seg" style="--v:16"></span></span><span class="day-label"><span class="sr-only">chiamate il </span><span data-days-ago="2">2 giorni fa</span></span></li>
+                  <li class="day"><span class="track"><span class="total">19</span><span class="seg" style="--v:19"></span></span><span class="day-label"><span class="sr-only">chiamate il </span><span data-days-ago="1">ieri</span></span></li>
+                </ol>
+              </section>
+              <section class="panel" aria-labelledby="outcomes-title">
+                <h4 id="outcomes-title">Esiti</h4>
+                <div class="outcomes">
+                  <div class="donut" aria-hidden="true">
+                    <svg viewBox="0 0 42 42">
+                      <circle class="c-concluded" cx="21" cy="21" r="15.9155" stroke="var(--c)" stroke-dasharray="69.4 30.6" stroke-dashoffset="0"/>
+                      <circle class="c-transferred" cx="21" cy="21" r="15.9155" stroke="var(--c)" stroke-dasharray="22.4 77.6" stroke-dashoffset="-69.4"/>
+                      <circle class="c-failed" cx="21" cy="21" r="15.9155" stroke="var(--c)" stroke-dasharray="2 98" stroke-dashoffset="-91.8"/>
+                      <circle class="c-other" cx="21" cy="21" r="15.9155" stroke="var(--c)" stroke-dasharray="6.1 93.9" stroke-dashoffset="-93.8"/>
+                    </svg>
+                    <span class="donut-center"><strong>98</strong>chiamate</span>
+                  </div>
+                  <ul class="outcome-list">
+                    <li class="c-concluded"><span class="swatch" aria-hidden="true"></span><span>Concluse senza trasferimento</span><span>68 · 69,4%</span></li>
+                    <li class="c-transferred"><span class="swatch" aria-hidden="true"></span><span>Trasferite con successo</span><span>22 · 22,4%</span></li>
+                    <li class="c-failed"><span class="swatch" aria-hidden="true"></span><span>Trasferimento fallito</span><span>2 · 2,0%</span></li>
+                    <li class="c-other"><span class="swatch" aria-hidden="true"></span><span>Altro / esito non determinato</span><span>6 · 6,1%</span></li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+            <section class="panel" aria-labelledby="calls-title">
+              <div class="calls-head">
+                <div>
+                  <h4 id="calls-title">Chiamate</h4>
+                  <p class="calls-status" id="calls-status" aria-live="polite">Le 5 più recenti</p>
+                </div>
+                <div class="filters">
+                  <label class="filter">Cerca
+                    <span class="input-icon"><svg class="icon" aria-hidden="true"><use href="#i-search"/></svg><input class="control" type="search" id="call-search" placeholder="Cerca per numero o nome" autocomplete="off" aria-controls="calls-body"></span>
+                  </label>
+                  <label class="filter">Esito
+                    <select class="control" id="call-outcome" aria-controls="calls-body">
+                      <option value="">Tutti gli esiti</option>
+                      <option value="concluded">Concluse senza trasferimento</option>
+                      <option value="transferred">Trasferite con successo</option>
+                      <option value="failed">Trasferimento fallito</option>
+                      <option value="other">Altro / esito non determinato</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <table class="calls-table">
+                <caption class="sr-only">Chiamate più recenti, dati dimostrativi</caption>
+                <thead>
+                  <tr><th scope="col">Data e ora</th><th scope="col">Telefono</th><th scope="col">Nome</th><th scope="col">Durata</th><th scope="col">Riepilogo</th><th scope="col">Esito</th><th scope="col"><span class="sr-only">Azioni</span></th></tr>
+                </thead>
+                <tbody id="calls-body">
+                  <tr data-call="marco" data-outcome="concluded">
+                    <td class="c-date"><time data-days-ago="1" data-time="17:42">ieri 17:42</time></td>
+                    <td class="c-phone">+39 333 000 0142</td>
+                    <td class="c-name">Marco Bianchi</td>
+                    <td class="c-duration">2 min 40 s</td>
+                    <td class="c-summary">Vuole noleggiare un'auto compatta da sabato; da richiamare per confermare.</td>
+                    <td class="c-outcome"><span class="outcome c-concluded">Concluse senza trasferimento</span></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail>Dettaglio<span class="sr-only"> della chiamata di Marco Bianchi</span></button></td>
+                  </tr>
+                  <tr data-call="elena" data-outcome="concluded">
+                    <td class="c-date"><time data-days-ago="1" data-time="12:15">ieri 12:15</time></td>
+                    <td class="c-phone">+39 347 000 0178</td>
+                    <td class="c-name">Elena Conti</td>
+                    <td class="c-duration">4 min 5 s</td>
+                    <td class="c-summary">Chiede orari di ritiro e se serve il deposito; risposta data.</td>
+                    <td class="c-outcome"><span class="outcome c-concluded">Concluse senza trasferimento</span></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail>Dettaglio<span class="sr-only"> della chiamata di Elena Conti</span></button></td>
+                  </tr>
+                  <tr data-call="unknown" data-outcome="other">
+                    <td class="c-date"><time data-days-ago="1" data-time="09:03">ieri 09:03</time></td>
+                    <td class="c-phone">+39 320 000 0116</td>
+                    <td class="c-name"><span aria-hidden="true">—</span><span class="sr-only">Nome non disponibile</span></td>
+                    <td class="c-duration">45 s</td>
+                    <td class="c-summary">Chiamata interrotta dopo la presentazione dell'assistente.</td>
+                    <td class="c-outcome"><span class="outcome c-other">Altro / esito non determinato</span></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail>Dettaglio<span class="sr-only"> della chiamata da +39 320 000 0116</span></button></td>
+                  </tr>
+                  <tr data-call="davide" data-outcome="transferred">
+                    <td class="c-date"><time data-days-ago="2" data-time="19:28">2 giorni fa 19:28</time></td>
+                    <td class="c-phone">+39 339 000 0153</td>
+                    <td class="c-name">Davide Ferri</td>
+                    <td class="c-duration">3 min 22 s</td>
+                    <td class="c-summary">Guasto durante il noleggio, urgente; passato al titolare.</td>
+                    <td class="c-outcome"><span class="outcome c-transferred">Trasferite con successo</span></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail>Dettaglio<span class="sr-only"> della chiamata di Davide Ferri</span></button></td>
+                  </tr>
+                  <tr data-call="sara" data-outcome="failed">
+                    <td class="c-date"><time data-days-ago="2" data-time="08:51">2 giorni fa 08:51</time></td>
+                    <td class="c-phone">+39 349 000 0127</td>
+                    <td class="c-name">Sara Colombo</td>
+                    <td class="c-duration">1 min 58 s</td>
+                    <td class="c-summary">Chiede il listino di un furgone; trasferimento non riuscito.</td>
+                    <td class="c-outcome"><span class="outcome c-failed">Trasferimento fallito</span></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail>Dettaglio<span class="sr-only"> della chiamata di Sara Colombo</span></button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="empty" id="calls-empty" hidden>Nessuna chiamata corrisponde alla ricerca.</p>
+            </section>
+          </div>
+        </div>
+        <div class="demo-cta">
+          <p>Vuoi vederla con i dati della tua attività?</p>
+          <a class="button" href="#richiedi-demo" data-cta="after-demo">Richiedi una demo <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="drawer" id="call-detail" aria-labelledby="detail-title">
+      <div class="drawer-inner">
+        <div class="drawer-head">
+          <div>
+            <h3 id="detail-title">Dettaglio chiamata</h3>
+            <span class="badge">Anteprima · dati dimostrativi</span>
+          </div>
+          <button class="icon-button" type="button" data-close aria-label="Chiudi il dettaglio"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+        </div>
+        <section aria-labelledby="detail-summary-title">
+          <h4 id="detail-summary-title">Riassunto</h4>
+          <p data-field="summary"></p>
+          <dl class="facts" style="margin-top: .75rem">
+            <dt>Data</dt><dd data-field="date"></dd>
+            <dt>Durata</dt><dd data-field="duration"></dd>
+            <dt>Esito</dt><dd data-field="outcome"></dd>
+          </dl>
+        </section>
+        <section aria-labelledby="detail-message-title" data-example>
+          <h4 id="detail-message-title">Messaggio</h4>
+          <dl class="facts">
+            <dt>Nome</dt><dd>Marco Bianchi</dd>
+            <dt>Recapito</dt><dd>+39 333 000 0142</dd>
+            <dt>Motivo</dt><dd>Noleggio auto compatta da sabato a lunedì</dd>
+            <dt>Urgenza</dt><dd>Non urgente</dd>
+          </dl>
+        </section>
+        <section aria-labelledby="detail-actions-title" data-example>
+          <h4 id="detail-actions-title">Azioni eseguite</h4>
+          <p>17:43 · Controllata la disponibilità · Auto compatte disponibili</p>
+        </section>
+        <section aria-labelledby="detail-transcript-title" data-example>
+          <h4 id="detail-transcript-title">Trascrizione</h4>
+          <ol class="transcript">
+            <li><strong>Assistente</strong>Buongiorno, sono l'assistente virtuale di Autonoleggio Lago Verde. Come posso aiutarla?</li>
+            <li><strong>Chiamante</strong>Vorrei noleggiare un'auto piccola da sabato a lunedì.</li>
+            <li><strong>Assistente</strong>Per quelle date abbiamo auto compatte disponibili. Vuole lasciare un messaggio al titolare per confermare?</li>
+            <li><strong>Chiamante</strong>Sì, grazie. Mi chiamo Marco Bianchi.</li>
+          </ol>
+        </section>
+        <p class="footnote" data-example-note>In questa anteprima messaggio, azioni e trascrizione sono mostrati per la chiamata di Marco Bianchi.</p>
+      </div>
+    </dialog>
+
+    <section class="section" id="funzioni" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="features-title">Sa cosa dire, e quando passarti la chiamata</h2>
+          <p class="sub">Un assistente vocale AI per aziende che vivono di telefonate.</p>
+        </div>
+        <ul class="features">
+          <li class="feature">
+            <h3>Informazioni sulla tua attività</h3>
+            <p>Orari, chiusure, servizi, domande frequenti.</p>
+            <div class="example" aria-label="Esempio di conversazione">
+              <p class="bubble from-caller">“Siete aperti domenica?”</p>
+              <p class="bubble from-assistant">“Domenica siamo chiusi, riapriamo lunedì alle 8:30.”</p>
+            </div>
+          </li>
+          <li class="feature">
+            <h3>Disponibilità in tempo reale</h3>
+            <p>Dove l'attività ha un gestionale collegabile, controlla la disponibilità mentre parla. Se il gestionale non risponde, lo dice onestamente e lascia un messaggio.</p>
+            <div class="example" aria-label="Esempio di conversazione">
+              <p class="bubble from-caller">“C'è un furgone libero giovedì?”</p>
+              <p class="bubble from-assistant">“Giovedì ne abbiamo uno libero. Lo segnalo al titolare per la conferma?”</p>
+            </div>
+          </li>
+          <li class="feature">
+            <h3>Messaggi chiari</h3>
+            <p>Nome, recapito, motivo e urgenza, senza dover riascoltare niente.</p>
+            <div class="example" aria-label="Esempio di conversazione">
+              <p class="bubble from-caller">“Mi fa richiamare per il deposito?”</p>
+              <p class="bubble from-assistant">“Certo. Mi lascia nome e numero? Riferisco che non è urgente.”</p>
+            </div>
+          </li>
+          <li class="feature">
+            <h3>Riassunto di ogni chiamata</h3>
+            <p>Cosa si sono detti, come è finita, la trascrizione se ti serve.</p>
+            <div class="example" aria-label="Esempio di riassunto">
+              <p class="bubble from-assistant">“Chiede orari di ritiro e se serve il deposito; risposta data.”</p>
+            </div>
+          </li>
+          <li class="feature is-soon">
+            <div class="feature-top"><h3>Passaggio a una persona</h3><span class="badge">In arrivo</span></div>
+            <p>Se il caso lo richiede, ti passa la chiamata secondo le regole che hai scelto.</p>
+            <div class="example" aria-label="Esempio di conversazione">
+              <p class="bubble from-caller">“Ho un guasto, sono fermo in autostrada.”</p>
+              <p class="bubble from-assistant">“Capisco, le passo subito il titolare.”</p>
+            </div>
+          </li>
+          <li class="feature is-soon">
+            <div class="feature-top"><h3>Avvisi via email</h3><span class="badge">In arrivo</span></div>
+            <p>Subito per le urgenze, oppure un riepilogo.</p>
+            <div class="example" aria-label="Esempio di avviso">
+              <p class="bubble from-assistant">“Messaggio urgente da Davide Ferri: guasto durante il noleggio.”</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section alt" id="fiducia" aria-labelledby="trust-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="trust-title">Chi chiama sa con chi parla. Tu sai dove stanno i tuoi dati.</h2>
+        </div>
+        <!-- DA VERIFICARE prima della pubblicazione: presentazione nel prompt di ogni cliente e audio disattivato. -->
+        <ul class="trust">
+          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-bot"/></svg></div><h3>Si presenta per quello che è</h3><p>L'assistente dichiara all'inizio di essere un assistente virtuale.</p></li>
+          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></div><h3>Dati separati per ogni attività</h3><p>Nessun'altra azienda può vedere le tue chiamate.</p></li>
+          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-mic-off"/></svg></div><h3>Audio non registrato</h3><p>La registrazione audio è disattivata, salvo diverso accordo.</p></li>
+          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-file-text"/></svg></div><h3>Contratto chiaro</h3><p>Prima dell'attivazione firmiamo insieme contratto e accordo sul trattamento dei dati.</p></li>
+        </ul>
+        <p class="trust-link"><a class="text-link" href="#privacy">Leggi l'informativa sulla privacy</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="per-chi" aria-labelledby="sector-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="sector-title">Nato per il noleggio auto, pensato per chi vive di telefonate</h2>
+        </div>
+        <article class="sector">
+          <div>
+            <h3>Noleggio auto e furgoni</h3>
+            <p>Prezzi, disponibilità, orari di ritiro, un guasto in viaggio: nel noleggio il telefono non smette mai. Relay risponde, controlla la disponibilità dove il gestionale lo permette e ti lascia il messaggio già ordinato.</p>
+          </div>
+          <div class="chat" aria-label="Esempio di conversazione">
+            <p class="bubble from-caller">“A che ora posso ritirare l'auto venerdì?”</p>
+            <p class="bubble from-assistant">“Venerdì il ritiro è dalle 8:30 alle 18:30. Vuole che avvisi il titolare del suo arrivo?”</p>
+          </div>
+        </article>
+        <p class="sector-invite">La tua attività non è nel noleggio? Raccontaci come lavori: lo valutiamo insieme.</p>
+      </div>
+    </section>
+
+    <section class="section alt" id="attivazione" aria-labelledby="activation-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="activation-title">Ti seguiamo noi, dall'inizio</h2>
+        </div>
+        <ol class="activation">
+          <li><span class="badge tag-us">Noi</span><h3>Raccogliamo i dati della tua attività</h3><p>Orari, servizi, risposte alle domande frequenti, regole per i casi particolari.</p></li>
+          <li><span class="badge tag-us">Noi</span><h3>Prepariamo l'assistente</h3><p>Lo configuriamo con le tue informazioni e, dove si può, lo colleghiamo al tuo gestionale.</p></li>
+          <li><span class="badge tag-you">Tu</span><h3>Inoltri le chiamate e proviamo insieme</h3><p>Ti diamo le istruzioni per l'inoltro e facciamo una chiamata di prova.</p></li>
+          <li><span class="badge tag-us">Noi</span><h3>Attiviamo il servizio</h3><p>Trovi la dashboard già compilata: da lì in poi modifichi tu ciò che ti spetta.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- DA VALIDARE con il prodotto: prezzo, tempi di attivazione e funzioni in arrivo. -->
+    <section class="section" id="domande" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head center">
+          <h2 id="faq-title">Domande frequenti</h2>
+        </div>
+        <div class="faq">
+          <details open><summary>Quanto costa?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Dipende dal volume di chiamate e dai collegamenti necessari. Nella demo ti facciamo un preventivo su misura.</p></details>
+          <details open><summary>Devo cambiare numero di telefono?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. Resta il tuo numero: attivi l'inoltro verso Relay.</p></details>
+          <details open><summary>Chi chiama capisce che parla con un'intelligenza artificiale?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Sì: l'assistente si presenta come assistente virtuale.</p></details>
+          <details><summary>E se l'assistente non sa rispondere?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Lo dice onestamente, raccoglie nome, recapito e motivo e ti lascia un messaggio. Il passaggio a una persona, con le regole che scegli tu, è in arrivo.</p></details>
+          <details><summary>Può prenotare al posto mio?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Oggi consulta le informazioni e raccoglie le richieste: la conferma resta a te.</p></details>
+          <details><summary>Funziona con il mio gestionale?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Dipende: lo valutiamo insieme in demo. Il collegamento riguarda gestionali con interfaccia web (API).</p></details>
+          <details><summary>Registrate le chiamate?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>L'audio non viene registrato, salvo diverso accordo. Nella dashboard trovi riassunto e trascrizione.</p></details>
+          <details><summary>Chi vede i miei dati?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Tu e i collaboratori che indichi. Il nostro team accede solo per assistenza.</p></details>
+          <details><summary>In che lingue risponde?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Oggi solo in italiano.</p></details>
+          <details><summary>Quanto ci vuole per partire?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Dipende dalle informazioni da raccogliere e dai collegamenti necessari. In demo ti diamo una data concreta.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section request triangles" id="richiedi-demo" aria-labelledby="request-title">
+      <div class="container request-grid">
+        <div>
+          <h2 id="request-title">Vediamo se Relay fa per la tua attività</h2>
+          <p class="sub" style="margin-top: .875rem">In demo ti mostriamo:</p>
+          <ul class="request-points">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Come risponderebbe alle tue chiamate</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Cosa vedresti in dashboard</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Cosa serve per attivarlo</li>
+          </ul>
+        </div>
+        <div class="form-card glass">
+          <!-- Nessun endpoint configurato: senza data-endpoint il form prepara un'email a info@tetravise.com. -->
+          <form class="form" id="demo-form" data-endpoint="" novalidate>
+            <div class="form-field">
+              <label for="f-name">Nome e cognome</label>
+              <input class="control" id="f-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="name-error">
+              <p class="field-error" id="name-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="f-email">Email di lavoro</label>
+              <input class="control" id="f-email" name="email" type="email" autocomplete="email" required maxlength="160" aria-describedby="email-error">
+              <p class="field-error" id="email-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="f-phone">Telefono <span class="optional">(facoltativo)</span></label>
+              <input class="control" id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="24" pattern="\+?[0-9 ]{6,23}" aria-describedby="phone-error">
+              <p class="field-error" id="phone-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="f-business">Nome dell'attività</label>
+              <input class="control" id="f-business" name="business" type="text" autocomplete="organization" required maxlength="160" aria-describedby="business-error">
+              <p class="field-error" id="business-error" hidden></p>
+            </div>
+            <div class="form-field">
+              <label for="f-sector">Settore</label>
+              <select class="control" id="f-sector" name="sector" required aria-describedby="sector-error">
+                <option value="">Scegli il settore</option>
+                <option>Noleggio auto</option>
+                <option>Altro</option>
+              </select>
+              <p class="field-error" id="sector-error" hidden></p>
+            </div>
+            <fieldset class="form-field" aria-describedby="calls-error">
+              <legend>Chiamate a settimana</legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="calls" value="Meno di 20" required>Meno di 20</label>
+                <label class="choice"><input type="radio" name="calls" value="20–100">20–100</label>
+                <label class="choice"><input type="radio" name="calls" value="Oltre 100">Oltre 100</label>
+                <label class="choice"><input type="radio" name="calls" value="Non lo so">Non lo so</label>
+              </div>
+              <p class="field-error" id="calls-error" hidden></p>
+            </fieldset>
+            <div class="honeypot" aria-hidden="true">
+              <label for="f-website">Sito web</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form-field">
+              <label class="consent"><input id="f-consent" name="consent" type="checkbox" value="sì" required aria-describedby="consent-error"><span>Ho letto l'<a href="#privacy">informativa sulla privacy</a> e acconsento a essere ricontattato per la demo.</span></label>
+              <p class="field-error" id="consent-error" hidden></p>
+            </div>
+            <button class="button" type="submit">Richiedi la demo <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+            <p class="form-status form-status--error" id="form-failure" role="alert" hidden>Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure scrivici a <a href="mailto:info@tetravise.com?subject=Richiesta%20demo%20Relay">info@tetravise.com</a>.</p>
+          </form>
+          <div class="form-status form-status--ok" id="form-success" tabindex="-1" hidden>
+            <strong>Grazie! Ti scriviamo noi per fissare la demo.</strong>
+            <p data-mail-note hidden>Si è aperto il tuo programma di posta con la richiesta già compilata: invia l'email per completarla. Se non si è aperto, scrivici a <a href="mailto:info@tetravise.com?subject=Richiesta%20demo%20Relay">info@tetravise.com</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer inverse">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#top" aria-label="Relay, torna all'inizio"><span class="brand-mark" aria-hidden="true"><svg class="icon"><use href="#i-audio"/></svg></span>Relay</a>
+          <p style="margin-top: .75rem">L'assistente telefonico AI che risponde quando non puoi farlo tu.</p>
+        </div>
+        <nav aria-labelledby="footer-links-title">
+          <h2 id="footer-links-title">Link</h2>
+          <ul class="footer-links">
+            <li><a href="#privacy">Privacy e cookie</a></li>
+            <li><a href="mailto:info@tetravise.com">Contatti: info@tetravise.com</a></li>
+            <li><a href="../">Tetravise</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Dati legali</h2>
+          <!-- DA COMPLETARE: ragione sociale, partita IVA e sede. -->
+          <p>Relay è un servizio di Tetravise.</p>
+          <p>© 2026 Tetravise</p>
+        </div>
+      </div>
+      <!-- DA COMPLETARE: informativa completa (base giuridica, conservazione, fornitori) prima della pubblicazione. -->
+      <section class="privacy" id="privacy" aria-labelledby="privacy-title">
+        <h2 id="privacy-title">Informativa sintetica</h2>
+        <p>Usiamo i dati del form solo per ricontattarti e organizzare la demo. Titolare del trattamento è Tetravise, contattabile a info@tetravise.com, indirizzo a cui puoi chiedere in ogni momento accesso, correzione o cancellazione dei tuoi dati.</p>
+        <p>Questa pagina non usa cookie.</p>
+      </section>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" inert>
+    <a class="button" href="#richiedi-demo" data-cta="mobile-bar">Richiedi una demo</a>
+  </div>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      // Plausible-compatible; a no-op until an analytics script is added.
+      const track = (name, props) => { try { window.plausible?.(name, props ? { props } : undefined); } catch {} };
+
+      function setupHeader() {
+        const header = document.querySelector('.site-header');
+        const nav = document.querySelector('#menu');
+        const toggle = document.querySelector('.menu-toggle');
+        const update = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+        const close = () => { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); };
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+        toggle.addEventListener('click', () => {
+          const open = toggle.getAttribute('aria-expanded') !== 'true';
+          nav.classList.toggle('is-open', open);
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+        nav.addEventListener('click', event => { if (event.target.closest('a')) close(); });
+        document.addEventListener('keydown', event => {
+          if (event.key === 'Escape' && nav.classList.contains('is-open')) { close(); toggle.focus(); }
+        });
+      }
+
+      function setupStickyCta() {
+        const bar = document.querySelector('.sticky-cta');
+        const hero = document.querySelector('.hero');
+        const request = document.querySelector('#richiedi-demo');
+        if (!('IntersectionObserver' in window)) return;
+        const visible = new Map([[hero, true], [request, false]]);
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => visible.set(entry.target, entry.isIntersecting));
+          const show = !visible.get(hero) && !visible.get(request);
+          bar.classList.toggle('is-visible', show);
+          bar.inert = !show;
+        });
+        observer.observe(hero);
+        observer.observe(request);
+      }
+
+      function setupDates() {
+        const format = new Intl.DateTimeFormat('it-IT', { day: '2-digit', month: '2-digit' });
+        const daysAgo = days => { const date = new Date(); date.setDate(date.getDate() - days); return date; };
+        document.querySelectorAll('[data-days-ago]').forEach(element => {
+          const date = daysAgo(Number(element.dataset.daysAgo));
+          element.textContent = element.dataset.time ? `${format.format(date)} ${element.dataset.time}` : format.format(date);
+          if (element.tagName === 'TIME') {
+            const [hours, minutes] = element.dataset.time.split(':');
+            date.setHours(Number(hours), Number(minutes), 0, 0);
+            element.dateTime = date.toISOString();
+          }
+        });
+        document.querySelector('[data-period]').textContent = ` · ${format.format(daysAgo(7))}–${format.format(daysAgo(1))}`;
+      }
+
+      function setupDemo() {
+        const search = document.querySelector('#call-search');
+        const outcome = document.querySelector('#call-outcome');
+        const rows = [...document.querySelectorAll('[data-call]')];
+        const status = document.querySelector('#calls-status');
+        const empty = document.querySelector('#calls-empty');
+        const dialog = document.querySelector('#call-detail');
+        const longSummary = 'Marco Bianchi chiede di noleggiare un\'auto compatta da sabato a lunedì. L\'assistente verifica la disponibilità e gli propone di lasciare un messaggio al titolare, che lo richiamerà per confermare.';
+
+        function filter() {
+          const query = search.value.trim().toLowerCase();
+          const digits = query.replace(/\D/g, '');
+          let count = 0;
+          rows.forEach(row => {
+            const name = row.querySelector('.c-name').textContent.toLowerCase();
+            const phone = row.querySelector('.c-phone').textContent.replace(/\D/g, '');
+            const matchesQuery = !query || name.includes(query) || (digits.length > 0 && phone.includes(digits));
+            const match = matchesQuery && (!outcome.value || row.dataset.outcome === outcome.value);
+            row.hidden = !match;
+            if (match) count++;
+          });
+          empty.hidden = count > 0;
+          status.textContent = query || outcome.value ? `${count} ${count === 1 ? 'chiamata trovata' : 'chiamate trovate'}` : 'Le 5 più recenti';
+        }
+
+        search.addEventListener('input', filter);
+        search.addEventListener('change', () => track('demo_interaction', { type: 'search' }));
+        outcome.addEventListener('change', () => { filter(); track('demo_interaction', { type: 'outcome_filter' }); });
+
+        document.querySelectorAll('[data-detail]').forEach(button => button.addEventListener('click', () => {
+          const row = button.closest('tr');
+          const isExample = row.dataset.call === 'marco';
+          const name = row.querySelector('.c-name').textContent.replace('Nome non disponibile', '').replace('—', '').trim();
+          dialog.querySelector('#detail-title').textContent = name ? `Chiamata di ${name}` : `Chiamata da ${row.querySelector('.c-phone').textContent}`;
+          dialog.querySelector('[data-field="summary"]').textContent = isExample ? longSummary : row.querySelector('.c-summary').textContent;
+          dialog.querySelector('[data-field="date"]').textContent = row.querySelector('.c-date').textContent;
+          dialog.querySelector('[data-field="duration"]').textContent = row.querySelector('.c-duration').textContent;
+          dialog.querySelector('[data-field="outcome"]').textContent = row.querySelector('.c-outcome').textContent;
+          dialog.querySelectorAll('[data-example]').forEach(section => { section.hidden = !isExample; });
+          dialog.querySelector('[data-example-note]').hidden = isExample;
+          dialog.showModal();
+          track('demo_interaction', { type: 'detail' });
+        }));
+        dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+      }
+
+      function setupForm() {
+        const form = document.querySelector('#demo-form');
+        const submit = form.querySelector('[type="submit"]');
+        const success = document.querySelector('#form-success');
+        const failure = document.querySelector('#form-failure');
+        const messages = {
+          name: { valueMissing: 'Scrivi nome e cognome.' },
+          email: { valueMissing: 'Scrivi la tua email di lavoro.', typeMismatch: "Controlla l'email: deve essere simile a nome@attivita.it." },
+          phone: { patternMismatch: 'Controlla il numero: usa solo cifre, spazi e il segno +.' },
+          business: { valueMissing: "Scrivi il nome della tua attività." },
+          sector: { valueMissing: 'Scegli il settore.' },
+          calls: { valueMissing: 'Scegli quante chiamate ricevi a settimana.' },
+          consent: { valueMissing: 'Per inviare la richiesta serve il tuo consenso.' },
+        };
+        let started = false;
+        let submitted = false;
+
+        function check(name) {
+          const control = form.elements[name];
+          const controls = control instanceof RadioNodeList ? [...control] : [control];
+          const { validity } = controls[0];
+          const key = ['valueMissing', 'typeMismatch', 'patternMismatch'].find(type => validity[type]);
+          const message = key ? messages[name][key] : '';
+          const error = document.getElementById(`${name}-error`);
+          error.textContent = message;
+          error.hidden = !message;
+          controls.forEach(item => item.setAttribute('aria-invalid', String(Boolean(message))));
+          return !message;
+        }
+
+        form.addEventListener('focusin', () => { if (!started) { started = true; track('form_start'); } });
+        form.addEventListener('change', event => { if (submitted && messages[event.target.name]) check(event.target.name); });
+        form.addEventListener('submit', async event => {
+          event.preventDefault();
+          submitted = true;
+          failure.hidden = true;
+          const invalid = Object.keys(messages).filter(name => !check(name));
+          if (invalid.length) {
+            const first = form.elements[invalid[0]];
+            (first instanceof RadioNodeList ? first[0] : first).focus();
+            return;
+          }
+          const data = Object.fromEntries(new FormData(form));
+          const isSpam = Boolean(data.website);
+          delete data.website;
+          submit.disabled = true;
+          try {
+            if (!isSpam && form.dataset.endpoint) {
+              const response = await fetch(form.dataset.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
+              if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            } else if (!isSpam) {
+              const body = [`Nome e cognome: ${data.name}`, `Email: ${data.email}`, `Telefono: ${data.phone || '-'}`, `Attività: ${data.business}`, `Settore: ${data.sector}`, `Chiamate a settimana: ${data.calls}`, 'Consenso privacy: sì'].join('\n');
+              window.location.href = `mailto:info@tetravise.com?subject=${encodeURIComponent('Richiesta demo Relay')}&body=${encodeURIComponent(body)}`;
+              success.querySelector('[data-mail-note]').hidden = false;
+            }
+            form.hidden = true;
+            success.hidden = false;
+            success.focus();
+            track('form_submit');
+          } catch {
+            failure.hidden = false;
+            track('form_error');
+          } finally {
+            submit.disabled = false;
+          }
+        });
+      }
+
+      function setupTracking() {
+        document.addEventListener('click', event => {
+          const cta = event.target.closest('[data-cta]');
+          if (cta) track('cta_click', { position: cta.dataset.cta });
+        });
+        document.querySelectorAll('.faq summary').forEach(summary => summary.addEventListener('click', () => {
+          if (!summary.parentElement.open) track('faq_open', { question: summary.textContent.trim() });
+        }));
+        const pending = new Set([50, 90]);
+        const onScroll = () => {
+          const ratio = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+          pending.forEach(threshold => {
+            if (ratio >= threshold) { pending.delete(threshold); track(`scroll_${threshold}`); }
+          });
+          if (!pending.size) window.removeEventListener('scroll', onScroll);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+
+      document.querySelector('meta[name="theme-color"]').content = root.dataset.theme === 'dark' ? '#111B18' : '#F5F6F2';
+      setupHeader();
+      setupStickyCta();
+      setupDates();
+      setupDemo();
+      setupForm();
+      setupTracking();
+    })();
+  </script>
+</body>
+</html>

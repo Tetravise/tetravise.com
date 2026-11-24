@@ -86,22 +86,56 @@ export function createSeo(siteUrl) {
     '<meta name="twitter:image:alt" content="Tetravise: consulenza operativa e soluzioni digitali per le PMI">',
     `<script type="application/ld+json">${serializedSchema}</script>`,
   ].join('\n  ');
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${escapeMarkup(canonical)}</loc></url>\n</urlset>\n`;
+  const relayCanonical = new URL('relay/', baseUrl).href;
+  const relayStructuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': new URL('#webpage', relayCanonical).href,
+        url: relayCanonical,
+        name: 'Relay: assistente telefonico AI per la tua attività',
+        inLanguage: 'it-IT',
+        isPartOf: { '@id': websiteId },
+        about: { '@id': new URL('#service', relayCanonical).href },
+      },
+      {
+        '@type': 'Service',
+        '@id': new URL('#service', relayCanonical).href,
+        name: 'Relay',
+        serviceType: 'Assistente telefonico AI',
+        description: "Assistente vocale che risponde alle chiamate dell'attività, raccoglie messaggi strutturati e mostra ogni chiamata in una dashboard.",
+        provider: { '@id': organizationId },
+        areaServed,
+        availableLanguage: 'it',
+      },
+    ],
+  };
+  const relayMetadata = [
+    `<link rel="canonical" href="${escapeMarkup(relayCanonical)}">`,
+    `<meta property="og:url" content="${escapeMarkup(relayCanonical)}">`,
+    `<script type="application/ld+json">${JSON.stringify(relayStructuredData).replaceAll('<', String.raw`\u003c`)}</script>`,
+  ].join('\n  ');
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[canonical, relayCanonical].map(url => `  <url><loc>${escapeMarkup(url)}</loc></url>\n`).join('')}</urlset>\n`;
   const robots = `User-agent: *\nAllow: /\n\nSitemap: ${new URL('sitemap.xml', baseUrl).href}\n`;
-  return { canonical, metadata, structuredData, sitemap, robots };
+  const pages = { 'index.html': metadata, 'relay/index.html': relayMetadata };
+  return { canonical, relayCanonical, metadata, relayMetadata, structuredData, sitemap, robots, pages };
 }
 
 export async function buildPages({ siteUrl = process.env.SITE_URL ?? 'https://tetravise.com/', outputDirectory = join(projectDirectory, '_site') } = {}) {
   const seo = createSeo(siteUrl);
-  const source = await readFile(join(projectDirectory, 'index.html'), 'utf8');
-  if (!source.includes(metadataSlot) || source.indexOf(metadataSlot) !== source.lastIndexOf(metadataSlot)) {
-    throw new Error('index.html must contain exactly one SEO metadata template.');
-  }
+  const pages = await Promise.all(Object.entries(seo.pages).map(async ([page, metadata]) => {
+    const source = await readFile(join(projectDirectory, page), 'utf8');
+    if (!source.includes(metadataSlot) || source.indexOf(metadataSlot) !== source.lastIndexOf(metadataSlot)) {
+      throw new Error(`${page} must contain exactly one SEO metadata template.`);
+    }
+    return [page, source.replace(metadataSlot, () => metadata)];
+  }));
 
-  await mkdir(outputDirectory, { recursive: true });
+  await mkdir(join(outputDirectory, 'relay'), { recursive: true });
   await cp(join(projectDirectory, 'assets'), join(outputDirectory, 'assets'), { recursive: true });
   await Promise.all([
-    writeFile(join(outputDirectory, 'index.html'), source.replace(metadataSlot, () => seo.metadata)),
+    ...pages.map(([page, html]) => writeFile(join(outputDirectory, page), html)),
     writeFile(join(outputDirectory, 'sitemap.xml'), seo.sitemap),
     writeFile(join(outputDirectory, 'robots.txt'), seo.robots),
   ]);
