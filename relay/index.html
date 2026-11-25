@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Relay: assistente telefonico AI per la tua attività</title>
-  <meta name="description" content="Relay risponde al telefono quando non puoi: dà le informazioni giuste, raccoglie messaggi chiari e mostra ogni chiamata in dashboard. Richiedi una demo.">
+  <meta name="description" content="Relay è l'assistente telefonico AI collegato alla tua azienda: prenotazioni, prezzi, disponibilità e magazzino dai tuoi sistemi. Scopri la demo.">
   <meta name="theme-color" content="#F5F6F2">
   <meta name="color-scheme" content="light dark">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -12,10 +12,10 @@
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Tetravise">
   <meta property="og:title" content="Relay: assistente telefonico AI per la tua attività">
-  <meta property="og:description" content="Relay risponde al telefono quando non puoi: dà le informazioni giuste, raccoglie messaggi chiari e mostra ogni chiamata in dashboard.">
+  <meta property="og:description" content="Relay collega le chiamate ai tuoi ERP e gestionali per prenotare, consultare prezzi e disponibilità e trasferire le richieste secondo le tue regole.">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Relay: assistente telefonico AI per la tua attività">
-  <meta name="twitter:description" content="Relay risponde al telefono quando non puoi: dà le informazioni giuste, raccoglie messaggi chiari e mostra ogni chiamata in dashboard.">
+  <meta name="twitter:description" content="Relay collega le chiamate ai tuoi ERP e gestionali per prenotare, consultare prezzi e disponibilità e trasferire le richieste secondo le tue regole.">
   <link rel="icon" href="../assets/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
@@ -45,12 +45,12 @@
         { "@type": "Question", "name": "Quanto costa?", "acceptedAnswer": { "@type": "Answer", "text": "Dipende dal volume di chiamate e dai collegamenti necessari. Nella demo ti facciamo un preventivo su misura." } },
         { "@type": "Question", "name": "Devo cambiare numero di telefono?", "acceptedAnswer": { "@type": "Answer", "text": "No. Resta il tuo numero: attivi l'inoltro verso Relay." } },
         { "@type": "Question", "name": "Chi chiama capisce che parla con un'intelligenza artificiale?", "acceptedAnswer": { "@type": "Answer", "text": "Sì: l'assistente si presenta come assistente virtuale." } },
-        { "@type": "Question", "name": "E se l'assistente non sa rispondere?", "acceptedAnswer": { "@type": "Answer", "text": "Lo dice onestamente, raccoglie nome, recapito e motivo e ti lascia un messaggio. Il passaggio a una persona, con le regole che scegli tu, è in arrivo." } },
-        { "@type": "Question", "name": "Può prenotare al posto mio?", "acceptedAnswer": { "@type": "Answer", "text": "Oggi consulta le informazioni e raccoglie le richieste: la conferma resta a te." } },
-        { "@type": "Question", "name": "Funziona con il mio gestionale?", "acceptedAnswer": { "@type": "Answer", "text": "Dipende: lo valutiamo insieme in demo. Il collegamento riguarda gestionali con interfaccia web (API)." } },
-        { "@type": "Question", "name": "Registrate le chiamate?", "acceptedAnswer": { "@type": "Answer", "text": "L'audio non viene registrato, salvo diverso accordo. Nella dashboard trovi riassunto e trascrizione." } },
-        { "@type": "Question", "name": "Chi vede i miei dati?", "acceptedAnswer": { "@type": "Answer", "text": "Tu e i collaboratori che indichi. Il nostro team accede solo per assistenza." } },
-        { "@type": "Question", "name": "In che lingue risponde?", "acceptedAnswer": { "@type": "Answer", "text": "Oggi solo in italiano." } },
+        { "@type": "Question", "name": "E se l'assistente non sa rispondere?", "acceptedAnswer": { "@type": "Answer", "text": "Segue le regole concordate con te: trasferisce la chiamata al referente giusto oppure raccoglie un messaggio con i dettagli per il ricontatto." } },
+        { "@type": "Question", "name": "Può prenotare al posto mio?", "acceptedAnswer": { "@type": "Answer", "text": "Sì. Collegato al tuo calendario o gestionale, Relay verifica le disponibilità e registra le prenotazioni secondo le regole concordate con te." } },
+        { "@type": "Question", "name": "Funziona con il mio gestionale?", "acceptedAnswer": { "@type": "Answer", "text": "Sì. Progettiamo il collegamento ai tuoi ERP, CRM e gestionali per consultare prezzi, disponibilità, magazzino e ordini o registrare prenotazioni. In demo definiamo il percorso di integrazione adatto ai tuoi sistemi." } },
+        { "@type": "Question", "name": "Quali dati della chiamata vedo?", "acceptedAnswer": { "@type": "Answer", "text": "Riepilogo, esito, messaggi, operazioni eseguite e trasferimenti, con la trascrizione quando disponibile. Tutto consultabile dalla dashboard." } },
+        { "@type": "Question", "name": "Chi vede i miei dati?", "acceptedAnswer": { "@type": "Answer", "text": "L'accesso alla dashboard richiede un account. Definiamo insieme le persone autorizzate ad accedere al servizio." } },
+        { "@type": "Question", "name": "In che lingue risponde?", "acceptedAnswer": { "@type": "Answer", "text": "In qualsiasi lingua: configuriamo Relay sulle lingue dei tuoi clienti, con il tono e il vocabolario della tua attività." } },
         { "@type": "Question", "name": "Quanto ci vuole per partire?", "acceptedAnswer": { "@type": "Answer", "text": "Dipende dalle informazioni da raccogliere e dai collegamenti necessari. In demo ti diamo una data concreta." } }
       ]
     }
@@ -125,6 +125,13 @@
     .nav { display: flex; flex-direction: column; font-size: .9375rem; font-weight: 500; }
     .nav a { display: flex; min-height: 2.75rem; align-items: center; text-decoration: none; }
     .nav a:hover { text-decoration: underline; text-underline-offset: .3em; }
+    .nav-group { position: relative; }
+    .nav-group summary { display: flex; min-height: 2.75rem; align-items: center; gap: .5rem; list-style: none; cursor: pointer; }
+    .nav-group summary::-webkit-details-marker { display: none; }
+    .nav-group summary::after { content: ""; width: .375rem; height: .375rem; margin-top: -.25rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+    .nav-group[open] summary::after { margin-top: .25rem; transform: rotate(225deg); }
+    .nav-submenu { min-width: 10rem; padding: .5rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: 0 8px 24px rgb(10 20 16 / .12); }
+    .nav-submenu a { padding-inline: .75rem; }
     .menu-toggle { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 6px; background: var(--surface); cursor: pointer; }
     .menu-toggle .icon-close, .menu-toggle[aria-expanded="true"] .icon-open { display: none; }
     .menu-toggle[aria-expanded="true"] .icon-close { display: block; }
@@ -177,26 +184,13 @@
     .card-icon { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; margin-bottom: 1rem; border-radius: 8px; background: var(--tile); color: var(--accent); }
     .card-icon .icon { width: 1.5rem; height: 1.5rem; }
 
-    .chart-figure { margin-bottom: 2.5rem; padding: 1.5rem 1rem 1rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
-    .chart-title { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; margin-bottom: 1.25rem; }
-    .chart-title h3 { font-size: 1.25rem; }
-    .legend { display: flex; flex-wrap: wrap; gap: .25rem 1rem; font-size: 1rem; }
-    .legend li { display: inline-flex; align-items: center; gap: .5rem; }
     .swatch { width: .875rem; height: .875rem; flex: none; border-radius: 3px; background: var(--c); }
-    .swatch--missed { background: repeating-linear-gradient(45deg, var(--warn) 0 3px, color-mix(in srgb, var(--warn) 55%, transparent) 3px 6px); }
-    .weeks { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); height: 14rem; gap: .375rem; }
-    .week { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: .375rem; min-width: 0; }
-    .week.is-start { margin-left: -.1875rem; padding-left: .1875rem; border-left: 2px dashed var(--muted); }
-    .track { display: flex; height: 100%; flex-direction: column; justify-content: flex-end; align-items: center; }
-    .total { font-size: 1rem; font-weight: 600; }
-    .seg { width: min(2.75rem, 80%); flex: none; height: calc(var(--v) * .78%); }
-    .seg--missed { border-radius: 4px 4px 0 0; background: repeating-linear-gradient(45deg, var(--warn) 0 3px, color-mix(in srgb, var(--warn) 55%, transparent) 3px 6px); }
-    .seg--answered { background: var(--accent); }
-    .seg--missed + .seg--answered { border-radius: 0; }
-    .seg--answered:first-child, .total + .seg--answered { border-radius: 4px 4px 0 0; }
-    .week-label { color: var(--muted); font-size: 1rem; text-align: center; }
-    .phases { display: grid; grid-template-columns: 1fr 1fr; margin-top: .5rem; padding-top: .5rem; border-top: 1px solid var(--line); color: var(--soft); font-size: 1rem; font-weight: 600; text-align: center; }
-    .chart-caption { margin-top: 1rem; color: var(--muted); font-size: 1rem; }
+    .days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); height: 12rem; gap: .375rem; margin: 0; padding: 0; list-style: none; }
+    .day { display: grid; grid-template-rows: 10.5rem 1.125rem; gap: .375rem; min-width: 0; }
+    .day .track { display: flex; min-height: 0; height: 100%; flex-direction: column; justify-content: flex-end; align-items: center; }
+    .day .total { font-size: .8125rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .day .seg { width: min(2.75rem, 80%); min-height: .25rem; flex: none; height: calc(var(--v) * .4375rem); border-radius: 4px 4px 0 0; background: var(--accent); }
+    .day-label { color: var(--muted); font-size: .75rem; text-align: center; white-space: nowrap; }
     .compare { display: grid; gap: 1rem; }
     .compare-col { padding: 1.5rem; border: 1px solid var(--line); border-radius: 12px; }
     .compare-col h3 { margin-bottom: 1rem; font-size: 1.25rem; }
@@ -232,16 +226,10 @@
     .kpi strong { font-family: var(--font-display); font-size: 1.75rem; font-weight: 500; line-height: 1.1; }
     .kpi strong small { font-size: 1rem; }
     .kpi-note { color: var(--muted); font-size: 1rem; line-height: 1.35; }
-    .delta { display: inline-flex; align-items: center; gap: .25rem; margin-top: auto; color: var(--good); font-size: 1rem; font-weight: 600; }
-    .delta .icon { width: 1rem; height: 1rem; stroke-width: 2; }
     .footnote { color: var(--muted); font-size: 1rem; }
     .panels { display: grid; gap: 1rem; }
     .panel { min-width: 0; padding: 1rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
     .panel h4 { margin-bottom: 1rem; font-size: 1.125rem; }
-    .days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); height: 12rem; gap: .375rem; }
-    .day { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: .375rem; min-width: 0; }
-    .day .seg { height: calc(var(--v) * 4%); border-radius: 4px 4px 0 0; background: var(--accent); }
-    .day-label { color: var(--muted); font-size: 1rem; text-align: center; white-space: nowrap; }
     .outcomes { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.25rem; }
     .donut { position: relative; width: 9rem; flex: none; }
     .donut svg { display: block; width: 100%; transform: rotate(-90deg); }
@@ -278,48 +266,59 @@
     .c-action { order: 7; flex-basis: 100%; margin-top: .25rem; }
     .outcome { display: inline-flex; align-items: center; gap: .375rem; font-size: 1rem; line-height: 1.3; }
     .outcome::before { content: ""; width: .625rem; height: .625rem; flex: none; border-radius: 50%; background: var(--c); }
-    .link-button { min-height: 2.75rem; padding: .375rem .75rem; border: 1px solid var(--muted); border-radius: 6px; background: var(--surface); font-weight: 600; cursor: pointer; }
+    .link-button { display: grid; width: 2.75rem; min-height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 6px; background: var(--surface); cursor: pointer; }
     .link-button:hover { border-color: var(--ink); }
     .empty { padding: 1.5rem; color: var(--soft); text-align: center; }
     .demo-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 1.5rem; margin-top: 2.5rem; text-align: center; }
     .demo-cta p { font-family: var(--font-display); font-size: 1.25rem; }
 
-    .drawer { width: min(30rem, 100%); max-width: 100%; height: 100dvh; max-height: 100dvh; margin: 0 0 0 auto; padding: 0; border: 0; border-left: 1px solid var(--line); background: var(--bg); color: var(--ink); box-shadow: -20px 0 50px rgb(0 0 0 / .25); }
-    .drawer::backdrop { background: rgb(10 20 16 / .6); }
-    .drawer[open] { animation: slide .3s cubic-bezier(.2, .7, .2, 1); }
-    .drawer-inner { display: flex; min-height: 100%; flex-direction: column; gap: 1.25rem; padding: 1.25rem; }
-    .drawer-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-    .drawer-head h3 { font-size: 1.375rem; }
-    .drawer-head .badge { margin-top: .5rem; color: var(--accent); }
+    html:has(.call-modal[open]) { overflow: hidden; }
+    .call-modal { position: fixed; inset: 0; width: min(40rem, calc(100% - 2rem)); max-width: none; height: fit-content; max-height: calc(100dvh - 2rem); margin: auto; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); box-shadow: 0 24px 80px rgb(0 0 0 / .3); }
+    .call-modal::backdrop { background: rgb(10 20 16 / .6); }
+    .call-modal[open] { display: flex; flex-direction: column; animation: modal-in .2s ease-out; }
+    .call-modal-inner { display: contents; }
+    .call-modal-head { display: flex; flex: none; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem .75rem .5rem 1.25rem; border-bottom: 1px solid var(--line); background: var(--bg); }
+    .call-modal-head h3 { font-size: 1.25rem; line-height: 1.4; }
+    .call-modal-body { flex: 1 1 auto; min-height: 0; padding: .5rem 1.25rem 1.25rem; overflow-y: auto; }
+    .call-modal-body:focus-visible { outline-offset: -3px; }
     .icon-button { display: grid; width: 2.75rem; height: 2.75rem; flex: none; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 6px; background: var(--surface); cursor: pointer; }
-    .drawer section { padding: 1rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-size: 1rem; }
-    .drawer h4 { margin-bottom: .5rem; font-size: 1rem; color: var(--soft); }
-    .facts { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .25rem 1rem; }
-    .facts dt { color: var(--soft); }
-    .transcript { display: grid; gap: .5rem; }
-    .transcript li { padding: .5rem .75rem; border-radius: 8px; background: var(--bg); }
-    .transcript strong { display: block; font-size: 1rem; }
-    @keyframes slide { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+    .call-modal section { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: 1rem; }
+    .call-modal h4 { margin-bottom: .75rem; font-size: 1.125rem; }
+    .detail-fields { display: grid; gap: .5rem; font-size: 1rem; }
+    .detail-fields > div { display: flex; flex-wrap: wrap; gap: 0 1rem; }
+    .detail-fields dt { flex: 0 0 7rem; color: var(--soft); font-weight: 600; }
+    .detail-fields dd { flex: 1 1 10rem; min-width: 0; overflow-wrap: anywhere; }
+    .detail-items { display: grid; gap: .75rem; }
+    .detail-meta { display: flex; flex-wrap: wrap; gap: 0 .75rem; color: var(--soft); }
+    .detail-meta strong { color: var(--ink); }
+    .transcript { display: grid; gap: .75rem; }
+    .transcript li { display: flex; align-items: flex-start; gap: .5rem; }
+    .transcript .caller { flex-direction: row-reverse; }
+    .transcript .icon { margin-top: .5rem; color: var(--soft); }
+    .transcript .bubble { min-width: 0; max-width: 85%; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow-wrap: anywhere; }
+    .transcript .detail-meta { margin-bottom: .25rem; }
+    .transcript li:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    .transcript-more { margin-top: 1rem; }
+    @keyframes modal-in { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
 
     .features { display: grid; gap: 1rem; }
     .feature { display: flex; min-width: 0; flex-direction: column; gap: .5rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
     .feature-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
     .feature h3 { font-size: 1.25rem; }
     .feature > p { color: var(--soft); font-size: 1rem; }
-    .feature .badge { color: var(--warn); }
-    .feature.is-soon { border-style: dashed; }
     .example { display: grid; gap: .5rem; margin-top: auto; padding-top: 1rem; }
     .example .bubble { max-width: 92%; }
 
     .trust { display: grid; gap: 1.5rem; }
     .trust-item h3 { margin: .25rem 0 .5rem; font-size: 1.125rem; }
     .trust-item p { color: var(--soft); font-size: 1rem; }
-    .trust-link { margin-top: 2rem; }
 
-    .sector { display: grid; gap: 1.5rem; align-items: center; padding: 1.5rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
-    .sector h3 { margin-bottom: .75rem; font-size: 1.375rem; }
-    .sector h3 + p { color: var(--soft); }
-    .sector .chat { padding: 0; }
+    .uses { display: grid; gap: 1rem; }
+    .use { display: flex; min-width: 0; flex-direction: column; gap: .5rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+    .use h3 { font-size: 1.25rem; }
+    .use > .card-icon { margin-bottom: .5rem; }
+    .use > p { color: var(--soft); font-size: 1rem; }
+    .use .bubble { max-width: 100%; margin-top: auto; }
     .sector-invite { margin-top: 1.5rem; color: var(--soft); text-align: center; }
 
     .activation { display: grid; gap: 1rem; counter-reset: activation; }
@@ -346,42 +345,16 @@
     .request-points { display: grid; gap: .75rem; margin-top: 1.5rem; }
     .request-points li { display: flex; gap: .75rem; }
     .request-points .icon { margin-top: .1875rem; color: var(--accent); }
-    .form-card { padding: 1.5rem; border-radius: 16px; }
-    .form { display: grid; gap: 1.125rem; }
-    .form-field { display: flex; flex-direction: column; gap: .375rem; }
-    .form-field > label, .form-field legend { font-weight: 600; }
-    .optional { color: var(--soft); font-weight: 400; }
-    .form .control { min-height: 3rem; font-size: 1rem; }
-    .control[aria-invalid="true"] { border-color: var(--error); box-shadow: 0 0 0 1px var(--error); }
-    fieldset.form-field { margin: 0; padding: 0; border: 0; min-width: 0; }
-    .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
-    .choice { display: flex; min-height: 2.75rem; align-items: center; gap: .5rem; padding: .5rem .75rem; border: 1px solid var(--muted); border-radius: 6px; background: var(--surface); cursor: pointer; }
-    .choice:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
-    .choice:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
-    .choice input, .consent input { width: 1.125rem; height: 1.125rem; flex: none; margin: 0; accent-color: var(--accent); }
-    .consent { display: flex; gap: .75rem; align-items: flex-start; font-size: 1rem; }
-    .consent input { margin-top: .25rem; }
-    .field-error { display: flex; gap: .375rem; color: var(--error); font-size: 1rem; font-weight: 600; }
-    .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-    .form-status { padding: 1rem; border-radius: 10px; font-size: 1rem; }
-    .form-status:focus { outline: none; }
-    .form-status--ok { border: 1px solid var(--accent); background: color-mix(in srgb, var(--tile) 60%, var(--surface)); }
-    .form-status--ok strong { display: block; font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; }
-    .form-status--error { border: 1px solid var(--error); background: var(--surface); color: var(--ink); }
+    .contact-details { display: grid; gap: 1.5rem; margin: 0; padding-block: 1.5rem; border-block: 1px solid var(--line); }
+    .contact-details dt { color: var(--soft); font-size: 1rem; }
+    .contact-details dd { overflow-wrap: anywhere; font-family: var(--font-display); font-size: 1.375rem; }
+    .contact-details a { text-underline-offset: .2em; }
 
     .site-footer { padding-block: 2.5rem calc(2rem + env(safe-area-inset-bottom, 0px)); }
     .footer-grid { display: grid; gap: 1.5rem; }
     .footer-grid h2 { margin-bottom: .5rem; font-size: 1rem; color: var(--soft); font-family: var(--font-body); font-weight: 600; }
     .footer-grid p, .footer-grid li { color: var(--soft); font-size: 1rem; }
     .footer-links a { display: inline-flex; min-height: 2.75rem; align-items: center; }
-    .privacy { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--soft); font-size: 1rem; }
-    .privacy h2 { margin-bottom: .5rem; color: var(--ink); font-size: 1.125rem; }
-    .privacy p + p { margin-top: .5rem; }
-
-    .sticky-cta { position: fixed; z-index: 40; right: 0; bottom: 0; left: 0; padding: .75rem var(--gutter) calc(.75rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 94%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); transform: translateY(110%); transition: transform .25s ease; }
-    .sticky-cta .button { width: 100%; }
-    .sticky-cta.is-visible { transform: none; }
-    html:not(.js) .sticky-cta { display: none; }
 
     @media (prefers-reduced-motion: no-preference) {
       .js .reveal-chat .chat li, .js .reveal-chat .message-card { opacity: 0; animation: bubble .45s ease forwards; animation-delay: calc(var(--i) * 1.1s + .3s); }
@@ -394,41 +367,44 @@
       .brand-mark { width: 1.75rem; height: 1.75rem; }
       .button--small { padding-inline: .5rem; font-size: .8125rem; white-space: nowrap; }
     }
-    @media (max-width: 47.99rem) {
-      .js body { padding-bottom: 5rem; }
-    }
     @media (min-width: 48rem) {
       :root { --gutter: 2rem; --header-height: 4.5rem; }
-      .menu-toggle, .sticky-cta { display: none; }
-      .js .nav, .nav { position: static; display: flex; flex-direction: row; gap: 1.5rem; margin-right: 1rem; padding: 0; border: 0; background: none; }
       .hero h1 { font-size: 3.25rem; }
       .section { padding-block: 5rem; }
       .section h2 { font-size: 2.25rem; }
-      .cards, .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cards, .features, .uses { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .compare { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
-      .step { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 1fr; grid-template-rows: 3.5rem 1fr; }
+      .step > div { display: flex; flex-direction: column; align-items: flex-start; }
+      .step p { margin-bottom: 1rem; }
+      .step .card-icon { margin-top: auto; }
       .step:not(:last-child)::after { top: 1.75rem; right: -2rem; bottom: auto; left: 4.25rem; border-top: 2px dashed var(--line); border-left: 0; }
       .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .panels { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+      .panels > [aria-labelledby="trend-title"] { display: flex; flex-direction: column; }
+      .days { flex: 1; height: auto; min-height: 12rem; }
+      .day { grid-template-rows: minmax(0, 1fr) 1.125rem; }
+      .day .seg { height: calc(var(--v) * 4%); }
       .outcomes { flex-direction: column; align-items: stretch; }
       .donut { margin-inline: auto; }
       .app-body { padding: 1.5rem; }
       .filters { width: auto; }
       .trust { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .activation { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .sector { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); padding: 2rem; }
       .footer-grid { grid-template-columns: 1.4fr 1fr 1.4fr; }
-      .form-card { padding: 2rem; }
-      .chart-figure { padding: 2rem; }
     }
     @media (min-width: 64rem) {
+      .menu-toggle { display: none; }
+      .js .nav, .nav { position: static; display: flex; flex-direction: row; gap: 1.5rem; margin-right: 1rem; padding: 0; border: 0; background: none; }
+      .nav-submenu { position: absolute; top: 100%; right: 0; }
       .hero { min-height: min(100svh, 52rem); display: flex; align-items: center; padding-block: calc(var(--header-height) + 2rem) 3rem; }
       .hero > .container { width: calc(100% - 2 * var(--gutter)); }
       .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 4rem; }
       .hero h1 { font-size: 3.75rem; }
       .section h2 { font-size: 2.5rem; }
       .cards, .features { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .uses { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .trust { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .activation { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .request-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 4rem; align-items: start; }
@@ -455,6 +431,7 @@
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
     <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
     <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14m7-7-7 7-7-7"/></symbol>
     <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7M12 19V5"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
@@ -471,12 +448,21 @@
     <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
     <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M13 8H7M17 12H7"/></symbol>
     <symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
     <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
     <symbol id="i-mic-off" viewBox="0 0 24 24"><path d="m2 2 20 20M18.89 13.23A7.12 7.12 0 0 0 19 12v-2M5 10v2a7 7 0 0 0 12 5M15 9.34V5a3 3 0 0 0-5.68-1.33M9 9v3a3 3 0 0 0 5.12 2.12M12 19v3"/></symbol>
     <symbol id="i-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></symbol>
     <symbol id="i-calendar-check" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18m-12 6 2 2 4-4"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
     <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect x="2" y="6" width="20" height="14" rx="2"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></symbol>
+    <symbol id="i-bed-double" viewBox="0 0 24 24"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4M12 4v6M2 18h20"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M3 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2M6 2v20M21 15V2c-5 0-5 9 0 9M21 15v7"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="M17.596 12.768a2 2 0 1 0 2.829-2.829l-1.768-1.767a2 2 0 0 0 2.828-2.829l-2.828-2.828a2 2 0 0 0-2.829 2.828l-1.767-1.768a2 2 0 1 0-2.829 2.829zM2.5 21.5l1.4-1.4m16.2-16.2 1.4-1.4M5.343 21.485a2 2 0 1 0 2.829-2.828l1.767 1.768a2 2 0 1 0 2.829-2.829l-6.364-6.364a2 2 0 1 0-2.829 2.829l1.768 1.767a2 2 0 0 0-2.828 2.829zm4.257-7.085 4.8-4.8"/></symbol>
   </svg>
 
   <header class="site-header">
@@ -487,8 +473,13 @@
         <a href="#come-funziona">Come funziona</a>
         <a href="#demo">Demo</a>
         <a href="#domande">Domande</a>
+        <details class="nav-group">
+          <summary>Soluzioni</summary>
+          <div class="nav-submenu"><a href="./" aria-current="page">Relay</a></div>
+        </details>
+        <a href="../">Tetravise</a>
       </nav>
-      <a class="button button--small" href="#richiedi-demo" data-cta="header">Richiedi una demo</a>
+      <a class="button button--small" href="#richiedi-demo">Richiedi una demo</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu delle sezioni">
         <svg class="icon icon-open" aria-hidden="true"><use href="#i-menu"/></svg>
         <svg class="icon icon-close" aria-hidden="true"><use href="#i-x"/></svg>
@@ -500,34 +491,35 @@
     <section class="hero triangles" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Assistente telefonico AI per piccole attività</p>
-          <h1 id="hero-title">Nessuna chiamata persa. <span>Il tuo telefono risponde sempre.</span></h1>
-          <p class="lead">Relay risponde alle chiamate quando non puoi farlo tu: dà le informazioni giuste, raccoglie messaggi chiari e ti mostra tutto in una dashboard.</p>
+          <p class="eyebrow">Assistente telefonico AI di Tetravise</p>
+          <h1 id="hero-title">Relay. <span>La tua azienda, pronta a rispondere.</span></h1>
+          <p class="lead">Un assistente telefonico AI che non si limita a rispondere. Collegato ai tuoi ERP e gestionali, può prenotare, consultare prezzi, disponibilità e magazzino aggiornati e passare la chiamata alla persona giusta.</p>
           <div class="hero-actions">
-            <a class="button" href="#richiedi-demo" data-cta="hero">Richiedi una demo <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-            <a class="button button--ghost" href="#demo" data-cta="hero-dashboard">Guarda la dashboard</a>
+            <a class="button" href="#richiedi-demo">Richiedi una demo <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a class="button button--ghost" href="#demo">Guarda la dashboard</a>
           </div>
           <p class="hero-note">Nessun impegno. Ti ricontattiamo noi.</p>
           <ul class="trust-strip" aria-label="In breve">
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Italiano naturale</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Dati separati per ogni attività</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Si presenta come assistente virtuale</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Conversazioni multilingue</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Collegato ai tuoi sistemi</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Prenotazioni e dati aggiornati</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Regole decise insieme a te</li>
           </ul>
         </div>
         <figure class="preview reveal-chat" aria-labelledby="preview-caption">
-          <figcaption class="sr-only" id="preview-caption">Esempio di chiamata gestita da Relay e del messaggio che arriva al titolare</figcaption>
+          <figcaption class="sr-only" id="preview-caption">Prenotazione con Relay collegato al calendario dello studio</figcaption>
           <div class="phone glass">
-            <div class="phone-top"><span>Autonoleggio Lago Verde</span><span class="live">In chiamata</span></div>
+            <div class="phone-top"><span>Studio Aurora</span><span class="live">In chiamata</span></div>
             <ol class="chat">
-              <li class="bubble from-assistant" style="--i:0"><span class="who">Assistente</span>Buongiorno, sono l'assistente virtuale di Autonoleggio Lago Verde. Come posso aiutarla?</li>
-              <li class="bubble from-caller" style="--i:1"><span class="who">Cliente</span>Vorrei noleggiare un'auto per sabato.</li>
-              <li class="bubble from-assistant" style="--i:2"><span class="who">Assistente</span>Sabato abbiamo auto disponibili. Lascio un messaggio al titolare per confermare?</li>
+              <li class="bubble from-assistant" style="--i:0"><span class="who">Assistente</span>Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?</li>
+              <li class="bubble from-caller" style="--i:1"><span class="who">Cliente</span>Vorrei un appuntamento per giovedì pomeriggio.</li>
+              <li class="bubble from-assistant" style="--i:2"><span class="who">Assistente</span>Ho verificato il calendario: giovedì alle 16:30 c'è posto. Confermo?</li>
               <li class="bubble from-caller" style="--i:3"><span class="who">Cliente</span>Sì, grazie. Sono Marco Rossi.</li>
             </ol>
           </div>
           <div class="message-card" style="--i:4">
             <svg class="icon" aria-hidden="true"><use href="#i-message"/></svg>
-            <p><span class="kicker">Messaggio per il titolare</span><strong>Marco R.</strong> Vuole noleggiare un'auto sabato · Urgenza: non urgente</p>
+            <p><span class="kicker">Prenotazione nel gestionale</span><strong>Marco Rossi</strong>Giovedì · 16:30 · Appuntamento confermato</p>
           </div>
         </figure>
       </div>
@@ -559,28 +551,6 @@
         <div class="section-head">
           <h2 id="change-title">Cosa cambia, in concreto</h2>
         </div>
-        <!-- Dati dello scenario: le settimane 7 e 8 coincidono con i periodi della demo (87 e 98 chiamate). -->
-        <figure class="chart-figure" aria-labelledby="weeks-title">
-          <div class="chart-title">
-            <h3 id="weeks-title">Chiamate ricevute per settimana</h3>
-            <ul class="legend" aria-hidden="true">
-              <li><span class="swatch" style="--c: var(--accent)"></span>Con risposta</li>
-              <li><span class="swatch swatch--missed"></span>Senza risposta</li>
-            </ul>
-          </div>
-          <ol class="weeks">
-            <li class="week"><span class="sr-only">Settimana 1, prima di Relay: 84 chiamate, 29 senza risposta.</span><span class="track" aria-hidden="true"><span class="total">84</span><span class="seg seg--missed" style="--v:29"></span><span class="seg seg--answered" style="--v:55"></span></span><span class="week-label" aria-hidden="true">S1</span></li>
-            <li class="week"><span class="sr-only">Settimana 2, prima di Relay: 91 chiamate, 34 senza risposta.</span><span class="track" aria-hidden="true"><span class="total">91</span><span class="seg seg--missed" style="--v:34"></span><span class="seg seg--answered" style="--v:57"></span></span><span class="week-label" aria-hidden="true">S2</span></li>
-            <li class="week"><span class="sr-only">Settimana 3, prima di Relay: 79 chiamate, 26 senza risposta.</span><span class="track" aria-hidden="true"><span class="total">79</span><span class="seg seg--missed" style="--v:26"></span><span class="seg seg--answered" style="--v:53"></span></span><span class="week-label" aria-hidden="true">S3</span></li>
-            <li class="week"><span class="sr-only">Settimana 4, prima di Relay: 88 chiamate, 31 senza risposta.</span><span class="track" aria-hidden="true"><span class="total">88</span><span class="seg seg--missed" style="--v:31"></span><span class="seg seg--answered" style="--v:57"></span></span><span class="week-label" aria-hidden="true">S4</span></li>
-            <li class="week is-start"><span class="sr-only">Settimana 5, con Relay: 90 chiamate, tutte con risposta.</span><span class="track" aria-hidden="true"><span class="total">90</span><span class="seg seg--answered" style="--v:90"></span></span><span class="week-label" aria-hidden="true">S5</span></li>
-            <li class="week"><span class="sr-only">Settimana 6, con Relay: 93 chiamate, tutte con risposta.</span><span class="track" aria-hidden="true"><span class="total">93</span><span class="seg seg--answered" style="--v:93"></span></span><span class="week-label" aria-hidden="true">S6</span></li>
-            <li class="week"><span class="sr-only">Settimana 7, con Relay: 87 chiamate, tutte con risposta.</span><span class="track" aria-hidden="true"><span class="total">87</span><span class="seg seg--answered" style="--v:87"></span></span><span class="week-label" aria-hidden="true">S7</span></li>
-            <li class="week"><span class="sr-only">Settimana 8, con Relay: 98 chiamate, tutte con risposta.</span><span class="track" aria-hidden="true"><span class="total">98</span><span class="seg seg--answered" style="--v:98"></span></span><span class="week-label" aria-hidden="true">S8</span></li>
-          </ol>
-          <div class="phases" aria-hidden="true"><span>Prima</span><span>Con Relay</span></div>
-          <figcaption class="chart-caption">Scenario dimostrativo con dati inventati.</figcaption>
-        </figure>
         <div class="compare">
           <div class="compare-col compare-before">
             <h3>Prima</h3>
@@ -595,8 +565,9 @@
             <h3>Con Relay</h3>
             <ul>
               <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Ogni chiamata ha una risposta</li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Messaggi con nome, recapito, motivo e urgenza</li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Le domande comuni le gestisce l'assistente</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Prezzi e disponibilità letti dai tuoi sistemi collegati</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Prenotazioni registrate senza passaggi manuali</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Trasferimenti secondo orari, priorità e referenti concordati</li>
               <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Una dashboard con i numeri di ogni giorno</li>
             </ul>
           </div>
@@ -614,7 +585,7 @@
             <span class="step-number" aria-hidden="true">1</span>
             <div>
               <h3>Configuriamo l'assistente con te</h3>
-              <p>Raccogliamo orari, servizi e risposte alle domande più frequenti. Dove è possibile colleghiamo il tuo gestionale.</p>
+              <p>Definiamo risposte, operazioni e regole di trasferimento. Colleghiamo ERP, CRM, calendari e gestionali per dare all'assistente accesso ai dati e alle funzioni che servono.</p>
               <div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-clipboard"/></svg></div>
             </div>
           </li>
@@ -622,15 +593,15 @@
             <span class="step-number" aria-hidden="true">2</span>
             <div>
               <h3>Inoltri le chiamate</h3>
-              <p>Attivi l'inoltro dal tuo telefono verso Relay. Il tuo numero resta quello di sempre. Facciamo insieme una chiamata di prova.</p>
+              <p>Attivi l'inoltro dal tuo telefono verso Relay, mantenendo il numero di sempre. Scegli tu quando far rispondere l'assistente: sempre, quando sei occupato o fuori orario.</p>
               <div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-phone-forwarded"/></svg></div>
             </div>
           </li>
           <li class="step">
             <span class="step-number" aria-hidden="true">3</span>
             <div>
-              <h3>Ricevi tutto in dashboard</h3>
-              <p>Ogni chiamata arriva con riassunto, messaggio ed esito. Tu decidi chi richiamare.</p>
+              <h3>Relay risponde e agisce</h3>
+              <p>Consulta i dati, registra prenotazioni e trasferisce le chiamate secondo le tue regole. In dashboard trovi riepiloghi, operazioni ed esiti.</p>
               <div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-dashboard"/></svg></div>
             </div>
           </li>
@@ -642,23 +613,22 @@
       <div class="container">
         <div class="section-head">
           <h2 id="demo-title">Guarda cosa vedresti ogni mattina</h2>
-          <p class="sub">Quante chiamate, di cosa si parlava, chi richiamare. I dati qui sotto sono inventati.</p>
+          <p class="sub">Chiamate, prenotazioni, operazioni e trasferimenti: tutto sotto controllo in un'unica dashboard.</p>
         </div>
-        <p class="demo-label"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Dati dimostrativi</p>
-        <div class="app" role="region" aria-label="Anteprima della dashboard di Relay con dati dimostrativi">
-          <div class="app-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="app-url">Relay · Panoramica · Autonoleggio Lago Verde</span></div>
+        <p class="demo-label"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Demo</p>
+        <div class="app" role="region" aria-label="Dashboard di Relay">
+          <div class="app-bar" aria-hidden="true"><span class="dots"><i></i><i></i><i></i></span><span class="app-url">Relay · Panoramica · Studio Aurora</span></div>
           <div class="app-body">
             <div class="app-head">
               <h3>Panoramica</h3>
               <p class="period">Ultimi 7 giorni<span data-period></span></p>
             </div>
             <ul class="kpis">
-              <li class="kpi"><span class="kpi-label">Chiamate ricevute</span><strong>98</strong><span class="delta"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>+12,6%*</span></li>
-              <li class="kpi"><span class="kpi-label">Minuti utilizzati</span><strong>302 <small>min</small></strong><span class="delta"><svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>−0,8%*</span></li>
-              <li class="kpi"><span class="kpi-label">Durata media</span><strong>3 min 5 s</strong><span class="delta"><svg class="icon" aria-hidden="true"><use href="#i-arrow-down"/></svg>−11,9%*</span></li>
-              <li class="kpi"><span class="kpi-label">Gestite dall'assistente</span><strong>68</strong><span class="kpi-note">il 69% delle chiamate, concluse senza passare a una persona</span><span class="delta"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>+30,8%*</span></li>
+              <li class="kpi"><span class="kpi-label">Chiamate ricevute</span><strong>98</strong></li>
+              <li class="kpi"><span class="kpi-label">Minuti utilizzati</span><strong>302 <small>min</small></strong></li>
+              <li class="kpi"><span class="kpi-label">Durata media</span><strong>3 min 5 s</strong></li>
+              <li class="kpi"><span class="kpi-label">Risolte dall'AI</span><strong>68</strong><span class="kpi-note">69% delle chiamate</span></li>
             </ul>
-            <p class="footnote">* Variazione percentuale rispetto al periodo precedente di pari durata.</p>
             <div class="panels">
               <section class="panel" aria-labelledby="trend-title">
                 <h4 id="trend-title">Andamento delle chiamate</h4>
@@ -715,7 +685,7 @@
                 </div>
               </div>
               <table class="calls-table">
-                <caption class="sr-only">Chiamate più recenti, dati dimostrativi</caption>
+                <caption class="sr-only">Chiamate più recenti</caption>
                 <thead>
                   <tr><th scope="col">Data e ora</th><th scope="col">Telefono</th><th scope="col">Nome</th><th scope="col">Durata</th><th scope="col">Riepilogo</th><th scope="col">Esito</th><th scope="col"><span class="sr-only">Azioni</span></th></tr>
                 </thead>
@@ -725,18 +695,18 @@
                     <td class="c-phone">+39 333 000 0142</td>
                     <td class="c-name">Marco Bianchi</td>
                     <td class="c-duration">2 min 40 s</td>
-                    <td class="c-summary">Vuole noleggiare un'auto compatta da sabato; da richiamare per confermare.</td>
+                    <td class="c-summary">Appuntamento prenotato per giovedì alle 16:30 nel calendario dello studio.</td>
                     <td class="c-outcome"><span class="outcome c-concluded">Concluse senza trasferimento</span></td>
-                    <td class="c-action"><button class="link-button" type="button" data-detail>Dettaglio<span class="sr-only"> della chiamata di Marco Bianchi</span></button></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail title="Dettaglio della chiamata di Marco Bianchi"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg><span class="sr-only">Dettaglio della chiamata di Marco Bianchi</span></button></td>
                   </tr>
                   <tr data-call="elena" data-outcome="concluded">
                     <td class="c-date"><time data-days-ago="1" data-time="12:15">ieri 12:15</time></td>
                     <td class="c-phone">+39 347 000 0178</td>
                     <td class="c-name">Elena Conti</td>
                     <td class="c-duration">4 min 5 s</td>
-                    <td class="c-summary">Chiede orari di ritiro e se serve il deposito; risposta data.</td>
+                                        <td class="c-summary">Chiede gli orari di apertura; risposta data.</td>
                     <td class="c-outcome"><span class="outcome c-concluded">Concluse senza trasferimento</span></td>
-                    <td class="c-action"><button class="link-button" type="button" data-detail>Dettaglio<span class="sr-only"> della chiamata di Elena Conti</span></button></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail title="Dettaglio della chiamata di Elena Conti"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg><span class="sr-only">Dettaglio della chiamata di Elena Conti</span></button></td>
                   </tr>
                   <tr data-call="unknown" data-outcome="other">
                     <td class="c-date"><time data-days-ago="1" data-time="09:03">ieri 09:03</time></td>
@@ -745,25 +715,25 @@
                     <td class="c-duration">45 s</td>
                     <td class="c-summary">Chiamata interrotta dopo la presentazione dell'assistente.</td>
                     <td class="c-outcome"><span class="outcome c-other">Altro / esito non determinato</span></td>
-                    <td class="c-action"><button class="link-button" type="button" data-detail>Dettaglio<span class="sr-only"> della chiamata da +39 320 000 0116</span></button></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail title="Dettaglio della chiamata da numero non salvato"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg><span class="sr-only">Dettaglio della chiamata da +39 320 000 0116</span></button></td>
                   </tr>
                   <tr data-call="davide" data-outcome="transferred">
                     <td class="c-date"><time data-days-ago="2" data-time="19:28">2 giorni fa 19:28</time></td>
                     <td class="c-phone">+39 339 000 0153</td>
                     <td class="c-name">Davide Ferri</td>
                     <td class="c-duration">3 min 22 s</td>
-                    <td class="c-summary">Guasto durante il noleggio, urgente; passato al titolare.</td>
+                                        <td class="c-summary">Richiesta urgente; trasferita al referente.</td>
                     <td class="c-outcome"><span class="outcome c-transferred">Trasferite con successo</span></td>
-                    <td class="c-action"><button class="link-button" type="button" data-detail>Dettaglio<span class="sr-only"> della chiamata di Davide Ferri</span></button></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail title="Dettaglio della chiamata di Davide Ferri"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg><span class="sr-only">Dettaglio della chiamata di Davide Ferri</span></button></td>
                   </tr>
                   <tr data-call="sara" data-outcome="failed">
                     <td class="c-date"><time data-days-ago="2" data-time="08:51">2 giorni fa 08:51</time></td>
                     <td class="c-phone">+39 349 000 0127</td>
                     <td class="c-name">Sara Colombo</td>
                     <td class="c-duration">1 min 58 s</td>
-                    <td class="c-summary">Chiede il listino di un furgone; trasferimento non riuscito.</td>
+                                        <td class="c-summary">Chiede informazioni su un servizio; trasferimento non riuscito.</td>
                     <td class="c-outcome"><span class="outcome c-failed">Trasferimento fallito</span></td>
-                    <td class="c-action"><button class="link-button" type="button" data-detail>Dettaglio<span class="sr-only"> della chiamata di Sara Colombo</span></button></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail title="Dettaglio della chiamata di Sara Colombo"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg><span class="sr-only">Dettaglio della chiamata di Sara Colombo</span></button></td>
                   </tr>
                 </tbody>
               </table>
@@ -778,71 +748,71 @@
       </div>
     </section>
 
-    <dialog class="drawer" id="call-detail" aria-labelledby="detail-title">
-      <div class="drawer-inner">
-        <div class="drawer-head">
+    <dialog class="call-modal" id="call-detail" aria-labelledby="detail-title">
+      <div class="call-modal-inner">
+        <div class="call-modal-head">
           <div>
             <h3 id="detail-title">Dettaglio chiamata</h3>
-            <span class="badge">Anteprima · dati dimostrativi</span>
           </div>
-          <button class="icon-button" type="button" data-close aria-label="Chiudi il dettaglio"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+          <button class="icon-button" type="button" data-close autofocus aria-label="Chiudi il dettaglio"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
         </div>
-        <section aria-labelledby="detail-summary-title">
-          <h4 id="detail-summary-title">Riassunto</h4>
-          <p data-field="summary"></p>
-          <dl class="facts" style="margin-top: .75rem">
-            <dt>Data</dt><dd data-field="date"></dd>
-            <dt>Durata</dt><dd data-field="duration"></dd>
-            <dt>Esito</dt><dd data-field="outcome"></dd>
+        <div class="call-modal-body">
+          <dl class="detail-fields" aria-label="Dati della chiamata">
+            <div><dt>Data e ora</dt><dd data-field="date"></dd></div>
+            <div><dt>Fine</dt><dd data-field="end"></dd></div>
+            <div><dt>Telefono</dt><dd data-field="phone"></dd></div>
+            <div><dt>Nome</dt><dd data-field="name"></dd></div>
+            <div><dt>Durata</dt><dd data-field="duration"></dd></div>
+            <div><dt>Esito</dt><dd><span class="outcome" data-field="outcome"></span></dd></div>
           </dl>
-        </section>
-        <section aria-labelledby="detail-message-title" data-example>
-          <h4 id="detail-message-title">Messaggio</h4>
-          <dl class="facts">
-            <dt>Nome</dt><dd>Marco Bianchi</dd>
-            <dt>Recapito</dt><dd>+39 333 000 0142</dd>
-            <dt>Motivo</dt><dd>Noleggio auto compatta da sabato a lunedì</dd>
-            <dt>Urgenza</dt><dd>Non urgente</dd>
-          </dl>
-        </section>
-        <section aria-labelledby="detail-actions-title" data-example>
-          <h4 id="detail-actions-title">Azioni eseguite</h4>
-          <p>17:43 · Controllata la disponibilità · Auto compatte disponibili</p>
-        </section>
-        <section aria-labelledby="detail-transcript-title" data-example>
-          <h4 id="detail-transcript-title">Trascrizione</h4>
-          <ol class="transcript">
-            <li><strong>Assistente</strong>Buongiorno, sono l'assistente virtuale di Autonoleggio Lago Verde. Come posso aiutarla?</li>
-            <li><strong>Chiamante</strong>Vorrei noleggiare un'auto piccola da sabato a lunedì.</li>
-            <li><strong>Assistente</strong>Per quelle date abbiamo auto compatte disponibili. Vuole lasciare un messaggio al titolare per confermare?</li>
-            <li><strong>Chiamante</strong>Sì, grazie. Mi chiamo Marco Bianchi.</li>
-          </ol>
-        </section>
-        <p class="footnote" data-example-note>In questa anteprima messaggio, azioni e trascrizione sono mostrati per la chiamata di Marco Bianchi.</p>
+          <section aria-labelledby="detail-summary-title">
+            <h4 id="detail-summary-title">Riepilogo</h4>
+            <p data-field="summary"></p>
+          </section>
+          <section aria-labelledby="detail-message-title">
+            <h4 id="detail-message-title">Messaggio del chiamante</h4>
+            <div data-field="message"></div>
+          </section>
+          <section aria-labelledby="detail-actions-title">
+            <h4 id="detail-actions-title">Azioni eseguite</h4>
+            <ul class="detail-items" data-field="actions"></ul>
+            <p data-empty="actions">Nessuna azione eseguita.</p>
+          </section>
+          <section aria-labelledby="detail-transfers-title">
+            <h4 id="detail-transfers-title">Trasferimenti</h4>
+            <ul class="detail-items" data-field="transfers"></ul>
+            <p data-empty="transfers">Nessun trasferimento.</p>
+          </section>
+          <section aria-labelledby="detail-transcript-title">
+            <h4 id="detail-transcript-title">Trascrizione</h4>
+            <ol class="transcript" data-field="transcript"></ol>
+            <button class="button button--ghost transcript-more" type="button" data-more hidden></button>
+          </section>
+        </div>
       </div>
     </dialog>
 
     <section class="section" id="funzioni" aria-labelledby="features-title">
       <div class="container">
         <div class="section-head">
-          <h2 id="features-title">Sa cosa dire, e quando passarti la chiamata</h2>
-          <p class="sub">Un assistente vocale AI per aziende che vivono di telefonate.</p>
+          <h2 id="features-title">Non solo risposte. Operazioni concrete.</h2>
+          <p class="sub">Colleghiamo Relay ai tuoi sistemi aziendali e definiamo insieme quali dati può consultare, cosa può fare e quando deve coinvolgere una persona.</p>
         </div>
         <ul class="features">
           <li class="feature">
-            <h3>Informazioni sulla tua attività</h3>
-            <p>Orari, chiusure, servizi, domande frequenti.</p>
+            <h3>Prezzi e disponibilità aggiornati</h3>
+            <p>Consulta listini e magazzino nel tuo ERP per rispondere con i dati aggiornati, non con un elenco statico.</p>
             <div class="example" aria-label="Esempio di conversazione">
-              <p class="bubble from-caller">“Siete aperti domenica?”</p>
-              <p class="bubble from-assistant">“Domenica siamo chiusi, riapriamo lunedì alle 8:30.”</p>
+              <p class="bubble from-caller">“Avete ancora quel ricambio? Quanto costa?”</p>
+              <p class="bubble from-assistant">“Dal magazzino risultano 3 pezzi disponibili, a 45 euro ciascuno.”</p>
             </div>
           </li>
           <li class="feature">
-            <h3>Disponibilità in tempo reale</h3>
-            <p>Dove l'attività ha un gestionale collegabile, controlla la disponibilità mentre parla. Se il gestionale non risponde, lo dice onestamente e lascia un messaggio.</p>
+            <h3>Prenotazioni e appuntamenti</h3>
+            <p>Verifica gli slot liberi e registra la prenotazione nel calendario o gestionale collegato, rispettando orari, durata e regole concordate.</p>
             <div class="example" aria-label="Esempio di conversazione">
-              <p class="bubble from-caller">“C'è un furgone libero giovedì?”</p>
-              <p class="bubble from-assistant">“Giovedì ne abbiamo uno libero. Lo segnalo al titolare per la conferma?”</p>
+              <p class="bubble from-caller">“Vorrei un appuntamento giovedì pomeriggio.”</p>
+              <p class="bubble from-assistant">“Giovedì alle 16:30 c'è posto. Vuole che prenoti?”</p>
             </div>
           </li>
           <li class="feature">
@@ -854,25 +824,27 @@
             </div>
           </li>
           <li class="feature">
-            <h3>Riassunto di ogni chiamata</h3>
-            <p>Cosa si sono detti, come è finita, la trascrizione se ti serve.</p>
-            <div class="example" aria-label="Esempio di riassunto">
-              <p class="bubble from-assistant">“Chiede orari di ritiro e se serve il deposito; risposta data.”</p>
-            </div>
-          </li>
-          <li class="feature is-soon">
-            <div class="feature-top"><h3>Passaggio a una persona</h3><span class="badge">In arrivo</span></div>
-            <p>Se il caso lo richiede, ti passa la chiamata secondo le regole che hai scelto.</p>
+            <h3>Ordini e richieste ai tuoi sistemi</h3>
+            <p>Recupera lo stato di un ordine dal gestionale o dal CRM collegato e fornisce informazioni puntuali durante la chiamata.</p>
             <div class="example" aria-label="Esempio di conversazione">
-              <p class="bubble from-caller">“Ho un guasto, sono fermo in autostrada.”</p>
-              <p class="bubble from-assistant">“Capisco, le passo subito il titolare.”</p>
+              <p class="bubble from-caller">“A che punto è il mio ordine?”</p>
+              <p class="bubble from-assistant">“L'ordine risulta spedito, con consegna prevista domani.”</p>
             </div>
           </li>
-          <li class="feature is-soon">
-            <div class="feature-top"><h3>Avvisi via email</h3><span class="badge">In arrivo</span></div>
-            <p>Subito per le urgenze, oppure un riepilogo.</p>
-            <div class="example" aria-label="Esempio di avviso">
-              <p class="bubble from-assistant">“Messaggio urgente da Davide Ferri: guasto durante il noleggio.”</p>
+          <li class="feature">
+            <div class="feature-top"><h3>Trasferimenti con le tue regole</h3></div>
+            <p>Concordiamo con te logiche, orari, priorità e referenti: Relay sa a chi passare la chiamata, quando farlo e come gestire una mancata risposta.</p>
+            <div class="example" aria-label="Esempio di conversazione">
+              <p class="bubble from-caller">“La macchina è ferma, ho bisogno di assistenza.”</p>
+              <p class="bubble from-assistant">“La metto in contatto con il tecnico di turno per le urgenze.”</p>
+            </div>
+          </li>
+          <li class="feature">
+            <h3>Clienti internazionali</h3>
+            <p>Accoglie chi chiama nella sua lingua e risponde con le informazioni della tua attività, senza passare la chiamata a un collega.</p>
+            <div class="example" aria-label="Esempio di conversazione in inglese" lang="en">
+              <p class="bubble from-caller">“Can I collect my order on Saturday?”</p>
+              <p class="bubble from-assistant">“Yes, we're open from 9 am to 1 pm. May I have your order number?”</p>
             </div>
           </li>
         </ul>
@@ -882,35 +854,34 @@
     <section class="section alt" id="fiducia" aria-labelledby="trust-title">
       <div class="container">
         <div class="section-head">
-          <h2 id="trust-title">Chi chiama sa con chi parla. Tu sai dove stanno i tuoi dati.</h2>
+          <h2 id="trust-title">Chiamate e dettagli, in un unico posto</h2>
         </div>
-        <!-- DA VERIFICARE prima della pubblicazione: presentazione nel prompt di ogni cliente e audio disattivato. -->
         <ul class="trust">
-          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-bot"/></svg></div><h3>Si presenta per quello che è</h3><p>L'assistente dichiara all'inizio di essere un assistente virtuale.</p></li>
-          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></div><h3>Dati separati per ogni attività</h3><p>Nessun'altra azienda può vedere le tue chiamate.</p></li>
-          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-mic-off"/></svg></div><h3>Audio non registrato</h3><p>La registrazione audio è disattivata, salvo diverso accordo.</p></li>
-          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-file-text"/></svg></div><h3>Contratto chiaro</h3><p>Prima dell'attivazione firmiamo insieme contratto e accordo sul trattamento dei dati.</p></li>
+          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></div><h3>Accesso con account</h3><p>La dashboard richiede l'autenticazione dell'utente.</p></li>
+          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-dashboard"/></svg></div><h3>Panoramica delle chiamate</h3><p>Indicatori, andamento ed esiti si aggiornano in base al periodo selezionato.</p></li>
+          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-message"/></svg></div><h3>Dettagli quando disponibili</h3><p>Messaggi, azioni, trasferimenti e trascrizione sono consultabili nel dettaglio della chiamata.</p></li>
+          <li class="trust-item"><div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-calendar-check"/></svg></div><h3>Operazioni tracciate</h3><p>Prenotazioni, consultazioni dei sistemi e passaggi al team restano nel contesto della chiamata.</p></li>
         </ul>
-        <p class="trust-link"><a class="text-link" href="#privacy">Leggi l'informativa sulla privacy</a></p>
       </div>
     </section>
 
     <section class="section" id="per-chi" aria-labelledby="sector-title">
       <div class="container">
         <div class="section-head">
-          <h2 id="sector-title">Nato per il noleggio auto, pensato per chi vive di telefonate</h2>
+          <h2 id="sector-title">Un assistente per attività diverse</h2>
+          <p class="sub">Dallo studio professionale al magazzino: cambiano i sistemi e le regole, non la semplicità di una telefonata. Ecco cosa può fare con le integrazioni dedicate.</p>
         </div>
-        <article class="sector">
-          <div>
-            <h3>Noleggio auto e furgoni</h3>
-            <p>Prezzi, disponibilità, orari di ritiro, un guasto in viaggio: nel noleggio il telefono non smette mai. Relay risponde, controlla la disponibilità dove il gestionale lo permette e ti lascia il messaggio già ordinato.</p>
-          </div>
-          <div class="chat" aria-label="Esempio di conversazione">
-            <p class="bubble from-caller">“A che ora posso ritirare l'auto venerdì?”</p>
-            <p class="bubble from-assistant">“Venerdì il ritiro è dalle 8:30 alle 18:30. Vuole che avvisi il titolare del suo arrivo?”</p>
-          </div>
-        </article>
-        <p class="sector-invite">La tua attività non è nel noleggio? Raccontaci come lavori: lo valutiamo insieme.</p>
+        <ul class="uses">
+          <li class="use"><div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-briefcase"/></svg></div><h3>Studi e professionisti</h3><p>Agenda collegata per prenotare appuntamenti, verificare orari e indicare i documenti necessari.</p><div class="chat" aria-label="Esempio di conversazione"><p class="bubble from-caller">“Vorrei fissare un appuntamento.”</p><p class="bubble from-assistant">“Martedì alle 10:00 c'è posto. Vuole prenotare?”</p></div></li>
+          <li class="use"><div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-wrench"/></svg></div><h3>Officine e assistenza</h3><p>Prenotazioni degli interventi, stato delle riparazioni e urgenze al tecnico di turno.</p><div class="chat" aria-label="Esempio di conversazione"><p class="bubble from-caller">“La mia auto è pronta?”</p><p class="bubble from-assistant">“L'intervento risulta completato, può ritirarla entro le 18:00.”</p></div></li>
+          <li class="use"><div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-bed-double"/></svg></div><h3>Strutture ricettive</h3><p>Disponibilità e tariffe dal gestionale, prenotazioni e risposte agli ospiti nella loro lingua.</p><div class="chat" aria-label="Esempio di conversazione"><p class="bubble from-caller">“Avete una doppia per venerdì?”</p><p class="bubble from-assistant">“Sì, risulta disponibile a 120 euro a notte. Per quante notti?”</p></div></li>
+          <li class="use"><div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-car"/></svg></div><h3>Autonoleggio</h3><p>Disponibilità della flotta, tariffe per periodo e prenotazioni nel sistema di noleggio.</p><div class="chat" aria-label="Esempio di conversazione"><p class="bubble from-caller">“Avete un'auto da venerdì a lunedì?”</p><p class="bubble from-assistant">“C'è una compatta disponibile. Le preparo la prenotazione?”</p></div></li>
+          <li class="use"><div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-utensils"/></svg></div><h3>Ristoranti e locali</h3><p>Prenotazioni dei tavoli con coperti, fasce orarie e disponibilità dal sistema di sala.</p><div class="chat" aria-label="Esempio di conversazione"><p class="bubble from-caller">“Un tavolo per quattro sabato sera?”</p><p class="bubble from-assistant">“Alle 20:30 è disponibile. A che nome prenoto?”</p></div></li>
+          <li class="use"><div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-store"/></svg></div><h3>Negozi e magazzini</h3><p>Giacenze e prezzi dal gestionale per rispondere subito su articoli, varianti e punti vendita.</p><div class="chat" aria-label="Esempio di conversazione"><p class="bubble from-caller">“Avete questo modello in taglia M?”</p><p class="bubble from-assistant">“Sì, risultano due pezzi disponibili nel punto vendita in centro.”</p></div></li>
+          <li class="use"><div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-truck"/></svg></div><h3>Distribuzione e forniture</h3><p>Listini, disponibilità e avanzamento degli ordini consultati direttamente nell'ERP.</p><div class="chat" aria-label="Esempio di conversazione"><p class="bubble from-caller">“Quando arriva il mio ordine?”</p><p class="bubble from-assistant">“La spedizione risulta partita oggi, con consegna prevista domani.”</p></div></li>
+          <li class="use"><div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-dumbbell"/></svg></div><h3>Centri sportivi e benessere</h3><p>Calendari, posti liberi, prezzi e prenotazioni di corsi, campi e trattamenti.</p><div class="chat" aria-label="Esempio di conversazione"><p class="bubble from-caller">“C'è posto al corso delle 19:00?”</p><p class="bubble from-assistant">“Sì, ci sono ancora tre posti. Vuole che la iscriva?”</p></div></li>
+        </ul>
+        <p class="sector-invite">Il tuo settore non è qui? Partiamo dai tuoi processi e costruiamo il collegamento giusto.</p>
       </div>
     </section>
 
@@ -920,30 +891,29 @@
           <h2 id="activation-title">Ti seguiamo noi, dall'inizio</h2>
         </div>
         <ol class="activation">
-          <li><span class="badge tag-us">Noi</span><h3>Raccogliamo i dati della tua attività</h3><p>Orari, servizi, risposte alle domande frequenti, regole per i casi particolari.</p></li>
-          <li><span class="badge tag-us">Noi</span><h3>Prepariamo l'assistente</h3><p>Lo configuriamo con le tue informazioni e, dove si può, lo colleghiamo al tuo gestionale.</p></li>
+          <li><span class="badge tag-us">Insieme</span><h3>Definiamo obiettivi e regole</h3><p>Servizi, lingue, operazioni consentite e logiche per trasferire le chiamate ai tuoi referenti.</p></li>
+          <li><span class="badge tag-us">Noi</span><h3>Colleghiamo i tuoi sistemi</h3><p>Configuriamo l'assistente e le integrazioni con ERP, CRM, calendari e gestionali, sui processi scelti insieme.</p></li>
           <li><span class="badge tag-you">Tu</span><h3>Inoltri le chiamate e proviamo insieme</h3><p>Ti diamo le istruzioni per l'inoltro e facciamo una chiamata di prova.</p></li>
-          <li><span class="badge tag-us">Noi</span><h3>Attiviamo il servizio</h3><p>Trovi la dashboard già compilata: da lì in poi modifichi tu ciò che ti spetta.</p></li>
+          <li><span class="badge tag-us">Noi</span><h3>Attiviamo e ti affianchiamo</h3><p>Mettiamo online il servizio e ti accompagniamo nell'uso della dashboard, affinando risposte e regole con te.</p></li>
         </ol>
       </div>
     </section>
 
-    <!-- DA VALIDARE con il prodotto: prezzo, tempi di attivazione e funzioni in arrivo. -->
     <section class="section" id="domande" aria-labelledby="faq-title">
       <div class="container">
         <div class="section-head center">
           <h2 id="faq-title">Domande frequenti</h2>
         </div>
         <div class="faq">
-          <details open><summary>Quanto costa?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Dipende dal volume di chiamate e dai collegamenti necessari. Nella demo ti facciamo un preventivo su misura.</p></details>
-          <details open><summary>Devo cambiare numero di telefono?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. Resta il tuo numero: attivi l'inoltro verso Relay.</p></details>
-          <details open><summary>Chi chiama capisce che parla con un'intelligenza artificiale?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Sì: l'assistente si presenta come assistente virtuale.</p></details>
-          <details><summary>E se l'assistente non sa rispondere?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Lo dice onestamente, raccoglie nome, recapito e motivo e ti lascia un messaggio. Il passaggio a una persona, con le regole che scegli tu, è in arrivo.</p></details>
-          <details><summary>Può prenotare al posto mio?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Oggi consulta le informazioni e raccoglie le richieste: la conferma resta a te.</p></details>
-          <details><summary>Funziona con il mio gestionale?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Dipende: lo valutiamo insieme in demo. Il collegamento riguarda gestionali con interfaccia web (API).</p></details>
-          <details><summary>Registrate le chiamate?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>L'audio non viene registrato, salvo diverso accordo. Nella dashboard trovi riassunto e trascrizione.</p></details>
-          <details><summary>Chi vede i miei dati?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Tu e i collaboratori che indichi. Il nostro team accede solo per assistenza.</p></details>
-          <details><summary>In che lingue risponde?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Oggi solo in italiano.</p></details>
+          <details><summary>Quanto costa?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Dipende dal volume di chiamate e dai collegamenti necessari. Nella demo definiamo insieme un preventivo.</p></details>
+          <details><summary>Devo cambiare numero di telefono?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>No. Puoi mantenere il tuo numero e configurare l'inoltro verso Relay.</p></details>
+          <details><summary>Chi chiama capisce che parla con un'intelligenza artificiale?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>L'assistente si presenta come assistente virtuale.</p></details>
+          <details><summary>E se l'assistente non sa rispondere?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Segue le regole concordate con te: trasferisce la chiamata al referente giusto oppure raccoglie un messaggio con i dettagli per il ricontatto.</p></details>
+          <details><summary>Può prenotare al posto mio?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Sì. Collegato al tuo calendario o gestionale, Relay verifica le disponibilità e registra le prenotazioni secondo le regole concordate con te.</p></details>
+          <details><summary>Funziona con il mio gestionale?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Sì. Progettiamo il collegamento ai tuoi ERP, CRM e gestionali per consultare prezzi, disponibilità, magazzino e ordini o registrare prenotazioni. In demo definiamo il percorso di integrazione adatto ai tuoi sistemi.</p></details>
+          <details><summary>Quali dati della chiamata vedo?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Riepilogo, esito, messaggi, operazioni eseguite e trasferimenti, con la trascrizione quando disponibile. Tutto consultabile dalla dashboard.</p></details>
+          <details><summary>Chi vede i miei dati?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>L'accesso alla dashboard richiede un account. Definiamo insieme le persone autorizzate ad accedere al servizio.</p></details>
+          <details><summary>In che lingue risponde?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>In qualsiasi lingua: configuriamo Relay sulle lingue dei tuoi clienti, con il tono e il vocabolario della tua attività.</p></details>
           <details><summary>Quanto ci vuole per partire?<svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Dipende dalle informazioni da raccogliere e dai collegamenti necessari. In demo ti diamo una data concreta.</p></details>
         </div>
       </div>
@@ -952,72 +922,18 @@
     <section class="section request triangles" id="richiedi-demo" aria-labelledby="request-title">
       <div class="container request-grid">
         <div>
-          <h2 id="request-title">Vediamo se Relay fa per la tua attività</h2>
+          <h2 id="request-title">Porta Relay nella tua azienda</h2>
           <p class="sub" style="margin-top: .875rem">In demo ti mostriamo:</p>
           <ul class="request-points">
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Come risponderebbe alle tue chiamate</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Cosa vedresti in dashboard</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Come collegarlo ai tuoi sistemi e automatizzare le operazioni</li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Cosa serve per attivarlo</li>
           </ul>
         </div>
-        <div class="form-card glass">
-          <!-- Nessun endpoint configurato: senza data-endpoint il form prepara un'email a info@tetravise.com. -->
-          <form class="form" id="demo-form" data-endpoint="" novalidate>
-            <div class="form-field">
-              <label for="f-name">Nome e cognome</label>
-              <input class="control" id="f-name" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="name-error">
-              <p class="field-error" id="name-error" hidden></p>
-            </div>
-            <div class="form-field">
-              <label for="f-email">Email di lavoro</label>
-              <input class="control" id="f-email" name="email" type="email" autocomplete="email" required maxlength="160" aria-describedby="email-error">
-              <p class="field-error" id="email-error" hidden></p>
-            </div>
-            <div class="form-field">
-              <label for="f-phone">Telefono <span class="optional">(facoltativo)</span></label>
-              <input class="control" id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="24" pattern="\+?[0-9 ]{6,23}" aria-describedby="phone-error">
-              <p class="field-error" id="phone-error" hidden></p>
-            </div>
-            <div class="form-field">
-              <label for="f-business">Nome dell'attività</label>
-              <input class="control" id="f-business" name="business" type="text" autocomplete="organization" required maxlength="160" aria-describedby="business-error">
-              <p class="field-error" id="business-error" hidden></p>
-            </div>
-            <div class="form-field">
-              <label for="f-sector">Settore</label>
-              <select class="control" id="f-sector" name="sector" required aria-describedby="sector-error">
-                <option value="">Scegli il settore</option>
-                <option>Noleggio auto</option>
-                <option>Altro</option>
-              </select>
-              <p class="field-error" id="sector-error" hidden></p>
-            </div>
-            <fieldset class="form-field" aria-describedby="calls-error">
-              <legend>Chiamate a settimana</legend>
-              <div class="choices">
-                <label class="choice"><input type="radio" name="calls" value="Meno di 20" required>Meno di 20</label>
-                <label class="choice"><input type="radio" name="calls" value="20–100">20–100</label>
-                <label class="choice"><input type="radio" name="calls" value="Oltre 100">Oltre 100</label>
-                <label class="choice"><input type="radio" name="calls" value="Non lo so">Non lo so</label>
-              </div>
-              <p class="field-error" id="calls-error" hidden></p>
-            </fieldset>
-            <div class="honeypot" aria-hidden="true">
-              <label for="f-website">Sito web</label>
-              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
-            </div>
-            <div class="form-field">
-              <label class="consent"><input id="f-consent" name="consent" type="checkbox" value="sì" required aria-describedby="consent-error"><span>Ho letto l'<a href="#privacy">informativa sulla privacy</a> e acconsento a essere ricontattato per la demo.</span></label>
-              <p class="field-error" id="consent-error" hidden></p>
-            </div>
-            <button class="button" type="submit">Richiedi la demo <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
-            <p class="form-status form-status--error" id="form-failure" role="alert" hidden>Non siamo riusciti a inviare la richiesta. Riprova tra poco oppure scrivici a <a href="mailto:info@tetravise.com?subject=Richiesta%20demo%20Relay">info@tetravise.com</a>.</p>
-          </form>
-          <div class="form-status form-status--ok" id="form-success" tabindex="-1" hidden>
-            <strong>Grazie! Ti scriviamo noi per fissare la demo.</strong>
-            <p data-mail-note hidden>Si è aperto il tuo programma di posta con la richiesta già compilata: invia l'email per completarla. Se non si è aperto, scrivici a <a href="mailto:info@tetravise.com?subject=Richiesta%20demo%20Relay">info@tetravise.com</a>.</p>
-          </div>
-        </div>
+        <dl class="contact-details">
+          <div><dt>Email</dt><dd><a href="mailto:info@tetravise.com?subject=Richiesta%20demo%20Relay" data-cta="contact-email">info@tetravise.com</a></dd></div>
+          <div><dt>Telefono</dt><dd>+39 XXX XXX XXXX</dd></div>
+        </dl>
       </div>
     </section>
   </main>
@@ -1027,35 +943,24 @@
       <div class="footer-grid">
         <div>
           <a class="brand" href="#top" aria-label="Relay, torna all'inizio"><span class="brand-mark" aria-hidden="true"><svg class="icon"><use href="#i-audio"/></svg></span>Relay</a>
-          <p style="margin-top: .75rem">L'assistente telefonico AI che risponde quando non puoi farlo tu.</p>
+          <p style="margin-top: .75rem">L'assistente telefonico AI che collega le conversazioni ai sistemi della tua azienda.</p>
         </div>
         <nav aria-labelledby="footer-links-title">
           <h2 id="footer-links-title">Link</h2>
           <ul class="footer-links">
-            <li><a href="#privacy">Privacy e cookie</a></li>
+            <li><a href="#richiedi-demo">Richiedi una demo</a></li>
             <li><a href="mailto:info@tetravise.com">Contatti: info@tetravise.com</a></li>
             <li><a href="../">Tetravise</a></li>
           </ul>
         </nav>
         <div>
           <h2>Dati legali</h2>
-          <!-- DA COMPLETARE: ragione sociale, partita IVA e sede. -->
           <p>Relay è un servizio di Tetravise.</p>
           <p>© 2026 Tetravise</p>
         </div>
       </div>
-      <!-- DA COMPLETARE: informativa completa (base giuridica, conservazione, fornitori) prima della pubblicazione. -->
-      <section class="privacy" id="privacy" aria-labelledby="privacy-title">
-        <h2 id="privacy-title">Informativa sintetica</h2>
-        <p>Usiamo i dati del form solo per ricontattarti e organizzare la demo. Titolare del trattamento è Tetravise, contattabile a info@tetravise.com, indirizzo a cui puoi chiedere in ogni momento accesso, correzione o cancellazione dei tuoi dati.</p>
-        <p>Questa pagina non usa cookie.</p>
-      </section>
     </div>
   </footer>
-
-  <div class="sticky-cta" inert>
-    <a class="button" href="#richiedi-demo" data-cta="mobile-bar">Richiedi una demo</a>
-  </div>
 
   <script>
     (() => {
@@ -1067,8 +972,9 @@
         const header = document.querySelector('.site-header');
         const nav = document.querySelector('#menu');
         const toggle = document.querySelector('.menu-toggle');
+        const solutions = nav.querySelector('.nav-group');
         const update = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
-        const close = () => { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); };
+        const close = () => { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); solutions.open = false; };
         update();
         window.addEventListener('scroll', update, { passive: true });
         toggle.addEventListener('click', () => {
@@ -1077,25 +983,15 @@
           toggle.setAttribute('aria-expanded', String(open));
         });
         nav.addEventListener('click', event => { if (event.target.closest('a')) close(); });
+        document.addEventListener('click', event => {
+          if (!solutions.contains(event.target)) solutions.open = false;
+          if (!header.contains(event.target)) close();
+        });
         document.addEventListener('keydown', event => {
-          if (event.key === 'Escape' && nav.classList.contains('is-open')) { close(); toggle.focus(); }
+          if (event.key !== 'Escape') return;
+          if (solutions.open) { solutions.open = false; solutions.querySelector('summary').focus(); }
+          else if (nav.classList.contains('is-open')) { close(); toggle.focus(); }
         });
-      }
-
-      function setupStickyCta() {
-        const bar = document.querySelector('.sticky-cta');
-        const hero = document.querySelector('.hero');
-        const request = document.querySelector('#richiedi-demo');
-        if (!('IntersectionObserver' in window)) return;
-        const visible = new Map([[hero, true], [request, false]]);
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => visible.set(entry.target, entry.isIntersecting));
-          const show = !visible.get(hero) && !visible.get(request);
-          bar.classList.toggle('is-visible', show);
-          bar.inert = !show;
-        });
-        observer.observe(hero);
-        observer.observe(request);
       }
 
       function setupDates() {
@@ -1120,7 +1016,111 @@
         const status = document.querySelector('#calls-status');
         const empty = document.querySelector('#calls-empty');
         const dialog = document.querySelector('#call-detail');
-        const longSummary = 'Marco Bianchi chiede di noleggiare un\'auto compatta da sabato a lunedì. L\'assistente verifica la disponibilità e gli propone di lasciare un messaggio al titolare, che lo richiamerà per confermare.';
+        const details = {
+          marco: {
+            seconds: 160,
+            summary: 'Marco Bianchi chiede un appuntamento per giovedì pomeriggio. Relay verifica il calendario dello studio e, dopo la conferma del cliente, registra la prenotazione per le 16:30.',
+            message: { reason: 'Appuntamento per giovedì alle 16:30, confermato nel calendario dello studio.', urgency: 'Non urgente' },
+            actions: [
+              { name: 'Verifica disponibilità', offset: 45, status: 'Riuscita', result: 'Calendario consultato: giovedì alle 16:30 disponibile.' },
+              { name: 'Registrazione appuntamento', offset: 132, status: 'Riuscita', result: 'Prenotazione confermata a nome di Marco Bianchi.' },
+            ],
+            transfers: [],
+            transcript: [
+              ['assistant', 0, "Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?"],
+              ['caller', 12, 'Vorrei un appuntamento per giovedì pomeriggio.'],
+              ['assistant', 48, "Ho verificato il calendario: giovedì alle 16:30 c'è posto. Confermo?"],
+              ['caller', 66, 'Sì, grazie. Mi chiamo Marco Bianchi.'],
+              ['assistant', 85, 'Posso usare il numero da cui sta chiamando come recapito?'],
+              ['caller', 103, 'Sì, va bene questo numero.'],
+              ['assistant', 140, "Perfetto, l'appuntamento è confermato per giovedì alle 16:30. A presto!"],
+            ],
+          },
+          elena: {
+            seconds: 245,
+            summary: "Elena Conti chiede gli orari di apertura e le modalità di ritiro dei documenti. Relay consulta le informazioni dello studio e chiarisce che non serve un appuntamento per il ritiro.",
+            message: null,
+            actions: [{ name: 'Consulta informazioni dello studio', offset: 28, status: 'Riuscita', result: 'Orari e modalità di ritiro comunicati alla cliente.' }],
+            transfers: [],
+            transcript: [
+              ['assistant', 0, "Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?"],
+              ['caller', 16, 'Sono Elena Conti. A che ora posso passare a ritirare i documenti?'],
+              ['assistant', 36, 'Siamo aperti dal lunedì al venerdì, dalle 8:30 alle 18:00.'],
+              ['caller', 75, 'Devo prenotare oppure posso venire direttamente?'],
+              ['assistant', 96, 'Per il ritiro può passare direttamente negli orari di apertura, con un documento di identità.'],
+              ['caller', 186, 'Perfetto, passerò nel pomeriggio. Grazie.'],
+              ['assistant', 221, 'Certamente, la aspettiamo. Buona giornata!'],
+            ],
+          },
+          unknown: {
+            seconds: 45,
+            summary: "La chiamata si interrompe dopo la presentazione dell'assistente, prima di raccogliere il nome o il motivo del contatto.",
+            message: null,
+            actions: [],
+            transfers: [],
+            transcript: [['assistant', 0, "Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?"]],
+          },
+          davide: {
+            seconds: 202,
+            summary: 'Davide Ferri segnala una richiesta urgente relativa a una pratica in scadenza. Relay raccoglie i dettagli e trasferisce la chiamata al referente, secondo le regole concordate con lo studio.',
+            message: { reason: 'Assistenza urgente per una pratica in scadenza oggi.', urgency: 'Urgente' },
+            actions: [{ name: 'Individuazione referente', offset: 74, status: 'Riuscita', result: 'Selezionato il referente per le pratiche urgenti in orario di apertura.' }],
+            transfers: [{ name: 'Referente pratiche urgenti', offset: 116, status: 'Riuscito' }],
+            transcript: [
+              ['assistant', 0, "Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?"],
+              ['caller', 14, 'Sono Davide Ferri. Ho una pratica in scadenza oggi e devo parlare subito con un referente.'],
+              ['assistant', 38, 'Certamente. Mi indica il motivo della richiesta, così la indirizzo alla persona giusta?'],
+              ['caller', 56, 'Devo completare la documentazione della pratica prima della scadenza.'],
+              ['assistant', 95, 'La metto in contatto con il referente che segue le pratiche urgenti.'],
+            ],
+          },
+          sara: {
+            seconds: 118,
+            summary: 'Sara Colombo chiede informazioni su un servizio. Il trasferimento al referente non riesce; Relay raccoglie il motivo della chiamata e il recapito per essere ricontattata.',
+            message: { reason: 'Informazioni sul servizio di consulenza; richiede di essere ricontattata.', urgency: 'Non urgente' },
+            actions: [{ name: 'Raccolta messaggio', offset: 96, status: 'Riuscita', result: 'Nome, recapito e richiesta salvati per il ricontatto.' }],
+            transfers: [{ name: 'Referente consulenza', offset: 42, status: 'Non riuscito' }],
+            transcript: [
+              ['assistant', 0, "Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?"],
+              ['caller', 10, 'Vorrei parlare con qualcuno del servizio di consulenza.'],
+              ['assistant', 27, 'Provo a trasferire la chiamata al referente.'],
+              ['assistant', 66, 'Il referente non risponde. Vuole lasciare un messaggio per essere ricontattata?'],
+              ['caller', 78, 'Sì, sono Sara Colombo. Può farmi richiamare a questo numero? Non è urgente.'],
+              ['assistant', 103, 'Ho lasciato il suo recapito e la richiesta al team. Grazie e buona giornata.'],
+            ],
+          },
+        };
+        const dateFormat = new Intl.DateTimeFormat('it-IT', { timeZone: 'Europe/Rome', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        const timeFormat = new Intl.DateTimeFormat('it-IT', { timeZone: 'Europe/Rome', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const more = dialog.querySelector('[data-more]');
+        const modalBody = dialog.querySelector('.call-modal-body');
+        let opener;
+
+        function updateModalScroll() {
+          if (modalBody.scrollHeight > modalBody.clientHeight) modalBody.tabIndex = 0;
+          else modalBody.removeAttribute('tabindex');
+        }
+
+        function makeText(tag, text, className) {
+          const element = document.createElement(tag);
+          element.textContent = text;
+          if (className) element.className = className;
+          return element;
+        }
+
+        function renderEvents(field, events, startedAt) {
+          const list = dialog.querySelector(`[data-field="${field}"]`);
+          list.replaceChildren(...events.map(event => {
+            const item = document.createElement('li');
+            const meta = document.createElement('p');
+            meta.className = 'detail-meta';
+            meta.append(makeText('strong', event.name), makeText('span', timeFormat.format(new Date(startedAt.getTime() + event.offset * 1000))), makeText('span', event.status));
+            item.append(meta);
+            if (event.result) item.append(makeText('p', event.result));
+            return item;
+          }));
+          dialog.querySelector(`[data-empty="${field}"]`).hidden = events.length > 0;
+        }
 
         function filter() {
           const query = search.value.trim().toLowerCase();
@@ -1144,87 +1144,80 @@
 
         document.querySelectorAll('[data-detail]').forEach(button => button.addEventListener('click', () => {
           const row = button.closest('tr');
-          const isExample = row.dataset.call === 'marco';
+          const detail = details[row.dataset.call];
           const name = row.querySelector('.c-name').textContent.replace('Nome non disponibile', '').replace('—', '').trim();
-          dialog.querySelector('#detail-title').textContent = name ? `Chiamata di ${name}` : `Chiamata da ${row.querySelector('.c-phone').textContent}`;
-          dialog.querySelector('[data-field="summary"]').textContent = isExample ? longSummary : row.querySelector('.c-summary').textContent;
-          dialog.querySelector('[data-field="date"]').textContent = row.querySelector('.c-date').textContent;
+          const phone = row.querySelector('.c-phone').textContent;
+          const startedAt = new Date(row.querySelector('time').dateTime);
+          opener = button;
+          dialog.querySelector('#detail-title').textContent = name ? `Chiamata di ${name}` : `Chiamata da ${phone}`;
+          dialog.querySelector('[data-field="summary"]').textContent = detail.summary;
+          dialog.querySelector('[data-field="date"]').textContent = dateFormat.format(startedAt);
+          dialog.querySelector('[data-field="end"]').textContent = dateFormat.format(new Date(startedAt.getTime() + detail.seconds * 1000));
+          dialog.querySelector('[data-field="phone"]').textContent = phone;
+          dialog.querySelector('[data-field="name"]').textContent = name || 'Nome non disponibile';
           dialog.querySelector('[data-field="duration"]').textContent = row.querySelector('.c-duration').textContent;
           dialog.querySelector('[data-field="outcome"]').textContent = row.querySelector('.c-outcome').textContent;
-          dialog.querySelectorAll('[data-example]').forEach(section => { section.hidden = !isExample; });
-          dialog.querySelector('[data-example-note]').hidden = isExample;
+          dialog.querySelector('[data-field="outcome"]').className = `outcome c-${row.dataset.outcome}`;
+          const message = dialog.querySelector('[data-field="message"]');
+          message.replaceChildren();
+          if (detail.message) {
+            const fields = document.createElement('dl');
+            fields.className = 'detail-fields';
+            [['Nome', name], ['Contatto', phone], ['Motivo', detail.message.reason], ['Urgenza', detail.message.urgency]].forEach(([label, value]) => {
+              const field = document.createElement('div');
+              field.append(makeText('dt', label), makeText('dd', value));
+              fields.append(field);
+            });
+            message.append(fields);
+          } else message.append(makeText('p', 'Messaggio del chiamante non disponibile.'));
+          renderEvents('actions', detail.actions, startedAt);
+          renderEvents('transfers', detail.transfers, startedAt);
+          const transcript = dialog.querySelector('[data-field="transcript"]');
+          transcript.replaceChildren(...detail.transcript.map(([speaker, offset, text], index) => {
+            const turn = document.createElement('li');
+            turn.className = speaker;
+            turn.hidden = index >= 5;
+            turn.tabIndex = -1;
+            const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            icon.setAttribute('class', 'icon');
+            icon.setAttribute('aria-hidden', 'true');
+            const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+            use.setAttribute('href', speaker === 'caller' ? '#i-user' : '#i-bot');
+            icon.append(use);
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const meta = document.createElement('p');
+            meta.className = 'detail-meta';
+            const timestamp = `${String(Math.floor(offset / 60)).padStart(2, '0')}:${String(offset % 60).padStart(2, '0')}`;
+            meta.append(makeText('strong', speaker === 'caller' ? name || 'Chiamante' : 'Assistente'), makeText('span', timestamp));
+            bubble.append(meta, makeText('p', text));
+            turn.append(icon, bubble);
+            return turn;
+          }));
+          more.hidden = detail.transcript.length <= 5;
+          more.textContent = `Mostra tutti i messaggi (${detail.transcript.length})`;
           dialog.showModal();
+          modalBody.scrollTop = 0;
+          updateModalScroll();
           track('demo_interaction', { type: 'detail' });
         }));
+        more.addEventListener('click', () => {
+          const hiddenTurns = [...dialog.querySelectorAll('.transcript li[hidden]')];
+          hiddenTurns.forEach(turn => { turn.hidden = false; });
+          more.hidden = true;
+          updateModalScroll();
+          hiddenTurns[0]?.focus();
+        });
         dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
-        dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-      }
-
-      function setupForm() {
-        const form = document.querySelector('#demo-form');
-        const submit = form.querySelector('[type="submit"]');
-        const success = document.querySelector('#form-success');
-        const failure = document.querySelector('#form-failure');
-        const messages = {
-          name: { valueMissing: 'Scrivi nome e cognome.' },
-          email: { valueMissing: 'Scrivi la tua email di lavoro.', typeMismatch: "Controlla l'email: deve essere simile a nome@attivita.it." },
-          phone: { patternMismatch: 'Controlla il numero: usa solo cifre, spazi e il segno +.' },
-          business: { valueMissing: "Scrivi il nome della tua attività." },
-          sector: { valueMissing: 'Scegli il settore.' },
-          calls: { valueMissing: 'Scegli quante chiamate ricevi a settimana.' },
-          consent: { valueMissing: 'Per inviare la richiesta serve il tuo consenso.' },
-        };
-        let started = false;
-        let submitted = false;
-
-        function check(name) {
-          const control = form.elements[name];
-          const controls = control instanceof RadioNodeList ? [...control] : [control];
-          const { validity } = controls[0];
-          const key = ['valueMissing', 'typeMismatch', 'patternMismatch'].find(type => validity[type]);
-          const message = key ? messages[name][key] : '';
-          const error = document.getElementById(`${name}-error`);
-          error.textContent = message;
-          error.hidden = !message;
-          controls.forEach(item => item.setAttribute('aria-invalid', String(Boolean(message))));
-          return !message;
-        }
-
-        form.addEventListener('focusin', () => { if (!started) { started = true; track('form_start'); } });
-        form.addEventListener('change', event => { if (submitted && messages[event.target.name]) check(event.target.name); });
-        form.addEventListener('submit', async event => {
-          event.preventDefault();
-          submitted = true;
-          failure.hidden = true;
-          const invalid = Object.keys(messages).filter(name => !check(name));
-          if (invalid.length) {
-            const first = form.elements[invalid[0]];
-            (first instanceof RadioNodeList ? first[0] : first).focus();
-            return;
-          }
-          const data = Object.fromEntries(new FormData(form));
-          const isSpam = Boolean(data.website);
-          delete data.website;
-          submit.disabled = true;
-          try {
-            if (!isSpam && form.dataset.endpoint) {
-              const response = await fetch(form.dataset.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
-              if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            } else if (!isSpam) {
-              const body = [`Nome e cognome: ${data.name}`, `Email: ${data.email}`, `Telefono: ${data.phone || '-'}`, `Attività: ${data.business}`, `Settore: ${data.sector}`, `Chiamate a settimana: ${data.calls}`, 'Consenso privacy: sì'].join('\n');
-              window.location.href = `mailto:info@tetravise.com?subject=${encodeURIComponent('Richiesta demo Relay')}&body=${encodeURIComponent(body)}`;
-              success.querySelector('[data-mail-note]').hidden = false;
-            }
-            form.hidden = true;
-            success.hidden = false;
-            success.focus();
-            track('form_submit');
-          } catch {
-            failure.hidden = false;
-            track('form_error');
-          } finally {
-            submit.disabled = false;
-          }
+        dialog.addEventListener('keydown', event => {
+          if (event.key === 'Escape') { event.preventDefault(); dialog.close(); }
+        });
+        window.addEventListener('resize', () => { if (dialog.open) updateModalScroll(); });
+        dialog.addEventListener('close', () => opener?.focus({ preventScroll: true }));
+        dialog.addEventListener('click', event => {
+          if (event.target !== dialog) return;
+          const bounds = dialog.getBoundingClientRect();
+          if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
         });
       }
 
@@ -1249,10 +1242,8 @@
 
       document.querySelector('meta[name="theme-color"]').content = root.dataset.theme === 'dark' ? '#111B18' : '#F5F6F2';
       setupHeader();
-      setupStickyCta();
       setupDates();
       setupDemo();
-      setupForm();
       setupTracking();
     })();
   </script>

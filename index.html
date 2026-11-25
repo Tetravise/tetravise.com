@@ -98,9 +98,16 @@
     .brand .logo-dark { display: none; }
     :root[data-theme="dark"] .brand .logo-light { display: none; }
     :root[data-theme="dark"] .brand .logo-dark { display: block; }
-    .nav { display: flex; grid-area: nav; align-items: center; justify-content: space-between; gap: .75rem; font-size: .8125rem; font-weight: 500; }
+    .nav { display: flex; grid-area: nav; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 .75rem; font-size: .8125rem; font-weight: 500; }
     .nav a { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .375rem; text-decoration: none; }
     .nav a:hover { color: var(--soft); }
+    .nav-group { position: relative; }
+    .nav-group summary { display: flex; min-height: 2.75rem; align-items: center; gap: .375rem; list-style: none; cursor: pointer; }
+    .nav-group summary::-webkit-details-marker { display: none; }
+    .nav-group summary::after { content: ""; width: .375rem; height: .375rem; margin-top: -.25rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+    .nav-group[open] summary::after { margin-top: .25rem; transform: rotate(225deg); }
+    .nav-submenu { position: absolute; z-index: 60; top: 100%; right: 0; min-width: 10rem; padding: .5rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: 0 8px 24px rgb(10 20 16 / .12); }
+    .nav-submenu a { display: flex; padding-inline: .75rem; }
     .theme-toggle { display: grid; grid-area: theme; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 4px; background: var(--surface); color: var(--ink); cursor: pointer; }
     .theme-toggle:hover { border-color: var(--ink); }
     .theme-toggle .theme-sun { display: none; }
@@ -376,6 +383,10 @@
         <a class="nav-secondary" data-i18n="nav.cases" href="#casi">Casi</a>
         <a class="nav-secondary" data-i18n="nav.method" href="#metodo">Metodo</a>
         <a class="nav-secondary" data-i18n="nav.team" href="#team">Chi siamo</a>
+        <details class="nav-group">
+          <summary data-i18n="nav.solutions">Soluzioni</summary>
+          <div class="nav-submenu"><a data-i18n="nav.relay" href="relay/">Relay</a></div>
+        </details>
         <a class="nav-secondary" data-i18n="nav.contact" href="#contatti">Contatti</a>
       </nav>
       <button class="language-toggle" type="button" aria-label="Passa all'inglese" title="Passa all'inglese">EN</button>
@@ -753,6 +764,16 @@
 
       async function setupLanguage() {
         const languageToggle = document.querySelector('.language-toggle');
+        const solutions = document.querySelector('.nav-group');
+        document.addEventListener('click', event => {
+          if (!solutions.contains(event.target) || event.target.closest('a')) solutions.open = false;
+        });
+        document.addEventListener('keydown', event => {
+          if (event.key === 'Escape' && solutions.open) {
+            solutions.open = false;
+            solutions.querySelector('summary').focus();
+          }
+        });
         const fallbackTranslations = {
           it: { 'ui.nav': 'Navigazione principale', 'ui.skip': 'Vai al contenuto', 'ui.switchTo': "Passa all'inglese" },
           en: { 'ui.nav': 'Main navigation', 'ui.skip': 'Skip to content', 'ui.switchTo': 'Passa all’italiano' },
