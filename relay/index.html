@@ -511,10 +511,10 @@
           <div class="phone glass">
             <div class="phone-top"><span>Studio Aurora</span><span class="live">In chiamata</span></div>
             <ol class="chat">
-              <li class="bubble from-assistant" style="--i:0"><span class="who">Assistente</span>Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?</li>
-              <li class="bubble from-caller" style="--i:1"><span class="who">Cliente</span>Vorrei un appuntamento per giovedì pomeriggio.</li>
-              <li class="bubble from-assistant" style="--i:2"><span class="who">Assistente</span>Ho verificato il calendario: giovedì alle 16:30 c'è posto. Confermo?</li>
-              <li class="bubble from-caller" style="--i:3"><span class="who">Cliente</span>Sì, grazie. Sono Marco Rossi.</li>
+              <li class="bubble from-assistant" style="--i:0"><span class="who">Assistente</span>Buongiorno, Studio Aurora. Sono l'assistente virtuale. Come posso aiutarla?</li>
+              <li class="bubble from-caller" style="--i:1"><span class="who">Cliente</span>Buongiorno, vorrei fissare un appuntamento per giovedì pomeriggio.</li>
+              <li class="bubble from-assistant" style="--i:2"><span class="who">Assistente</span>Per giovedì ho posto alle 16:30. Va bene per lei? A che nome segno l'appuntamento?</li>
+              <li class="bubble from-caller" style="--i:3"><span class="who">Cliente</span>Sì, grazie. A nome di Marco Rossi.</li>
             </ol>
           </div>
           <div class="message-card" style="--i:4">
@@ -693,11 +693,11 @@
                   <tr data-call="marco" data-outcome="concluded">
                     <td class="c-date"><time data-days-ago="1" data-time="17:42">ieri 17:42</time></td>
                     <td class="c-phone">+39 333 000 0142</td>
-                    <td class="c-name">Marco Bianchi</td>
+                    <td class="c-name">Marco Rossi</td>
                     <td class="c-duration">2 min 40 s</td>
                     <td class="c-summary">Appuntamento prenotato per giovedì alle 16:30 nel calendario dello studio.</td>
                     <td class="c-outcome"><span class="outcome c-concluded">Concluse senza trasferimento</span></td>
-                    <td class="c-action"><button class="link-button" type="button" data-detail title="Dettaglio della chiamata di Marco Bianchi"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg><span class="sr-only">Dettaglio della chiamata di Marco Bianchi</span></button></td>
+                    <td class="c-action"><button class="link-button" type="button" data-detail title="Dettaglio della chiamata di Marco Rossi"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg><span class="sr-only">Dettaglio della chiamata di Marco Rossi</span></button></td>
                   </tr>
                   <tr data-call="elena" data-outcome="concluded">
                     <td class="c-date"><time data-days-ago="1" data-time="12:15">ieri 12:15</time></td>
@@ -811,8 +811,8 @@
             <h3>Prenotazioni e appuntamenti</h3>
             <p>Verifica gli slot liberi e registra la prenotazione nel calendario o gestionale collegato, rispettando orari, durata e regole concordate.</p>
             <div class="example" aria-label="Esempio di conversazione">
-              <p class="bubble from-caller">“Vorrei un appuntamento giovedì pomeriggio.”</p>
-              <p class="bubble from-assistant">“Giovedì alle 16:30 c'è posto. Vuole che prenoti?”</p>
+              <p class="bubble from-caller">“Avrei bisogno di un appuntamento per giovedì pomeriggio.”</p>
+              <p class="bubble from-assistant">“Per giovedì ho posto alle 16:30. Va bene per lei? A che nome segno l'appuntamento?”</p>
             </div>
           </li>
           <li class="feature">
@@ -1019,21 +1019,21 @@
         const details = {
           marco: {
             seconds: 160,
-            summary: 'Marco Bianchi chiede un appuntamento per giovedì pomeriggio. Relay verifica il calendario dello studio e, dopo la conferma del cliente, registra la prenotazione per le 16:30.',
+            summary: 'Marco Rossi chiede un appuntamento per giovedì pomeriggio. Relay verifica il calendario dello studio e, dopo la conferma del cliente, registra la prenotazione per le 16:30.',
             message: { reason: 'Appuntamento per giovedì alle 16:30, confermato nel calendario dello studio.', urgency: 'Non urgente' },
             actions: [
               { name: 'Verifica disponibilità', offset: 45, status: 'Riuscita', result: 'Calendario consultato: giovedì alle 16:30 disponibile.' },
-              { name: 'Registrazione appuntamento', offset: 132, status: 'Riuscita', result: 'Prenotazione confermata a nome di Marco Bianchi.' },
+              { name: 'Registrazione appuntamento', offset: 132, status: 'Riuscita', result: 'Prenotazione confermata a nome di Marco Rossi.' },
             ],
             transfers: [],
             transcript: [
-              ['assistant', 0, "Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?"],
-              ['caller', 12, 'Vorrei un appuntamento per giovedì pomeriggio.'],
-              ['assistant', 48, "Ho verificato il calendario: giovedì alle 16:30 c'è posto. Confermo?"],
-              ['caller', 66, 'Sì, grazie. Mi chiamo Marco Bianchi.'],
-              ['assistant', 85, 'Posso usare il numero da cui sta chiamando come recapito?'],
-              ['caller', 103, 'Sì, va bene questo numero.'],
-              ['assistant', 140, "Perfetto, l'appuntamento è confermato per giovedì alle 16:30. A presto!"],
+              ['assistant', 0, "Buongiorno, Studio Aurora. Sono l'assistente virtuale. Come posso aiutarla?"],
+              ['caller', 12, 'Buongiorno, vorrei fissare un appuntamento per giovedì pomeriggio.'],
+              ['assistant', 48, "Per giovedì ho posto alle 16:30. Va bene per lei? A che nome segno l'appuntamento?"],
+              ['caller', 66, 'Sì, grazie. A nome di Marco Rossi.'],
+              ['assistant', 85, 'Perfetto, Marco. Posso usare questo numero come recapito?'],
+              ['caller', 103, 'Sì, va benissimo.'],
+              ['assistant', 140, "Ottimo, ho fissato l'appuntamento per giovedì alle 16:30. A presto!"],
             ],
           },
           elena: {
@@ -1043,7 +1043,7 @@
             actions: [{ name: 'Consulta informazioni dello studio', offset: 28, status: 'Riuscita', result: 'Orari e modalità di ritiro comunicati alla cliente.' }],
             transfers: [],
             transcript: [
-              ['assistant', 0, "Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?"],
+              ['assistant', 0, "Buongiorno, Studio Aurora. Sono l'assistente virtuale. Come posso aiutarla?"],
               ['caller', 16, 'Sono Elena Conti. A che ora posso passare a ritirare i documenti?'],
               ['assistant', 36, 'Siamo aperti dal lunedì al venerdì, dalle 8:30 alle 18:00.'],
               ['caller', 75, 'Devo prenotare oppure posso venire direttamente?'],
@@ -1058,7 +1058,7 @@
             message: null,
             actions: [],
             transfers: [],
-            transcript: [['assistant', 0, "Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?"]],
+            transcript: [['assistant', 0, "Buongiorno, Studio Aurora. Sono l'assistente virtuale. Come posso aiutarla?"]],
           },
           davide: {
             seconds: 202,
@@ -1067,7 +1067,7 @@
             actions: [{ name: 'Individuazione referente', offset: 74, status: 'Riuscita', result: 'Selezionato il referente per le pratiche urgenti in orario di apertura.' }],
             transfers: [{ name: 'Referente pratiche urgenti', offset: 116, status: 'Riuscito' }],
             transcript: [
-              ['assistant', 0, "Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?"],
+              ['assistant', 0, "Buongiorno, Studio Aurora. Sono l'assistente virtuale. Come posso aiutarla?"],
               ['caller', 14, 'Sono Davide Ferri. Ho una pratica in scadenza oggi e devo parlare subito con un referente.'],
               ['assistant', 38, 'Certamente. Mi indica il motivo della richiesta, così la indirizzo alla persona giusta?'],
               ['caller', 56, 'Devo completare la documentazione della pratica prima della scadenza.'],
@@ -1081,7 +1081,7 @@
             actions: [{ name: 'Raccolta messaggio', offset: 96, status: 'Riuscita', result: 'Nome, recapito e richiesta salvati per il ricontatto.' }],
             transfers: [{ name: 'Referente consulenza', offset: 42, status: 'Non riuscito' }],
             transcript: [
-              ['assistant', 0, "Buongiorno, sono l'assistente virtuale di Studio Aurora. Come posso aiutarla?"],
+              ['assistant', 0, "Buongiorno, Studio Aurora. Sono l'assistente virtuale. Come posso aiutarla?"],
               ['caller', 10, 'Vorrei parlare con qualcuno del servizio di consulenza.'],
               ['assistant', 27, 'Provo a trasferire la chiamata al referente.'],
               ['assistant', 66, 'Il referente non risponde. Vuole lasciare un messaggio per essere ricontattata?'],
