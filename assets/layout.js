@@ -2,6 +2,9 @@
   const root = document.documentElement;
   const languageToggle = document.querySelector('.language-toggle');
   const themeToggle = document.querySelector('.theme-toggle');
+  if (document.body.classList.contains('relay-page')) {
+    document.querySelector('.footer-controls').append(languageToggle, themeToggle);
+  }
   const solutions = document.querySelector('.site-header .nav-group');
   const systemTheme = matchMedia('(prefers-color-scheme: dark)');
   const fallback = {
@@ -84,15 +87,19 @@
   });
 
   const backToTop = document.querySelector('.back-to-top');
+  const footer = document.querySelector('.site-footer');
   backToTop.classList.add('is-floating');
   function updateBackToTop() {
-    const visible = window.scrollY > 480;
-    if (!visible && document.activeElement === backToTop) document.querySelector('.site-header .brand').focus({ preventScroll: true });
+    const footerRect = footer.getBoundingClientRect();
+    const footerVisible = footerRect.top < window.innerHeight && footerRect.bottom > 0;
+    const visible = window.scrollY > 480 && !footerVisible;
+    if (!visible && document.activeElement === backToTop) document.querySelector(document.body.classList.contains('relay-page') ? '.site-header .home-link' : '.site-header .brand').focus({ preventScroll: true });
     backToTop.classList.toggle('is-visible', visible);
     backToTop.inert = !visible;
     backToTop.setAttribute('aria-hidden', String(!visible));
   }
   updateBackToTop();
+  new IntersectionObserver(updateBackToTop).observe(footer);
   window.addEventListener('scroll', updateBackToTop, { passive: true });
   window.addEventListener('resize', updateBackToTop);
   window.addEventListener('pageshow', updateBackToTop);

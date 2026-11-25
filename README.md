@@ -3,6 +3,10 @@
 Sito statico senza dipendenze npm. Per l'anteprima completa, generare `_site`
 con `node scripts/build-pages.mjs` e servirlo con un server statico, ad esempio
 `python -m http.server 5501 --directory _site`. Aprire `http://localhost:5501/`.
+In alternativa `node scripts/dev-server.mjs` rigenera `_site` a ogni modifica e lo serve
+sulla porta 5501 con ricarica automatica del browser (variabili `PORT` e `HOST`,
+predefinito `0.0.0.0`). Dagli altri dispositivi usare l'indirizzo `Network` mostrato
+all'avvio; il firewall di Windows deve consentire la porta in ingresso.
 I sorgenti HTML contengono segnaposto per il layout comune e non sono l'anteprima finale.
 
 ## Indirizzi

@@ -2,11 +2,20 @@
 .header-inner { display: grid; min-height: 5.5rem; grid-template-columns: 1fr auto auto; grid-template-areas: "brand language theme" "nav nav nav"; align-items: center; gap: .25rem .5rem; padding-block: .5rem; }
 .site-header .brand { display: inline-flex; grid-area: brand; justify-self: start; }
 .site-header .brand img { display: block; width: 11.5rem; height: auto; }
+.site-header .home-link { display: none; }
 .site-header .brand .logo-dark { display: none; }
 :root[data-theme="dark"] .site-header .brand .logo-light { display: none; }
 :root[data-theme="dark"] .site-header .brand .logo-dark { display: block; }
 .site-header .nav { display: flex; grid-area: nav; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 .75rem; font-size: .8125rem; font-weight: 500; }
 .site-header .nav a { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .375rem; text-decoration: none; }
+.relay-page .site-header .nav { display: none; }
+.relay-page .site-header { border-bottom: 0; }
+.relay-page .header-inner { min-height: 2.75rem; grid-template-columns: 1fr; grid-template-areas: "brand"; padding-block: 0; }
+.relay-page .site-header .brand { display: none; }
+.relay-page .site-header .home-link { display: inline-flex; grid-area: brand; min-height: 2.75rem; align-items: center; justify-self: start; gap: .375rem; color: var(--soft); font-size: .8125rem; text-decoration: underline; text-underline-offset: .2em; }
+.relay-page .site-header .home-link .icon { width: 1rem; height: 1rem; transform: rotate(90deg); }
+.relay-page .site-header .home-link:hover { color: var(--ink); }
+.relay-page .site-header .language-toggle, .relay-page .site-header .theme-toggle { display: none; }
 .site-header .nav a:hover { color: var(--soft); }
 .site-header .nav-group { position: relative; }
 .site-header .nav-group summary { display: flex; min-height: 2.75rem; align-items: center; gap: .375rem; list-style: none; cursor: pointer; }
@@ -27,6 +36,8 @@
 .footer-brand { display: inline-flex; }
 .footer-brand img { display: block; width: 11rem; height: auto; }
 .footer-meta { display: flex; flex-direction: column; gap: .25rem; color: var(--soft); font-size: .8125rem; }
+.footer-controls { display: flex; align-items: center; gap: .5rem; }
+.footer-controls:empty { display: none; }
 .back-to-top { display: grid; flex: none; width: 3rem; height: 3rem; place-items: center; border: 1px solid var(--muted); border-radius: 4px; text-decoration: none; transition: color .2s, border-color .2s; }
 .back-to-top .icon { transform: rotate(180deg); transition: transform .25s ease; }
 .back-to-top:hover { color: #DBEAB6; border-color: currentColor; }
