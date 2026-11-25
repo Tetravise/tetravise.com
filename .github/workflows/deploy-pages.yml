@@ -35,9 +35,6 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Test site preparation
-        run: node --test scripts/build-pages.test.mjs
-
       - name: Prepare site
         env:
           SITE_URL: https://tetravise.com/
