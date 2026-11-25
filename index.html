@@ -91,31 +91,6 @@
     .skip-link:focus { transform: translateY(0); }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 
-    .site-header { border-bottom: 1px solid var(--line); }
-    .header-inner { display: grid; min-height: 5.5rem; grid-template-columns: 1fr auto auto; grid-template-areas: "brand language theme" "nav nav nav"; align-items: center; gap: .25rem .5rem; padding-block: .5rem; }
-    .brand { display: inline-flex; grid-area: brand; justify-self: start; }
-    .brand img { display: block; width: 11.5rem; height: auto; }
-    .brand .logo-dark { display: none; }
-    :root[data-theme="dark"] .brand .logo-light { display: none; }
-    :root[data-theme="dark"] .brand .logo-dark { display: block; }
-    .nav { display: flex; grid-area: nav; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 .75rem; font-size: .8125rem; font-weight: 500; }
-    .nav a { display: inline-flex; min-height: 2.75rem; align-items: center; gap: .375rem; text-decoration: none; }
-    .nav a:hover { color: var(--soft); }
-    .nav-group { position: relative; }
-    .nav-group summary { display: flex; min-height: 2.75rem; align-items: center; gap: .375rem; list-style: none; cursor: pointer; }
-    .nav-group summary::-webkit-details-marker { display: none; }
-    .nav-group summary::after { content: ""; width: .375rem; height: .375rem; margin-top: -.25rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
-    .nav-group[open] summary::after { margin-top: .25rem; transform: rotate(225deg); }
-    .nav-submenu { position: absolute; z-index: 60; top: 100%; right: 0; min-width: 10rem; padding: .5rem; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: 0 8px 24px rgb(10 20 16 / .12); }
-    .nav-submenu a { display: flex; padding-inline: .75rem; }
-    .theme-toggle { display: grid; grid-area: theme; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 4px; background: var(--surface); color: var(--ink); cursor: pointer; }
-    .theme-toggle:hover { border-color: var(--ink); }
-    .theme-toggle .theme-sun { display: none; }
-    :root[data-theme="dark"] .theme-toggle .theme-moon { display: none; }
-    :root[data-theme="dark"] .theme-toggle .theme-sun { display: block; }
-    .language-toggle { display: grid; grid-area: language; width: 2.75rem; height: 2.75rem; place-items: center; padding: 0; border: 1px solid var(--muted); border-radius: 4px; background: var(--surface); color: var(--ink); font: 600 .6875rem var(--font-body); letter-spacing: .04em; cursor: pointer; }
-    .language-toggle:hover { border-color: var(--ink); }
-
     .hero { padding-top: 2.5rem; }
     .eyebrow { display: flex; align-items: center; gap: .5rem; color: var(--muted); font-size: .8125rem; }
     .hero h1 { max-width: 21ch; margin-top: 1.125rem; font-size: 2.375rem; font-weight: 400; line-height: 1.1; animation: enter .6s ease both; }
@@ -222,18 +197,6 @@
     .mail .icon { width: 1.75rem; height: 1.75rem; }
     .mail:hover { color: #DBEAB6; border-color: currentColor; }
     .mail.contact-highlight { color: #DBEAB6; border-color: currentColor; outline: 2px solid var(--focus); outline-offset: .25rem; border-radius: 3px; }
-    .site-footer { padding-bottom: env(safe-area-inset-bottom, 0px); border-top: 1px solid var(--line); }
-    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding-block: 1.25rem; }
-    .footer-brand { display: inline-flex; }
-    .footer-brand img { display: block; width: 11rem; height: auto; }
-    .footer-meta { display: flex; flex-direction: column; gap: .25rem; color: var(--soft); font-size: .8125rem; }
-    .back-to-top { display: grid; flex: none; width: 3rem; height: 3rem; place-items: center; border: 1px solid var(--muted); border-radius: 4px; text-decoration: none; transition: color .2s, border-color .2s; }
-    .back-to-top .icon { transform: rotate(180deg); transition: transform .25s ease; }
-    .back-to-top:hover { color: #DBEAB6; border-color: currentColor; }
-    .back-to-top.is-floating { position: fixed; z-index: 10; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); border-color: var(--muted); background: var(--button-bg); color: var(--button-ink); box-shadow: 0 6px 20px rgb(0 0 0 / .18); opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(12px) scale(.9); transition: opacity .22s ease, transform .28s cubic-bezier(.2, .7, .2, 1), visibility 0s .28s, background .2s, border-color .2s; }
-    .back-to-top.is-floating.is-visible { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1); transition-delay: 0s; }
-    .back-to-top.is-floating:hover { border-color: var(--muted); background: var(--button-hover); color: var(--button-ink); }
-
     .button .icon, .mail .icon, .text-link .icon { transition: transform .25s; }
     .reveal-ready [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.22, 1, .36, 1); transition-delay: var(--reveal-delay, 0ms); }
     .reveal-ready [data-reveal].is-visible { opacity: 1; transform: none; }
@@ -251,10 +214,6 @@
       .person:hover, .person:focus-within { transform: scale(1.025); }
       .back-to-top:hover .icon { transform: translateY(-2px) rotate(180deg); }
     }
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme]) .brand .logo-light { display: none; }
-      :root:not([data-theme]) .brand .logo-dark { display: block; }
-    }
     @media (max-width: 39.99rem) {
       .hero { padding-top: 3rem; }
       .lead { margin-top: 1.5rem; }
@@ -264,7 +223,6 @@
     }
     @media (max-width: 23.5rem) {
       :root { --gutter: 1rem; }
-      .brand img { width: 9.25rem; }
       .hero h1 { font-size: 2rem; }
       .lead { font-size: 1rem; }
     }
@@ -277,8 +235,6 @@
     }
     @media (min-width: 40rem) {
       :root { --gutter: 2.5rem; }
-      .header-inner { min-height: 6.5rem; }
-      .brand img { width: 13rem; }
       .hero { padding-top: 3.5rem; }
       .hero h1 { font-size: 3.5rem; }
       .lead { font-size: 1.125rem; }
@@ -289,12 +245,8 @@
       .quote p { font-size: 1.625rem; }
       .field h3 { font-size: 1.375rem; }
       .mail { font-size: 1.75rem; }
-      .footer-meta { text-align: right; }
     }
     @media (min-width: 56rem) {
-      .header-inner { grid-template-columns: auto 1fr auto auto; grid-template-areas: "brand nav language theme"; column-gap: .75rem; row-gap: .25rem; }
-      .nav { margin-right: 1.25rem; }
-      .nav { justify-content: flex-end; gap: 1.75rem; font-size: .875rem; }
       .cases { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     @media (min-width: 64rem) {
@@ -317,6 +269,7 @@
       .reveal-ready [data-reveal] { opacity: 1; transform: none; }
     }
   </style>
+  <link rel="stylesheet" href="assets/layout.css">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenuto">Vai al contenuto</a>
@@ -372,30 +325,7 @@
     <symbol id="icon-wand-sparkles" viewBox="0 0 24 24"><path d="m15 4 5 5"/><path d="m13 6 5 5"/><path d="m3 21 9-9"/><path d="m14 3 1-2 1 2 2 1-2 1-1 2-1-2-2-1 2-1Z"/><path d="m20 15 1-2 1 2 2 1-2 1-1 2-1-2-2-1 2-1Z"/></symbol>
   </svg>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Tetravise, inizio pagina">
-        <img class="logo-light" src="assets/images/tetravise-light-h.svg" alt="Tetravise" width="850" height="300" fetchpriority="high">
-        <img class="logo-dark" src="assets/images/tetravise-dark-h.svg" alt="Tetravise" width="850" height="300">
-      </a>
-      <nav class="nav" aria-label="Navigazione principale">
-        <a class="nav-secondary" data-i18n="nav.services" href="#competenze">Servizi</a>
-        <a class="nav-secondary" data-i18n="nav.cases" href="#casi">Casi</a>
-        <a class="nav-secondary" data-i18n="nav.method" href="#metodo">Metodo</a>
-        <a class="nav-secondary" data-i18n="nav.team" href="#team">Chi siamo</a>
-        <details class="nav-group">
-          <summary data-i18n="nav.solutions">Soluzioni</summary>
-          <div class="nav-submenu"><a data-i18n="nav.relay" href="relay/">Relay</a></div>
-        </details>
-        <a class="nav-secondary" data-i18n="nav.contact" href="#contatti">Contatti</a>
-      </nav>
-      <button class="language-toggle" type="button" aria-label="Passa all'inglese" title="Passa all'inglese">EN</button>
-      <button class="theme-toggle" type="button" aria-label="Cambia tema" title="Cambia tema">
-        <svg class="icon theme-sun" aria-hidden="true"><use href="#icon-sun"/></svg>
-        <svg class="icon theme-moon" aria-hidden="true"><use href="#icon-moon"/></svg>
-      </button>
-    </div>
-  </header>
+  <template id="site-header"></template>
 
   <main id="contenuto" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
@@ -707,19 +637,7 @@
     </section>
   </main>
 
-  <footer class="site-footer inverse">
-    <div class="container footer-inner">
-      <a class="footer-brand" href="#top" aria-label="Tetravise, torna all'inizio">
-        <img src="assets/images/tetravise-dark-h.svg" alt="Tetravise" width="850" height="300" loading="lazy">
-      </a>
-      <div class="footer-meta">
-        <span>© 2026 Tetravise</span>
-      </div>
-      <a class="back-to-top" href="#top" aria-label="Torna in cima" title="Torna in cima">
-        <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg>
-      </a>
-    </div>
-  </footer>
+  <template id="site-footer"></template>
   <script>
     (() => {
       const root = document.documentElement;
@@ -734,118 +652,6 @@
           [members[memberIndex], members[randomIndex]] = [members[randomIndex], members[memberIndex]];
         }
         team.append(...members);
-      }
-
-      function setupTheme() {
-        const systemTheme = matchMedia('(prefers-color-scheme: dark)');
-        const themeToggle = document.querySelector('.theme-toggle');
-
-        function applyTheme(preference) {
-          const systemColor = systemTheme.matches ? 'dark' : 'light';
-          const theme = preference === 'system' ? systemColor : preference;
-          root.dataset.theme = theme;
-          root.dataset.themePreference = preference;
-          const themeLabel = theme === 'dark' ? 'Attiva tema chiaro' : 'Attiva tema scuro';
-          themeToggle.setAttribute('aria-label', themeLabel);
-          themeToggle.title = themeLabel;
-          document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#111B18' : '#F5F6F2';
-        }
-
-        applyTheme(root.dataset.themePreference || 'system');
-        themeToggle.addEventListener('click', () => {
-          const preference = root.dataset.theme === 'dark' ? 'light' : 'dark';
-          applyTheme(preference);
-          try { localStorage.setItem('tetravise-theme', preference); } catch {}
-        });
-        systemTheme.addEventListener('change', () => {
-          if (root.dataset.themePreference === 'system') applyTheme('system');
-        });
-      }
-
-      async function setupLanguage() {
-        const languageToggle = document.querySelector('.language-toggle');
-        const solutions = document.querySelector('.nav-group');
-        document.addEventListener('click', event => {
-          if (!solutions.contains(event.target) || event.target.closest('a')) solutions.open = false;
-        });
-        document.addEventListener('keydown', event => {
-          if (event.key === 'Escape' && solutions.open) {
-            solutions.open = false;
-            solutions.querySelector('summary').focus();
-          }
-        });
-        const fallbackTranslations = {
-          it: { 'ui.nav': 'Navigazione principale', 'ui.skip': 'Vai al contenuto', 'ui.switchTo': "Passa all'inglese" },
-          en: { 'ui.nav': 'Main navigation', 'ui.skip': 'Skip to content', 'ui.switchTo': 'Passa all’italiano' },
-        };
-        let translations = fallbackTranslations;
-        try {
-          const response = await fetch('assets/i18n.json', { cache: 'no-store' });
-          if (response.ok) translations = await response.json();
-        } catch {}
-
-        function applyLanguage(language) {
-          const labels = translations[language];
-          root.dataset.language = language;
-          document.documentElement.lang = language;
-          document.querySelector('.nav').setAttribute('aria-label', labels['ui.nav']);
-          document.querySelector('.skip-link').textContent = labels['ui.skip'];
-          document.querySelector('.footer-brand').setAttribute('aria-label', labels['ui.footerHome']);
-          document.querySelector('.back-to-top').setAttribute('aria-label', labels['ui.backToTop']);
-          document.querySelector('.back-to-top').title = labels['ui.backToTop'];
-          document.querySelectorAll('.linkedin-link').forEach(link => {
-            const name = link.closest('.person').querySelector('h3').textContent;
-            link.setAttribute('aria-label', `${name} ${labels['ui.linkedinNewTab']}`);
-          });
-          document.querySelectorAll('[data-i18n]').forEach(element => {
-            const value = translations[language]?.[element.dataset.i18n];
-            if (value) element.textContent = value;
-          });
-          const teamBios = {
-            'giovanni-cioli-puviani.webp': 'team.giovanni.bio',
-            'alex-mengoli.webp': 'team.alex.bio',
-            'riccardo-siena.webp': 'team.riccardo.bio',
-            'azmi-hamdi.webp': 'team.azmi.bio',
-          };
-          document.querySelectorAll('.team .person').forEach(person => {
-            const image = person.querySelector('img')?.getAttribute('src')?.split('/').pop();
-            const value = translations[language]?.[teamBios[image]];
-            const element = person.querySelector('.bio');
-            if (value) element.textContent = value;
-          });
-          languageToggle.textContent = language.toUpperCase();
-          languageToggle.setAttribute('aria-label', labels['ui.switchTo']);
-          languageToggle.title = labels['ui.switchTo'];
-          const themeLabel = labels[root.dataset.theme === 'dark' ? 'ui.themeLight' : 'ui.themeDark'];
-          const themeToggle = document.querySelector('.theme-toggle');
-          themeToggle.setAttribute('aria-label', themeLabel);
-          themeToggle.title = themeLabel;
-        }
-
-        applyLanguage(root.dataset.language || 'it');
-        languageToggle.addEventListener('click', () => {
-          const language = root.dataset.language === 'en' ? 'it' : 'en';
-          applyLanguage(language);
-          try { localStorage.setItem('tetravise-language', language); } catch {}
-        });
-      }
-
-      function setupBackToTop() {
-        const backToTop = document.querySelector('.back-to-top');
-        backToTop.classList.add('is-floating');
-
-        function updateBackToTop() {
-          const visible = window.scrollY > 480;
-          if (!visible && document.activeElement === backToTop) document.querySelector('.brand').focus({ preventScroll: true });
-          backToTop.classList.toggle('is-visible', visible);
-          backToTop.inert = !visible;
-          backToTop.setAttribute('aria-hidden', String(!visible));
-        }
-
-        updateBackToTop();
-        window.addEventListener('scroll', updateBackToTop, { passive: true });
-        window.addEventListener('resize', updateBackToTop);
-        window.addEventListener('pageshow', updateBackToTop);
       }
 
       function setupContactLinks() {
@@ -946,13 +752,11 @@
       }
 
       shuffleTeam();
-      setupLanguage();
-      setupTheme();
-      setupBackToTop();
       setupContactLinks();
       setupMethod();
       setupReveals();
     })();
   </script>
+  <script src="assets/layout.js"></script>
 </body>
 </html>

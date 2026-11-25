@@ -124,10 +124,18 @@ export function createSeo(siteUrl) {
 
 export async function buildPages({ siteUrl = process.env.SITE_URL ?? 'https://tetravise.com/', outputDirectory = join(projectDirectory, '_site') } = {}) {
   const seo = createSeo(siteUrl);
+  const fragments = Object.fromEntries(await Promise.all(['header', 'footer'].map(async name => [name, await readFile(join(projectDirectory, 'scripts', `${name}.html`), 'utf8')])));
   const pages = await Promise.all(Object.entries(seo.pages).map(async ([page, metadata]) => {
-    const source = await readFile(join(projectDirectory, page), 'utf8');
+    let source = await readFile(join(projectDirectory, page), 'utf8');
     if (!source.includes(metadataSlot) || source.indexOf(metadataSlot) !== source.lastIndexOf(metadataSlot)) {
       throw new Error(`${page} must contain exactly one SEO metadata template.`);
+    }
+    const relay = page === 'relay/index.html';
+    const values = { root: relay ? '../' : '', home: relay ? '../' : '', homeTop: relay ? '../' : '#top', footerLabel: relay ? 'Tetravise, vai alla home' : "Tetravise, torna all'inizio", relay: relay ? './' : 'relay/', relayCurrent: relay ? ' aria-current="page"' : '' };
+    for (const [name, fragment] of Object.entries(fragments)) {
+      const slot = `<template id="site-${name}"></template>`;
+      if (!source.includes(slot) || source.indexOf(slot) !== source.lastIndexOf(slot)) throw new Error(`${page} must contain exactly one ${name} template.`);
+      source = source.replace(slot, () => fragment.replace(/\{\{(\w+)\}\}/g, (_, key) => values[key] ?? ''));
     }
     return [page, source.replace(metadataSlot, () => metadata)];
   }));

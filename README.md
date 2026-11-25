@@ -1,6 +1,9 @@
 # Tetravise
 
-Sito statico: aprire `index.html` nel browser, senza server o installazione di pacchetti.
+Sito statico senza dipendenze npm. Per l'anteprima completa, generare `_site`
+con `node scripts/build-pages.mjs` e servirlo con un server statico, ad esempio
+`python -m http.server 5501 --directory _site`. Aprire `http://localhost:5501/`.
+I sorgenti HTML contengono segnaposto per il layout comune e non sono l'anteprima finale.
 
 ## Indirizzi
 

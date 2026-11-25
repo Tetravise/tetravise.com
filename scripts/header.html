@@ -1,0 +1,24 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{homeTop}}" aria-label="Tetravise, inizio pagina">
+      <img class="logo-light" src="{{root}}assets/images/tetravise-light-h.svg" alt="Tetravise" width="850" height="300" fetchpriority="high">
+      <img class="logo-dark" src="{{root}}assets/images/tetravise-dark-h.svg" alt="Tetravise" width="850" height="300">
+    </a>
+    <nav class="nav" aria-label="Navigazione principale">
+      <a class="nav-secondary" data-i18n="nav.services" href="{{home}}#competenze">Servizi</a>
+      <a class="nav-secondary" data-i18n="nav.cases" href="{{home}}#casi">Casi</a>
+      <a class="nav-secondary" data-i18n="nav.method" href="{{home}}#metodo">Metodo</a>
+      <a class="nav-secondary" data-i18n="nav.team" href="{{home}}#team">Chi siamo</a>
+      <details class="nav-group">
+        <summary data-i18n="nav.solutions">Soluzioni</summary>
+        <div class="nav-submenu"><a data-i18n="nav.relay" href="{{relay}}"{{relayCurrent}}>Relay</a></div>
+      </details>
+      <a class="nav-secondary" data-i18n="nav.contact" href="{{home}}#contatti">Contatti</a>
+    </nav>
+    <button class="language-toggle" type="button" aria-label="Passa all'inglese" title="Passa all'inglese">EN</button>
+    <button class="theme-toggle" type="button" aria-label="Cambia tema" title="Cambia tema">
+      <svg class="icon theme-sun" aria-hidden="true"><use href="#icon-sun"/></svg>
+      <svg class="icon theme-moon" aria-hidden="true"><use href="#icon-moon"/></svg>
+    </button>
+  </div>
+</header>
